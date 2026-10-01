@@ -1,0 +1,2206 @@
+!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Casa Agrícola y Forestal</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+    font-family: Arial, sans-serif;
+    background-image: url("Fondo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #222;
+}
+
+        header {
+            background: #173d24;
+            color: white;
+            padding: 10px 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        } .logo img {
+    width: 95px;
+    height: auto;
+    display: block;
+}
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+        }
+
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            background:
+    linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.45)
+    ),
+    url("Fondo.jpg")
+    center/cover;
+            color: white;
+        }
+
+        .hero-text {
+            max-width: 650px;
+        }
+
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+        }
+
+        .boton {
+            display: inline-block;
+            background: #d79b32;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .boton.whatsapp {
+            background: #25D366;
+        }
+
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 38px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+        }
+        .productos {
+    padding: 45px 6%;
+    background: transparent;
+}
+
+.productos h2 {
+    text-align: center;
+    font-size: 32px;
+    color: white;
+    margin-bottom: 30px;
+    background: rgba(23, 61, 36, 0.85);
+    padding: 12px;
+    border-radius: 12px;
+}
+.buscador-productos {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 30px;
+    padding: 10px 18px;
+    margin: 0 auto 20px auto;
+    max-width: 500px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.25);
+}
+
+.buscador-productos span {
+    font-size: 22px;
+    margin-right: 10px;
+}
+
+.buscador-productos input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 17px;
+    background: transparent;
+    color: #222;
+}
+
+.buscador-productos input::placeholder {
+    color: #777;
+}
+.categorias {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.categoria {
+    background: white;
+    padding: 22px 16px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+}
+
+.categoria h3 {
+    color: #173d24;
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.categoria p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+@media (max-width: 600px) {
+    .categorias {
+        grid-template-columns: 1fr;
+    }
+}
+.catalogo {
+    text-align: center;
+    padding: 40px 20px;
+    background: #173d24;
+    color: white;
+}
+
+.catalogo h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.catalogo p {
+    font-size: 17px;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.catalogo .boton {
+    margin: 0;
+}
+.producto {
+    max-width: 380px;
+    margin: 18px auto;
+    background: white;
+    border-radius: 12px;
+    padding: 15px;
+}
+
+.producto img {
+    width: 100%;
+    max-width: 300px;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+    margin: 10px auto;
+}
+
+.producto h4 {
+    font-size: 22px;
+    margin: 10px 0;
+}
+
+.producto .precio {
+    font-size: 24px;
+    font-weight: bold;
+    color: #173d24;
+}
+
+.comprar {
+    display: block;
+    padding: 14px;
+    background: #25D366;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+.lista-productos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.lista-productos .producto {
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+    display: block;
+}
+
+.lista-productos .producto img {
+    width: 100%;
+    height: 130px;
+    object-fit: contain;
+}
+
+.lista-productos .producto h4 {
+    font-size: 18px;
+}
+
+.lista-productos .descripcion {
+    font-size: 14px;
+}
+
+.lista-productos .precio {
+    font-size: 20px;
+}
+
+.lista-productos .comprar {
+    font-size: 14px;
+    padding: 10px 5px;
+}
+.inicio-flotante {
+    position: fixed;
+    bottom: 20px;
+    right: 18px;
+    background: #173d24;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.inicio-flotante:active {
+    transform: scale(0.95);
+}
+.buscar-flotante {
+    .panel-buscador {
+    display: none;
+    position: fixed;
+    bottom: 82px;
+    right: 80px;
+    width: 250px;
+    z-index: 9999;
+}
+
+.panel-buscador input {
+    width: 100%;
+    padding: 13px 15px;
+    border: 2px solid #173d24;
+    border-radius: 25px;
+    background: white;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+    position: fixed;
+    bottom: 78px;
+    right: 18px;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: #e67e22;
+    color: white;
+    font-size: 23px;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.buscar-flotante:active {
+    transform: scale(0.95);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+.agregar-carrito {
+    width: 100%;
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.carrito-flotante {
+    position: fixed;
+    bottom: 20px;
+    left: 18px;
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 13px 18px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.ventana-carrito {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    z-index: 10000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.carrito-contenido {
+    background: white;
+    max-width: 450px;
+    margin: 60px auto;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.cerrar-carrito {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+    border: none;
+    background: none;
+    font-size: 24px;
+}
+
+.boton-pagar {
+    width: 100%;
+    background: #173d24;
+    color: white;
+    border: none;
+    padding: 14px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+.item-carrito {
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.cantidad-carrito {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+.cantidad-carrito button {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background: #173d24;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cantidad-carrito span {
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 25px;
+    text-align: center;
+}
+
+.eliminar-producto {
+    background: #eeeeee;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 7px;
+    font-weight: bold;
+}
+.ventana-checkout {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.65);
+    z-index: 11000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.checkout-contenido {
+    background: white;
+    max-width: 450px;
+    margin: 60px auto 30px;
+    padding: 25px;
+    border-radius: 15px;
+    position: relative;
+}
+
+.checkout-contenido h2 {
+    color: #173d24;
+    margin-bottom: 8px;
+}
+
+.checkout-texto {
+    margin-bottom: 20px;
+}
+
+.checkout-contenido label {
+    display: block;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 5px;
+}
+
+.checkout-contenido input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.checkout-total {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    font-size: 18px;
+}
+
+.boton-tarjeta {
+    width: 100%;
+    background: #173d24;
+    color: white;
+    border: none;
+    padding: 14px;
+    margin-top: 18px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.aviso-pago {
+    text-align: center;
+    font-size: 13px;
+    margin-top: 10px;
+    color: #666;
+}
+.recoger-tienda {
+    margin-top: 20px;
+    padding: 15px;
+    background: #f2f2f2;
+    border-radius: 8px;
+    border-left: 5px solid #173d24;
+}
+
+.recoger-tienda p {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #555;
+}
+.sucursales {
+    padding: 45px 6%;
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.sucursales h2 {
+    color: #173d24;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.subtitulo-sucursales {
+    color: #555;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+.lista-sucursales {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.sucursal {
+    background: white;
+    padding: 25px 18px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.sucursal h3 {
+    color: #173d24;
+    font-size: 23px;
+    margin-bottom: 15px;
+}
+
+.sucursal p {
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.sucursal p a {
+    color: #173d24;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.boton-mapa {
+    display: inline-block;
+    background: #e67e22;
+    color: white !important;
+    padding: 12px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+@media (max-width: 600px) {
+    .lista-sucursales {
+        grid-template-columns: 1fr;
+    }
+
+    .sucursales {
+        padding: 40px 6% 100px;
+    }
+}
+.menu-categorias {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 25px 0;
+}
+.panel-comparador {
+    display: none;
+}
+.comparador-motosierras {
+}
+    .tarjeta-comparacion {
+    background: white;
+    color: #222;
+    margin-top: 15px;
+    padding: 18px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    text-align: center;
+}
+
+.tarjeta-comparacion h3 {
+    color: #173d24;
+    font-size: 21px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-comparacion p {
+    font-size: 18px;
+    margin: 0;
+}
+
+.tarjeta-comparacion strong {
+    color: #e67e22;
+}
+#panel-comparador {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 18px;
+    border-radius: 15px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+#panel-comparador h3 {
+    color: #173d24;
+    font-size: 24px;
+    margin-bottom: 5px;
+}
+
+#panel-comparador p {
+    color: #444;
+    margin-bottom: 15px;
+}
+
+#panel-comparador select {
+    width: 48%;
+    padding: 12px 6px;
+    border: 2px solid #173d24;
+    border-radius: 10px;
+    background: white;
+    color: #173d24;
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#panel-comparador button {
+    width: 100%;
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+#panel-comparador button:active {
+    transform: scale(0.97);
+}
+    background: rgba(23, 61, 36, 0.92);
+    color: white;
+    padding: 22px 18px;
+    margin: 25px 0;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.comparador-motosierras h2 {
+    color: white;
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.comparador-motosierras p {
+    color: white;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.boton-comparar {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.menu-categorias button {
+    background: #173d24;
+    color: white;
+    border: none;
+    padding: 14px 8px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.18);
+}
+
+.menu-categorias button:active {
+    background: #e67e22;
+    transform: scale(0.97);
+}
+.menu-categorias button.activo {
+    background: #e67e22;
+}
+    </style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+    <img src="Logo.png" alt="Casa Agrícola y Forestal">
+</div>
+
+    <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#productos">Productos</a>
+    <a href="#sucursales">Sucursales</a>
+    <a href="#contacto">Contacto</a>
+</nav>
+
+</header>
+
+<section id="inicio" class="hero">
+
+    <div class="hero-text">
+
+        <h1>
+            Casa Agrícola y Forestal
+        </h1>
+
+        <p>
+            Herramientas, equipo y productos para el campo
+            y el trabajo forestal.
+        </p>
+
+        <a href="#productos" class="boton">
+            Ver productos
+        </a>
+<a href="https://wa.me/523461230733"
+   class="boton whatsapp"
+   target="_blank">
+    WhatsApp
+</a>
+
+    </div>
+
+</section>
+ <section class="catalogo">
+    <h2>Consulta nuestro catálogo</h2>
+    <p>Conoce nuestros equipos, herramientas, accesorios y refacciones.</p>
+
+    <a href="Catalogo.pdf" target="_blank" class="boton">
+        📖 Ver catálogo completo
+    </a>
+</section>
+
+<section id="productos" class="productos">
+
+    <h2>Nuestros productos</h2>
+    
+    <div class="buscador-productos">
+    <span>🔎</span>
+    <input
+    type="text"
+    id="buscarProducto"
+    placeholder="Buscar producto..."
+    oninput="buscarProductos()"
+>
+    
+</div>
+<p id="sinResultados" style="display: none;">
+    🔎 No encontramos productos con esa búsqueda.
+</p>
+<div class="menu-categorias">
+    <button onclick="mostrarCategoria('motosierras')">🪚 Motosierras</button>
+    <button onclick="mostrarCategoria('desbrozadoras')">🌿 Desbrozadoras</button>
+    <button onclick="mostrarCategoria('herramientas')">🪓 Herramientas</button>
+    <button onclick="mostrarCategoria('refacciones')">🔧 Refacciones</button>
+    <button onclick="mostrarCategoria('maquinaria')">🚜 Maquinaria agrícola</button>
+</div>
+<div class="comparador-motosierras" id="zona-comparador">
+    <h2>🪚 ¿Cuál motosierra elegir?</h2>
+
+    <p>
+        Compara nuestros modelos y encuentra la motosierra
+        más adecuada para tu trabajo.
+    </p>
+
+    <button class="boton-comparar" onclick="abrirComparador()">
+        ⚖️ Comparar motosierras
+    </button>
+</div>
+<div id="panel-comparador" class="panel-comparador">
+<h3>⚖️ Comparar motosierras</h3>
+<p>Selecciona dos modelos:</p>
+
+<select id="modelo1">
+    <option value="">Modelo 1</option>
+<option value="ms162">STIHL MS 162</option>
+<option value="ms172">STIHL MS 172</option>
+<option value="ms182">STIHL MS 182 C-BE</option>
+<option value="ms212">STIHL MS 212</option>
+<option value="ms250">STIHL MS 250</option>
+<option value="ms260">STIHL MS 260</option>
+<option value="ms310">STIHL MS 310</option>
+<option value="ms363">STIHL MS 363</option>
+<option value="ms382">STIHL MS 382</option>
+<option value="ms462">STIHL MS 462 C-M</option>
+<option value="ms651">STIHL MS 651</option>
+<option value="ms661">STIHL MS 661</option>
+<option value="ms194t">STIHL MS 194 T</option>
+<option value="ms201tcm">STIHL MS 201 TC-M</option>
+</select>
+
+<select id="modelo2">
+<option value="">Modelo 2</option>
+<option value="ms162">STIHL MS 162</option>
+<option value="ms172">STIHL MS 172</option>
+<option value="ms182">STIHL MS 182 C-BE</option>
+<option value="ms212">STIHL MS 212</option>
+<option value="ms250">STIHL MS 250</option>
+<option value="ms260">STIHL MS 260</option>
+<option value="ms310">STIHL MS 310</option>
+<option value="ms363">STIHL MS 363</option>
+<option value="ms382">STIHL MS 382</option>
+<option value="ms462">STIHL MS 462 C-M</option>
+<option value="ms651">STIHL MS 651</option>
+<option value="ms661">STIHL MS 661</option>
+<option value="ms194t">STIHL MS 194 T</option>
+<option value="ms201tcm">STIHL MS 201 TC-M</option>
+</select>
+
+<button onclick="compararMotosierras()">
+    ⚖️ Comparar
+</button>
+
+<div id="resultado-comparacion"></div>
+</div>
+    <div class="categorias">
+
+        <div class="categoria categoria-contenido" id="motosierras">
+    <h3>🪚 Motosierras</h3>
+<div class="lista-productos">
+    <div class="producto">
+        <img src="ms162.png" alt="Motosierra STIHL MS 162">
+    
+
+        <h4>STIHL MS 162</h4>
+
+        <p class="descripcion">
+            Motosierra a gasolina • 1.7 HP • 2 tiempos • Espada de 16"
+        </p>
+
+        <p class="precio">$4,500 MXN</p>
+<button class="agregar-carrito"
+        onclick="agregarCarrito('STIHL MS 162', 4500)">
+    🛒 Agregar al carrito
+</button>
+        <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20162"
+           target="_blank"
+           class="comprar">
+            Consultar por WhatsApp
+        </a>
+    </div>
+    <!-- Ms172 -->
+<div class="producto">
+    <img src="Ms172.png" alt="Motosierra STIHL MS 172">
+
+    <h4>STIHL Ms172</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 31.8 cm³ • 1.9 HP • 4.5 kg
+    </p>
+
+    <p class="precio">$4,500 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL Ms172', 4500)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20172"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+
+
+<!-- Ms182 -->
+<div class="producto">
+    <img src="Ms182.png" alt="Motosierra STIHL MS 182 C-BE">
+
+    <h4>STIHL Ms182</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 35.8 cm³ • 2.1 HP • 4.9 kg
+    </p>
+
+    <p class="precio">$5,911 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL Ms182', 5911)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20182%20C-BE"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+
+
+<!-- Ms212 -->
+<div class="producto">
+    <img src="Ms212.png" alt="Motosierra STIHL MS 212">
+
+    <h4>STIHL Ms212</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 38.6 cm³ • 2.4 HP • 4.6 kg
+    </p>
+
+    <p class="precio">$5,900 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL Ms212', 5900)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20212"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<!-- MS 250 -->
+<div class="producto">
+    <img src="Ms250.png" alt="Motosierra STIHL MS 250">
+    <h4>STIHL MS 250</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 45.4 cm³ • 3.0 HP • 4.6 kg
+    </p>
+
+    <p class="precio">$6,900 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 250', 6900)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20250"
+       target="_blank" class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+
+<!-- MS 260 -->
+<div class="producto">
+    <img src="Ms260.png" alt="Motosierra STIHL MS 260">
+    <h4>STIHL MS 260</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 50.2 cm³ • 3.4 HP • 4.8 kg
+    </p>
+
+    <p class="precio">$12,989 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 260', 12989)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20260"
+       target="_blank" class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+
+<!-- MS 310 -->
+<div class="producto">
+    <img src="Ms310.png" alt="Motosierra STIHL MS 310">
+    <h4>STIHL MS 310</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 59 cm³ • 4.3 HP • 5.9 kg
+    </p>
+
+    <p class="precio">$14,272 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 310', 14272)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20310"
+       target="_blank" class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+
+<!-- MS 363 -->
+<div class="producto">
+    <img src="Ms363.png" alt="Motosierra STIHL MS 363">
+    <h4>STIHL MS 363</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 62.6 cm³ • 4.69 HP • 5.5 kg
+    </p>
+
+    <p class="precio">$15,861 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 363', 15861)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20363"
+       target="_blank" class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Ms382.png" alt="Motosierra STIHL MS 382">
+
+    <h4>STIHL MS 382</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 72.2 cm³ • 5.2 HP • 6.2 kg • Espada 25-30"
+    </p>
+
+    <p class="precio">$14,778 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 382', 14778)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20382"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Ms462.png" alt="Motosierra STIHL MS 462 C-M">
+
+    <h4>STIHL MS 462 C-M</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 72.2 cm³ • 5.9 HP • 6 kg • Espada 30"
+    </p>
+
+    <p class="precio">$23,311 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 462 C-M', 23311)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20462%20C-M"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Ms651-Ms661.png" alt="Motosierra STIHL MS 651 / MS 661">
+
+    <h4>STIHL MS 651 / MS 661</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 91.1 cm³ • 7.3 HP • 7.4 kg • Espada 28-36"
+    </p>
+
+    <p class="precio">Desde $23,728 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 651 / MS 661', 23728)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20651%20%2F%20MS%20661"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Ms194T.png" alt="Motosierra STIHL MS 194 T">
+
+    <h4>STIHL MS 194 T</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 31.8 cm³ • 1.8 HP • 3.3 kg • Espada 14-16"
+    </p>
+
+    <p class="precio">$12,039 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 194 T', 12039)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20194%20T"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Ms201TCM.png" alt="Motosierra STIHL MS 201 TC-M">
+
+    <h4>STIHL MS 201 TC-M</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 35.2 cm³ • 2.4 HP • 3.7 kg • Espada 16"
+    </p>
+
+    <p class="precio">$15,411 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL MS 201 TC-M', 15411)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MS%20201%20TC-M"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+</div>
+</div>
+
+        <div class="categoria categoria-contenido" id="desbrozadoras">
+            <h3>🌿 Desbrozadoras</h3>
+            <p>Equipos para limpieza de terrenos y parcelas.</p>
+            <div class="lista-productos">
+
+    <div class="producto">
+        <img src="Fs230.png" alt="Desbrozadora STIHL FS 230">
+
+        <h4>STIHL FS 230</h4>
+
+        <p class="descripcion">
+            Motor 2 tiempos • 40.2 cm³ • 2 HP • 7.5 kg • AutoCut 27-2
+        </p>
+
+       <p class="precio">$7,299 MXN</p>
+
+<button class="agregar-carrito"
+        onclick="agregarCarrito('STIHL FS 230', 7299)">
+    🛒 Agregar al carrito
+</button>
+
+        <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desbrozadora%20STIHL%20FS%20230"
+           target="_blank"
+           class="comprar">
+            Consultar por WhatsApp
+        </a>
+    </div>
+<div class="producto">
+    <img src="Fs38.png" alt="Desmalezadora STIHL FS 38">
+
+    <h4>STIHL FS 38</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 27.2 cm³ • 0.9 HP • 4.2 kg • AutoCut C 6-2
+    </p>
+
+    <p class="precio">$3,799 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 38', 3799)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%2038"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs55.png" alt="Desmalezadora STIHL FS 55">
+
+    <h4>STIHL FS 55</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 27.2 cm³ • 1 HP • 4.9 kg • AutoCut 27-2
+    </p>
+
+    <p class="precio">$7,750 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 55', 7750)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%2055"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs120.png" alt="Desmalezadora STIHL FS 120">
+
+    <h4>STIHL FS 120</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 30.8 cm³ • 1.74 HP • 6.1 kg • AutoCut 27-2
+    </p>
+
+    <p class="precio">$10,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 120', 10999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20120"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs161-221.png" alt="Desmalezadora STIHL FS 161 L">
+
+    <h4>STIHL FS 161 L</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 37.7 cm³ • 2 HP • 7.5 kg • Cuchilla 300-3 • Uso intensivo
+    </p>
+
+    <p class="precio">$14,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 161 L', 14999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20161%20L"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+
+<div class="producto">
+    <img src="Fs161-221.png" alt="Desmalezadora STIHL FS 221 L">
+
+    <h4>STIHL FS 221 L</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 37.7 cm³ • 2 HP • 7.5 kg • Cuchilla 300-3 • Uso intensivo
+    </p>
+
+    <p class="precio">$15,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 221 L', 15999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20221%20L"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs235.png" alt="Desmalezadora STIHL FS 235">
+
+    <h4>STIHL FS 235</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 36.3 cm³ • 2.1 HP • 6.8 kg • AutoCut 27-2 • Uso frecuente
+    </p>
+
+    <p class="precio">$7,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 235', 7999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20235"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs255.png" alt="Desmalezadora STIHL FS 255">
+
+    <h4>STIHL FS 255</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 36.3 cm³ • 2.01 HP • 7.9 kg • AutoCut 46-2 • Uso intensivo
+    </p>
+
+    <p class="precio">$13,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 255', 13999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20255"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs261L.png" alt="Desmalezadora STIHL FS 261 L">
+
+    <h4>STIHL FS 261 L</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 41.6 cm³ • 2.7 HP • 7.8 kg • AutoCut 46-2 • Uso intensivo
+    </p>
+
+    <p class="precio">$22,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 261 L', 22999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20261%20L"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs291L.png" alt="Desmalezadora STIHL FS 291 L">
+
+    <h4>STIHL FS 291 L</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 41.6 cm³ • 2.7 HP • 8 kg • Cuchilla 300-3 • Uso intensivo
+    </p>
+
+    <p class="precio">$17,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 291 L', 17999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20291%20L"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs351L.png" alt="Desmalezadora STIHL FS 351 L">
+
+    <h4>STIHL FS 351 L</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 37.7 cm³ • 2.3 HP • 8.8 kg • Cuchilla 305-2 • Uso intensivo
+    </p>
+
+    <p class="precio">$19,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 351 L', 19999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20351%20L"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fs460L.png" alt="Desmalezadora STIHL FS 460 L">
+
+    <h4>STIHL FS 460 L</h4>
+
+    <p class="descripcion">
+        Motor 2-Mix • 45.6 cm³ • 3.0 HP • 8.8 kg • AutoCut 46-2 • Uso intensivo
+    </p>
+
+    <p class="precio">$29,999 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FS 460 L', 29999)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FS%20460%20L"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Fr235.png" alt="Desmalezadora STIHL FR 235">
+
+    <h4>STIHL FR 235</h4>
+
+    <p class="descripcion">
+        Motor 2 tiempos • 36.3 cm³ • 2.1 HP • 10.3 kg • AutoCut 36-2 • Uso frecuente
+    </p>
+
+    <p class="precio">$10,499 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('STIHL FR 235', 10499)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FR%20235"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+</div>
+        </div>
+<div class="categoria categoria-contenido" id="maquinaria">
+
+    <h3>🚜 Maquinaria agrícola</h3>
+
+    <div class="lista-productos">
+<div class="producto">
+    <img src="ParazziniTPCOCO.png" alt="Trituradora de cocos PARAZZINI TPCOCO">
+
+    <h4>PARAZZINI TPCOCO</h4>
+
+    <p class="descripcion">
+        Trituradora de cocos • Motor gasolina 196 cc • 6.5 HP • Arranque manual • Uso agrícola
+    </p>
+
+    <p class="precio">$33,105 MXN</p>
+
+    <button class="agregar-carrito"
+            onclick="agregarCarrito('PARAZZINI TPCOCO', 33105)">
+        🛒 Agregar al carrito
+    </button>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20trituradora%20de%20cocos%20PARAZZINI%20TPCOCO"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="Picadora3500T35.png"
+         alt="Desintegradora Picadora 3500 T-35">
+
+    <h4>Desintegradora / Picadora 3500 T-35</h4>
+
+    <p class="descripcion">
+        Equipo agrícola para picado y desintegrado de material vegetal.
+        Consulta especificaciones y disponibilidad.
+    </p>
+
+    <p class="precio">Consultar precio</p>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20Desintegradora%20Picadora%203500%20T-35"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+    <div class="producto">
+    <img src="PicadoraT40.png"
+         alt="Desintegradora Picadora T-40">
+
+    <h4>Desintegradora / Picadora T-40</h4>
+
+    <p class="descripcion">
+        Equipo agrícola para picado y desintegrado de material vegetal.
+        Consulta especificaciones y disponibilidad.
+    </p>
+
+    <p class="precio">Consultar precio</p>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20Desintegradora%20Picadora%20T-40"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+
+</div>
+<div class="producto">
+    <img src="ParazziniTrituradora.png"
+         alt="Equipo PARAZZINI">
+
+    <h4>PARAZZINI Trituradora</h4>
+
+    <p class="descripcion">
+        Equipo PARAZZINI para trituración de material vegetal. Consulta especificaciones y disponibilidad.
+    </p>
+
+    <p class="precio">Consultar precio</p>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20PARAZZINI%20Trituradora"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+</div>
+    </div>
+
+</div>
+        <div class="categoria categoria-contenido" id="herramientas">
+            <h3>🪓 Herramientas</h3>
+            <p>Hachas, machetes y herramientas para el campo.</p>
+        </div>
+
+        <div class="categoria categoria-contenido" id="refacciones">
+            <h3>🔧 Refacciones</h3>
+            <p>Cadenas, espadas, aceites y refacciones.</p>
+        </div>
+
+    </div>
+
+</section>
+<section id="sucursales" class="sucursales">
+
+    <h2>📍 Nuestras sucursales</h2>
+    <p class="subtitulo-sucursales">
+        Visítanos en cualquiera de nuestras dos sucursales.
+    </p>
+
+    <div class="lista-sucursales">
+
+        <div class="sucursal">
+            <h3>🏪 Ciudad Hidalgo</h3>
+
+            <p>
+                Av. Morelos Ote. 342<br>
+                El Paraíso, C.P. 61183<br>
+                Ciudad Hidalgo, Michoacán
+            </p>
+
+            <p>📞 <a href="tel:7861256908">786 125 6908</a></p>
+
+            <a href="https://maps.app.goo.gl/N9tVo9o7Jt3PYi7d8?g_st=ac"
+               target="_blank"
+               class="boton-mapa">
+                📍 Cómo llegar
+            </a>
+        </div>
+
+        <div class="sucursal">
+            <h3>🏪 San Felipe</h3>
+
+            <p>
+                Carretera Toluca–Morelia Km 105 S/N<br>
+                Col. San Felipe, C.P. 61529<br>
+                Zitácuaro, Michoacán
+            </p>
+
+            <p>📞 <a href="tel:8007778445">800 777 8445</a></p>
+
+            <a href="https://maps.app.goo.gl/iPpwk3dCWcKAiV8L9?g_st=ac"
+               target="_blank"
+               class="boton-mapa">
+                📍 Cómo llegar
+            </a>
+        </div>
+
+    </div>
+
+</section>
+
+</button>
+<div id="panel-buscador" class="panel-buscador">
+    <input
+        type="text"
+        id="buscar-producto"
+        placeholder="🔍 Buscar producto..."
+    >
+</div>
+<button class="buscar-flotante" onclick="abrirBuscador()">
+    🔍
+</button>
+<a href="#inicio" class="inicio-flotante">
+    🏠 Inicio
+</a>
+<button class="carrito-flotante" onclick="abrirCarrito()">
+    🛒 Carrito (<span id="contador-carrito">0</span>)
+</button>
+
+<div id="ventana-carrito" class="ventana-carrito">
+    <div class="carrito-contenido">
+        <button class="cerrar-carrito" onclick="cerrarCarrito()">✕</button>
+
+        <h2>🛒 Mi carrito</h2>
+
+        <div id="productos-carrito">
+            <p>Tu carrito está vacío.</p>
+        </div>
+
+        <h3>Total: $<span id="total-carrito">0</span> MXN</h3>
+
+       <button class="boton-pagar" onclick="abrirCheckout()">
+    💳 Proceder al pago
+</button>
+    </div>
+</div>
+
+</div>
+<div id="checkout" class="ventana-checkout">
+
+    <div class="checkout-contenido">
+
+        <button class="cerrar-carrito" onclick="cerrarCheckout()">✕</button>
+
+        <h2>Finalizar compra</h2>
+        <p class="checkout-texto">
+            Ingresa los datos para preparar tu pedido.
+        </p>
+
+        <label>Nombre completo</label>
+        <input type="text" id="cliente-nombre"
+               placeholder="Nombre y apellidos">
+
+        <label>Teléfono</label>
+        <input type="tel" id="cliente-telefono"
+               placeholder="10 dígitos">
+
+        <label>Correo electrónico</label>
+        <input type="email" id="cliente-email"
+               placeholder="correo@ejemplo.com">
+
+        <div class="recoger-tienda">
+    <strong>🏪 Entrega: Recoger en tienda</strong>
+    <p>Tu pedido estará disponible para recoger directamente en nuestra tienda.</p>
+</div>
+
+        <div class="checkout-total">
+            Total a pagar:
+            <strong>$<span id="checkout-total">0</span> MXN</strong>
+        </div>
+
+        <button class="boton-tarjeta" onclick="continuarPago()">
+            💳 Continuar al pago con tarjeta
+        </button>
+
+        <p class="aviso-pago">
+            El pago con tarjeta todavía no está habilitado.
+        </p>
+
+    </div>
+
+</div>
+<script>
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+function agregarCarrito(nombre, precio) {
+    let producto = carrito.find(item => item.nombre === nombre);
+
+    if (producto) {
+        producto.cantidad++;
+    } else {
+        carrito.push({
+            nombre: nombre,
+            precio: precio,
+            cantidad: 1
+        });
+    }
+
+    actualizarCarrito(); }
+
+function actualizarCarrito() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    
+    let contenedor = document.getElementById("productos-carrito");
+    let contador = document.getElementById("contador-carrito");
+    let totalElemento = document.getElementById("total-carrito");
+
+    contenedor.innerHTML = "";
+
+    let total = 0;
+    let cantidadTotal = 0;
+
+    carrito.forEach((producto, indice) => {
+
+        total += producto.precio * producto.cantidad;
+        cantidadTotal += producto.cantidad;
+
+        contenedor.innerHTML += `
+    <div class="item-carrito">
+
+        <strong>${producto.nombre}</strong>
+
+        <p>
+            $${producto.precio.toLocaleString()} MXN
+        </p>
+
+        <div class="cantidad-carrito">
+
+            <button onclick="disminuirCantidad(${indice})">
+                ➖
+            </button>
+
+            <span>${producto.cantidad}</span>
+
+            <button onclick="aumentarCantidad(${indice})">
+                ➕
+            </button>
+
+        </div>
+
+        <button class="eliminar-producto"
+                onclick="quitarProducto(${indice})">
+            🗑️ Eliminar
+        </button>
+
+    </div>
+`;
+    });
+
+    if (carrito.length === 0) {
+        contenedor.innerHTML = "<p>Tu carrito está vacío.</p>";
+    }
+
+    contador.textContent = cantidadTotal;
+    totalElemento.textContent = total.toLocaleString();
+}
+function aumentarCantidad(indice) {
+    carrito[indice].cantidad++;
+    actualizarCarrito();
+}
+
+function disminuirCantidad(indice) {
+
+    if (carrito[indice].cantidad > 1) {
+        carrito[indice].cantidad--;
+    } else {
+        carrito.splice(indice, 1);
+    }
+
+    actualizarCarrito();
+}
+function quitarProducto(indice) {
+    carrito.splice(indice, 1);
+    actualizarCarrito();
+}
+
+function abrirCarrito() {
+    document.getElementById("ventana-carrito").style.display = "block";
+}
+
+function cerrarCarrito() {
+    document.getElementById("ventana-carrito").style.display = "none";
+}
+function abrirCheckout() {
+
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío.");
+        return;
+    }
+
+    let total = 0;
+
+    carrito.forEach(producto => {
+        total += producto.precio * producto.cantidad;
+    });
+
+    document.getElementById("checkout-total").textContent =
+        total.toLocaleString();
+
+    cerrarCarrito();
+
+    document.getElementById("checkout").style.display = "block";
+}
+
+function cerrarCheckout() {
+    document.getElementById("checkout").style.display = "none";
+}
+
+function continuarPago() {
+
+    let nombre = document.getElementById("cliente-nombre").value.trim();
+    let telefono = document.getElementById("cliente-telefono").value.trim();
+    let email = document.getElementById("cliente-email").value.trim();
+
+    if (nombre === "") {
+        alert("Por favor escribe tu nombre completo.");
+        document.getElementById("cliente-nombre").focus();
+        return;
+    }
+
+    if (!/^[0-9]{10}$/.test(telefono)) {
+        alert("Escribe un número de teléfono válido de 10 dígitos.");
+        document.getElementById("cliente-telefono").focus();
+        return;
+    }
+
+    if (!email.includes("@") || !email.includes(".")) {
+        alert("Escribe un correo electrónico válido.");
+        document.getElementById("cliente-email").focus();
+        return;
+    }
+
+    alert("✅ Datos correctos. El pago con tarjeta se habilitará próximamente.");
+}
+
+actualizarCarrito();
+function mostrarCategoria(idCategoria) {
+    const categorias = document.querySelectorAll('.categoria-contenido');
+
+    categorias.forEach(function(categoria) {
+        categoria.style.display = 'none';
+    });
+
+    const seleccionada = document.getElementById(idCategoria);
+
+    if (seleccionada) {
+        seleccionada.style.display = 'block';
+       
+        const botones = document.querySelectorAll('.menu-categorias button');
+
+botones.forEach(function(boton) {
+    boton.classList.remove('activo');
+});
+
+const botonActivo = document.querySelector(
+    `.menu-categorias button[onclick*="'${idCategoria}'"]`
+);
+
+if (botonActivo) {
+    botonActivo.classList.add('activo');
+}
+    }
+}
+const buscador = document.getElementById('buscarProducto');
+
+buscador.addEventListener('input', function() {
+
+    const texto = buscador.value.toLowerCase().trim();
+    const categorias = document.querySelectorAll('.categoria-contenido');
+    const productos = document.querySelectorAll('.producto');
+
+    // Si el buscador está vacío, volvemos a Motosierras
+    if (texto === '') {
+        productos.forEach(function(producto) {
+            producto.style.display = '';
+        });
+
+        mostrarCategoria('motosierras');
+        return;
+    }
+
+    // Mostramos las categorías mientras buscamos
+    categorias.forEach(function(categoria) {
+    categoria.style.display = 'block';
+    });
+
+    productos.forEach(function(producto) {
+
+        const contenido = producto.textContent.toLowerCase();
+
+        if (contenido.includes(texto)) {
+            producto.style.display = '';
+        } else {
+            producto.style.display = 'none';
+        }
+
+    });
+
+});
+function abrirComparador() {
+    const panel = document.getElementById('panel-comparador');
+    panel.style.display = 'block';
+}
+const datosMotosierras = {
+    ms162: {
+        nombre: "MS 162",
+        potencia: "1.7 HP",
+        cilindrada: "30.1 cm³",
+        peso: "4.5 kg",
+        espada: '16"',
+        precio: "$4,500"
+    },
+
+    ms172: {
+        nombre: "MS 172",
+        potencia: "1.9 HP",
+        cilindrada: "31.8 cm³",
+        peso: "4.5 kg",
+        espada: '16"',
+        precio: "$4,500"
+    },
+
+    ms182: {
+        nombre: "MS 182 C-BE",
+        potencia: "2.2 HP",
+        cilindrada: "35.8 cm³",
+        peso: "4.6 kg",
+        espada: '16"',
+        precio: "$5,911"
+    },
+
+    ms212: {
+        nombre: "MS 212",
+        potencia: "2.4 HP",
+        cilindrada: "38.6 cm³",
+        peso: "4.6 kg",
+        espada: '16"',
+        precio: "$5,900"
+    },
+
+    ms250: {
+        nombre: "MS 250",
+        potencia: "3.0 HP",
+        cilindrada: "45.4 cm³",
+        peso: "4.6 kg",
+        espada: '18-20"',
+        precio: "$6,900"
+    },
+
+    ms260: {
+        nombre: "MS 260",
+        potencia: "3.4 HP",
+        cilindrada: "50.2 cm³",
+        peso: "4.8 kg",
+        espada: '20"',
+        precio: "$12,989"
+    },
+
+    ms310: {
+        nombre: "MS 310",
+        potencia: "4.3 HP",
+        cilindrada: "59 cm³",
+        peso: "5.9 kg",
+        espada: '20-25"',
+        precio: "$14,272"
+    },
+
+    ms363: {
+        nombre: "MS 363",
+        potencia: "4.69 HP",
+        cilindrada: "62.6 cm³",
+        peso: "5.5 kg",
+        espada: '20-25"',
+        precio: "$15,861"
+    },
+
+    ms382: {
+    nombre: "MS 382",
+    potencia: "5.3 HP",
+    cilindrada: "72.2 cm³",
+    peso: "6.2 kg",
+    espada: '20-25"',
+    precio: "$14,778"
+},
+
+    ms462: {
+    nombre: "MS 462 C-M",
+    potencia: "6.0 HP",
+    cilindrada: "72.2 cm³",
+    peso: "6.0 kg",
+    espada: '20-25"',
+    precio: "$23,311"
+},
+
+    ms651: {
+    nombre: "MS 651",
+    potencia: "6.8 HP",
+    cilindrada: "91.1 cm³",
+    peso: "7.3 kg",
+    espada: '25-30"',
+    precio: "$23,728"
+},
+
+    ms661: {
+    nombre: "MS 661",
+    potencia: "7.3 HP",
+    cilindrada: "91.1 cm³",
+    peso: "7.4 kg",
+    espada: '25-36"',
+    precio: "$29,644"
+},
+
+    ms194t: {
+        nombre: "MS 194 T",
+        potencia: "1.8 HP",
+        cilindrada: "31.8 cm³",
+        peso: "3.3 kg",
+        espada: '14-16"',
+        precio: "$12,039"
+    },
+
+    ms201tcm: {
+        nombre: "MS 201 TC-M",
+        potencia: "2.4 HP",
+        cilindrada: "35.2 cm³",
+        peso: "3.7 kg",
+        espada: '16"',
+        precio: "$15,411"
+    }
+};
+function generarRecomendacion(a, b) {
+    let texto = "";
+
+    const potenciaA = parseFloat(a.potencia);
+    const potenciaB = parseFloat(b.potencia);
+
+    const pesoA = parseFloat(a.peso);
+    const pesoB = parseFloat(b.peso);
+
+    if (potenciaA > potenciaB) {
+        texto += `<br><br>💪 ${a.nombre} ofrece mayor potencia. `;
+    } else if (potenciaB > potenciaA) {
+        texto += `<br><br>💪 ${b.nombre} ofrece mayor potencia. `;
+    } else {
+        texto += `<br><br>⚖️ Ambos modelos tienen una potencia similar. `;
+    }
+
+    if (pesoA < pesoB) {
+        texto += `<br><br>🪶 ${a.nombre} es más ligera, lo que puede facilitar su manejo.`;
+    } else if (pesoB < pesoA) {
+        texto += `<br><br>🪶 ${b.nombre} es más ligera, lo que puede facilitar su manejo.`;
+    } else {
+        texto += `<br><br>⚖️ Ambos modelos tienen un peso similar.`;
+    }
+    const cilindradaA = parseFloat(a.cilindrada);
+const cilindradaB = parseFloat(b.cilindrada);
+
+if (cilindradaA > cilindradaB) {
+    texto += `<br><br>⚙️ ${a.nombre} tiene mayor cilindrada (${a.cilindrada} frente a ${b.cilindrada}).`;
+} else if (cilindradaB > cilindradaA) {
+    texto += `<br><br>⚙️ ${b.nombre} tiene mayor cilindrada (${b.cilindrada} frente a ${a.cilindrada}).`;
+} else {
+    texto += `<br><br>⚙️ Ambos modelos tienen la misma cilindrada.`;
+}
+const precioA = parseFloat(a.precio.replace(/[$,]/g, ""));
+const precioB = parseFloat(b.precio.replace(/[$,]/g, ""));
+
+if (precioA < precioB) {
+    texto += `<br><br>💰 ${a.nombre} tiene un precio menor: ${a.precio} frente a ${b.precio}.`;
+} else if (precioB < precioA) {
+    texto += `<br><br>💰 ${b.nombre} tiene un precio menor: ${b.precio} frente a ${a.precio}.`;
+} else {
+    texto += `<br><br>💰 Ambos modelos tienen el mismo precio.`;
+}
+    return texto;
+}
+function compararMotosierras() {
+    const modelo1 = document.getElementById('modelo1').value;
+    const modelo2 = document.getElementById('modelo2').value;
+
+    if (!modelo1 || !modelo2) {
+        alert("Selecciona dos motosierras.");
+        return;
+    }
+
+    if (modelo1 === modelo2) {
+        alert("Selecciona dos modelos diferentes.");
+        return;
+    }
+
+    const moto1 = datosMotosierras[modelo1];
+    const moto2 = datosMotosierras[modelo2];
+
+    const resultado = document.getElementById("resultado-comparacion");
+
+    resultado.innerHTML = `
+        <div class="tarjeta-comparacion">
+            <h3>⚖️ Resultado de la comparación</h3>
+
+            <table class="tabla-comparacion">
+                <tr>
+                    <th>Característica</th>
+                    <th>${moto1.nombre}</th>
+                    <th>${moto2.nombre}</th>
+                </tr>
+                <tr>
+                    <td>Potencia</td>
+                    <td>${moto1.potencia}</td>
+                    <td>${moto2.potencia}</td>
+                </tr>
+                <tr>
+                    <td>Cilindrada</td>
+                    <td>${moto1.cilindrada}</td>
+                    <td>${moto2.cilindrada}</td>
+                </tr>
+                <tr>
+                    <td>Peso</td>
+                    <td>${moto1.peso}</td>
+                    <td>${moto2.peso}</td>
+                </tr>
+                <tr>
+                    <td>Espada</td>
+                    <td>${moto1.espada}</td>
+                    <td>${moto2.espada}</td>
+                </tr>
+                <tr>
+                    <td>Precio</td>
+                    <td>${moto1.precio}</td>
+                    <td>${moto2.precio}</td>
+                </tr>
+            </table>
+            <div class="recomendacion-comparacion">
+    <h3>💡 ¿Cuál te conviene?</h3>
+    <p id="recomendacion-motosierra"></p>
+</div>
+        </div>
+    `;
+    const recomendacion = generarRecomendacion(moto1, moto2);
+
+document.getElementById("recomendacion-motosierra").innerHTML =
+    recomendacion;
+}
+    
+mostrarCategoria('motosierras');
+function abrirBuscador() {
+    const buscador = document.getElementById("buscarProducto");
+
+    document.getElementById("productos").scrollIntoView({
+        behavior: "smooth"
+    });
+
+    setTimeout(function() {
+        buscador.focus();
+    }, 500);
+}
+function buscarProductos() {
+    const texto = document
+        .getElementById("buscarProducto")
+        .value
+        .toLowerCase()
+        .trim();
+const productos = document.querySelectorAll(".producto");
+    const zonaComparador = document.getElementById("zona-comparador");
+    if (texto !== "") {
+    zonaComparador.style.display = "none";
+} else {
+    zonaComparador.style.display = "";
+}
+
+if (texto !== "") {
+    zonaComparador.style.display = "none";
+} else {
+    zonaComparador.style.display = "";
+}
+
+    productos.forEach(function(producto) {
+        const contenido = producto.textContent.toLowerCase();
+
+        if (contenido.includes(texto)) {
+            producto.style.display = "";
+        } else {
+            producto.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
