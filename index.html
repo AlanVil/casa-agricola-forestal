@@ -738,6 +738,102 @@ html {
 .menu-categorias button.activo {
     background: #e67e22;
 }
+#resultado-comparacion .tarjeta-comparacion {
+    max-width: 960px;
+    margin: 20px auto 0;
+    padding: clamp(12px, 3vw, 28px);
+    border: 1px solid #e2e9e3;
+    border-radius: 20px;
+    box-shadow: 0 6px 24px rgba(23, 61, 36, 0.10);
+    overflow-wrap: anywhere;
+}
+#resultado-comparacion .duelo-comparacion {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 52px minmax(0, 1fr);
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0;
+}
+#resultado-comparacion .modelo-comparacion {
+    min-width: 0;
+    height: 100%;
+    padding: 16px;
+    border: 1px solid #e2e9e3;
+    border-top: 4px solid #173d24;
+    border-radius: 16px;
+    background: #fff;
+}
+#resultado-comparacion .modelo-comparacion h4 {
+    color: #173d24;
+    font-size: clamp(16px, 2vw, 22px);
+    margin: 14px 0 10px;
+}
+#resultado-comparacion .imagen-comparacion {
+    display: block;
+    width: 100%;
+    height: clamp(160px, 22vw, 240px);
+    object-fit: contain;
+    margin: 0 auto;
+}
+#resultado-comparacion .vs-comparacion {
+    display: grid;
+    place-items: center;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: #e67e22;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(230, 126, 34, 0.22);
+}
+#resultado-comparacion .precio-comparacion {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 10px;
+    font-size: clamp(17px, 2vw, 23px);
+    font-weight: bold;
+    color: #173d24;
+    background: #f5f7f5;
+}
+#resultado-comparacion .tabla-comparacion {
+    width: 100%;
+    table-layout: fixed;
+    border-spacing: 0;
+    overflow-wrap: anywhere;
+    border: 1px solid #e2e9e3;
+    border-radius: 12px;
+    overflow: hidden;
+}
+#resultado-comparacion .tabla-comparacion th,
+#resultado-comparacion .tabla-comparacion td {
+    padding: 14px 10px;
+    border-bottom: 1px solid #e2e9e3;
+    vertical-align: middle;
+}
+#resultado-comparacion .tabla-comparacion thead th { background: #173d24; color: white; }
+#resultado-comparacion .tabla-comparacion tbody th { text-align: left; color: #173d24; background: #f5f7f5; }
+#resultado-comparacion .tabla-comparacion tr:last-child > * { border-bottom: 0; }
+#resultado-comparacion .dato-favorable { background: #e8f3e9; color: #173d24; font-weight: bold; }
+#resultado-comparacion .ventaja-comparacion { display: block; margin-top: 5px; font-size: 12px; font-weight: normal; }
+#resultado-comparacion .recomendacion-comparacion {
+    margin-top: 24px;
+    padding: 20px;
+    text-align: left;
+    background: #f5f7f5;
+    border-left: 4px solid #e67e22;
+    border-radius: 12px;
+}
+#resultado-comparacion .recomendacion-comparacion p { line-height: 1.65; font-size: 16px; margin: 0; }
+@media (max-width: 600px) {
+    #resultado-comparacion .duelo-comparacion { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 8px; position: relative; }
+    #resultado-comparacion .modelo-comparacion { padding: 8px; }
+    #resultado-comparacion .vs-comparacion { position: absolute; left: 50%; top: 65px; transform: translateX(-50%); width: 32px; height: 32px; font-size: 12px; }
+    #resultado-comparacion .imagen-comparacion { height: 150px; }
+    #resultado-comparacion .precio-comparacion { padding: 8px 4px; }
+    #resultado-comparacion .tabla-comparacion th,
+    #resultado-comparacion .tabla-comparacion td { padding: 10px 5px; font-size: 13px; }
+    #resultado-comparacion .recomendacion-comparacion { padding: 14px; }
+}
     </style>
 </head>
 
@@ -1920,6 +2016,7 @@ function abrirComparador() {
 }
 const datosMotosierras = {
     ms162: {
+        imagen: "ms162.png",
         nombre: "MS 162",
         potencia: "1.7 HP",
         cilindrada: "30.1 cm³",
@@ -1929,6 +2026,7 @@ const datosMotosierras = {
     },
 
     ms172: {
+        imagen: "Ms172.png",
         nombre: "MS 172",
         potencia: "1.9 HP",
         cilindrada: "31.8 cm³",
@@ -1938,6 +2036,7 @@ const datosMotosierras = {
     },
 
     ms182: {
+        imagen: "Ms182.png",
         nombre: "MS 182 C-BE",
         potencia: "2.2 HP",
         cilindrada: "35.8 cm³",
@@ -1947,6 +2046,7 @@ const datosMotosierras = {
     },
 
     ms212: {
+        imagen: "Ms212.png",
         nombre: "MS 212",
         potencia: "2.4 HP",
         cilindrada: "38.6 cm³",
@@ -1956,6 +2056,7 @@ const datosMotosierras = {
     },
 
     ms250: {
+        imagen: "Ms250.png",
         nombre: "MS 250",
         potencia: "3.0 HP",
         cilindrada: "45.4 cm³",
@@ -1965,6 +2066,7 @@ const datosMotosierras = {
     },
 
     ms260: {
+        imagen: "Ms260.png",
         nombre: "MS 260",
         potencia: "3.4 HP",
         cilindrada: "50.2 cm³",
@@ -1974,6 +2076,7 @@ const datosMotosierras = {
     },
 
     ms310: {
+        imagen: "Ms310.png",
         nombre: "MS 310",
         potencia: "4.3 HP",
         cilindrada: "59 cm³",
@@ -1983,6 +2086,7 @@ const datosMotosierras = {
     },
 
     ms363: {
+        imagen: "Ms363.png",
         nombre: "MS 363",
         potencia: "4.69 HP",
         cilindrada: "62.6 cm³",
@@ -1992,6 +2096,7 @@ const datosMotosierras = {
     },
 
     ms382: {
+    imagen: "Ms382.png",
     nombre: "MS 382",
     potencia: "5.3 HP",
     cilindrada: "72.2 cm³",
@@ -2001,6 +2106,7 @@ const datosMotosierras = {
 },
 
     ms462: {
+    imagen: "Ms462.png",
     nombre: "MS 462 C-M",
     potencia: "6.0 HP",
     cilindrada: "72.2 cm³",
@@ -2010,6 +2116,7 @@ const datosMotosierras = {
 },
 
     ms651: {
+    imagen: "Ms651-Ms661.png",
     nombre: "MS 651",
     potencia: "6.8 HP",
     cilindrada: "91.1 cm³",
@@ -2019,6 +2126,7 @@ const datosMotosierras = {
 },
 
     ms661: {
+    imagen: "Ms651-Ms661.png",
     nombre: "MS 661",
     potencia: "7.3 HP",
     cilindrada: "91.1 cm³",
@@ -2028,6 +2136,7 @@ const datosMotosierras = {
 },
 
     ms194t: {
+        imagen: "Ms194T.png",
         nombre: "MS 194 T",
         potencia: "1.8 HP",
         cilindrada: "31.8 cm³",
@@ -2037,6 +2146,7 @@ const datosMotosierras = {
     },
 
     ms201tcm: {
+        imagen: "Ms201TCM.png",
         nombre: "MS 201 TC-M",
         potencia: "2.4 HP",
         cilindrada: "35.2 cm³",
@@ -2110,41 +2220,54 @@ function compararMotosierras() {
 
     const resultado = document.getElementById("resultado-comparacion");
 
+    const numeroVisual = valor => parseFloat(valor.replace(/[$,]/g, ""));
+    const favorable = (valor, otro, menor = false) => menor
+        ? numeroVisual(valor) < numeroVisual(otro)
+        : numeroVisual(valor) > numeroVisual(otro);
+    const caracteristicas = [
+        ["Potencia", "potencia", false, "Mayor potencia"],
+        ["Cilindrada", "cilindrada", false, "Mayor cilindrada"],
+        ["Peso", "peso", true, "Menor peso"],
+        ["Espada", "espada", false, ""]
+    ];
+
     resultado.innerHTML = `
         <div class="tarjeta-comparacion">
             <h3>⚖️ Resultado de la comparación</h3>
 
+            <div class="duelo-comparacion">
+                ${[moto1, moto2].map((moto, indice) => {
+                    const menorPrecio = favorable(moto.precio, [moto2, moto1][indice].precio, true);
+                    return `
+                    ${indice === 1 ? '<span class="vs-comparacion" aria-hidden="true">VS</span>' : ''}
+                    <div class="modelo-comparacion">
+                        <img class="imagen-comparacion" src="${moto.imagen}" alt="Motosierra STIHL ${moto.nombre}">
+                        <h4>${moto.nombre}</h4>
+                        <div class="precio-comparacion${menorPrecio ? ' dato-favorable' : ''}">
+                            ${moto.precio}
+                            ${menorPrecio ? '<span class="ventaja-comparacion">Menor precio</span>' : ''}
+                        </div>
+                    </div>`;
+                }).join('')}
+            </div>
             <table class="tabla-comparacion">
-                <tr>
-                    <th>Característica</th>
-                    <th>${moto1.nombre}</th>
-                    <th>${moto2.nombre}</th>
-                </tr>
-                <tr>
-                    <td>Potencia</td>
-                    <td>${moto1.potencia}</td>
-                    <td>${moto2.potencia}</td>
-                </tr>
-                <tr>
-                    <td>Cilindrada</td>
-                    <td>${moto1.cilindrada}</td>
-                    <td>${moto2.cilindrada}</td>
-                </tr>
-                <tr>
-                    <td>Peso</td>
-                    <td>${moto1.peso}</td>
-                    <td>${moto2.peso}</td>
-                </tr>
-                <tr>
-                    <td>Espada</td>
-                    <td>${moto1.espada}</td>
-                    <td>${moto2.espada}</td>
-                </tr>
-                <tr>
-                    <td>Precio</td>
-                    <td>${moto1.precio}</td>
-                    <td>${moto2.precio}</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th scope="col">Característica</th>
+                        <th scope="col">${moto1.nombre}</th>
+                        <th scope="col">${moto2.nombre}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    ${caracteristicas.map(([titulo, campo, menor, etiqueta]) => `
+                    <tr>
+                        <th scope="row">${titulo}</th>
+                        ${[moto1, moto2].map((moto, indice) => {
+                            const destacado = etiqueta && favorable(moto[campo], [moto2, moto1][indice][campo], menor);
+                            return `<td${destacado ? ' class="dato-favorable"' : ''}>${moto[campo]}${destacado ? `<span class="ventaja-comparacion">${etiqueta}</span>` : ''}</td>`;
+                        }).join('')}
+                    </tr>`).join('')}
+                </tbody>
             </table>
             <div class="recomendacion-comparacion">
     <h3>💡 ¿Cuál te conviene?</h3>
