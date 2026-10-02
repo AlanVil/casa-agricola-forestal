@@ -834,6 +834,73 @@ html {
     #resultado-comparacion .tabla-comparacion td { padding: 10px 5px; font-size: 13px; }
     #resultado-comparacion .recomendacion-comparacion { padding: 14px; }
 }
+/* Prueba de paleta: grafito, verde forestal y dorado. */
+body {
+    background-color: #111311;
+    background-image: linear-gradient(rgba(17, 19, 17, 0.82), rgba(17, 19, 17, 0.82)), url("Fondo.jpg");
+    color: #F3F0E8;
+}
+.hero {
+    background-image: linear-gradient(rgba(17, 19, 17, 0.68), rgba(17, 19, 17, 0.68)), url("Fondo.jpg");
+}
+header, .catalogo, .menu-categorias button, .inicio-flotante,
+.boton-pagar, .boton-tarjeta, .cantidad-carrito button {
+    background-color: #173D24;
+    color: #F3F0E8;
+}
+nav a, .hero, .productos h2, .comparador-motosierras h2,
+.comparador-motosierras p { color: #F3F0E8; }
+.productos h2 { background-color: rgba(23, 61, 36, 0.95); }
+.buscador-productos, .categoria, .producto, .carrito-contenido,
+.checkout-contenido, .sucursal, .tarjeta-comparacion {
+    background-color: #111311;
+    color: #F3F0E8;
+}
+.sucursales, .checkout-total, .recoger-tienda { background-color: #17231B; color: #F3F0E8; }
+.categoria h3, .producto .precio, .checkout-contenido h2,
+.sucursales h2, .sucursal h3, .sucursal p a,
+.tarjeta-comparacion h3, .tarjeta-comparacion strong,
+#panel-comparador h3 { color: #C6A15B; }
+.categoria p, .sucursal p, .subtitulo-sucursales,
+.recoger-tienda p, .aviso-pago, #panel-comparador p { color: #D3D0C7; }
+.buscador-productos input, .panel-buscador input, .checkout-contenido input,
+#panel-comparador select {
+    background-color: #17231B;
+    color: #F3F0E8;
+    border-color: #C6A15B;
+}
+.buscador-productos input { background-color: transparent; }
+input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
+.cerrar-carrito { color: #F3F0E8; }
+.eliminar-producto { background-color: #173D24; color: #F3F0E8; }
+.item-carrito { border-color: #415143; }
+.recoger-tienda { border-left-color: #C6A15B; }
+.boton, .buscar-flotante, .agregar-carrito, .carrito-flotante,
+.boton-mapa, .boton-comparar, #panel-comparador button,
+.menu-categorias button:active, .menu-categorias button.activo {
+    background-color: #C6A15B;
+    color: #111311;
+}
+.boton-mapa { color: #111311 !important; }
+.boton.whatsapp, .comprar { background-color: #173D24; color: #F3F0E8; }
+#panel-comparador { background-color: rgba(17, 19, 17, 0.96); color: #F3F0E8; }
+#resultado-comparacion .tarjeta-comparacion,
+#resultado-comparacion .modelo-comparacion,
+#resultado-comparacion .tabla-comparacion,
+#resultado-comparacion .tabla-comparacion th,
+#resultado-comparacion .tabla-comparacion td { border-color: #415143; }
+#resultado-comparacion .modelo-comparacion { background-color: #17231B; border-top-color: #C6A15B; }
+#resultado-comparacion .modelo-comparacion h4 { color: #F3F0E8; }
+#resultado-comparacion .vs-comparacion {
+    background-color: #C6A15B;
+    color: #111311;
+    box-shadow: 0 4px 12px rgba(198, 161, 91, 0.22);
+}
+#resultado-comparacion .precio-comparacion { background-color: #111311; color: #C6A15B; }
+#resultado-comparacion .tabla-comparacion thead th { background-color: #173D24; color: #F3F0E8; }
+#resultado-comparacion .tabla-comparacion tbody th { background-color: #17231B; color: #F3F0E8; }
+#resultado-comparacion .dato-favorable { background-color: #173D24; color: #C6A15B; }
+#resultado-comparacion .recomendacion-comparacion { background-color: #17231B; border-left-color: #C6A15B; }
     </style>
 </head>
 
@@ -1266,6 +1333,23 @@ html {
         Consultar por WhatsApp
     </a>
 </div>
+<div class="producto">
+    <img src="STIHL-MSA120C.png" alt="Motosierra STIHL MSA 120 C">
+
+    <h4>STIHL MSA 120 C</h4>
+
+    <p class="descripcion">
+        Motosierra STIHL a batería. Consulta especificaciones y disponibilidad.
+    </p>
+
+    <p class="precio">Consultar precio</p>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motosierra%20STIHL%20MSA%20120%20C"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
 </div>
 </div>
 
@@ -1561,6 +1645,40 @@ html {
         Consultar por WhatsApp
     </a>
 </div>
+<div class="producto">
+    <img src="STIHL-FSA56.png" alt="Desbrozadora STIHL FSA 56">
+
+    <h4>STIHL FSA 56</h4>
+
+    <p class="descripcion">
+        Desbrozadora STIHL a batería. Consulta especificaciones y disponibilidad.
+    </p>
+
+    <p class="precio">Consultar precio</p>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desbrozadora%20STIHL%20FSA%2056"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
+<div class="producto">
+    <img src="STIHL-FSA85.png" alt="Desbrozadora STIHL FSA 85">
+
+    <h4>STIHL FSA 85</h4>
+
+    <p class="descripcion">
+        Desbrozadora STIHL a batería. Consulta especificaciones y disponibilidad.
+    </p>
+
+    <p class="precio">Consultar precio</p>
+
+    <a href="https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desbrozadora%20STIHL%20FSA%2085"
+       target="_blank"
+       class="comprar">
+        Consultar por WhatsApp
+    </a>
+</div>
 </div>
         </div>
 <div class="categoria categoria-contenido" id="maquinaria">
@@ -1608,6 +1726,7 @@ html {
        class="comprar">
         Consultar por WhatsApp
     </a>
+</div>
     <div class="producto">
     <img src="PicadoraT40.png"
          alt="Desintegradora Picadora T-40">
@@ -1645,7 +1764,6 @@ html {
        class="comprar">
         Consultar por WhatsApp
     </a>
-</div>
 </div>
     </div>
 
@@ -1949,29 +2067,27 @@ function continuarPago() {
 actualizarCarrito();
 function mostrarCategoria(idCategoria) {
     const categorias = document.querySelectorAll('.categoria-contenido');
+    const seleccionada = document.getElementById(idCategoria);
+    const estabaAbierta = seleccionada && seleccionada.style.display === 'block';
+    const botones = document.querySelectorAll('.menu-categorias button');
+
+    document.getElementById('resultado-comparacion').replaceChildren();
 
     categorias.forEach(function(categoria) {
         categoria.style.display = 'none';
     });
+    botones.forEach(function(boton) {
+        boton.classList.remove('activo');
+    });
 
-    const seleccionada = document.getElementById(idCategoria);
-
-    if (seleccionada) {
+    if (seleccionada && !estabaAbierta) {
         seleccionada.style.display = 'block';
-       
-        const botones = document.querySelectorAll('.menu-categorias button');
-
-botones.forEach(function(boton) {
-    boton.classList.remove('activo');
-});
-
-const botonActivo = document.querySelector(
-    `.menu-categorias button[onclick*="'${idCategoria}'"]`
-);
-
-if (botonActivo) {
-    botonActivo.classList.add('activo');
-}
+        const botonActivo = document.querySelector(
+            `.menu-categorias button[onclick*="'${idCategoria}'"]`
+        );
+        if (botonActivo) {
+            botonActivo.classList.add('activo');
+        }
     }
 }
 const buscador = document.getElementById('buscarProducto');
@@ -2012,7 +2128,12 @@ buscador.addEventListener('input', function() {
 });
 function abrirComparador() {
     const panel = document.getElementById('panel-comparador');
-    panel.style.display = 'block';
+    const estaAbierto = getComputedStyle(panel).display !== 'none';
+    panel.style.display = estaAbierto ? 'none' : 'block';
+
+    if (estaAbierto) {
+        document.getElementById('resultado-comparacion').replaceChildren();
+    }
 }
 const datosMotosierras = {
     ms162: {
@@ -2202,6 +2323,13 @@ if (precioA < precioB) {
     return texto;
 }
 function compararMotosierras() {
+    const resultado = document.getElementById("resultado-comparacion");
+
+    if (resultado.childElementCount > 0) {
+        resultado.replaceChildren();
+        return;
+    }
+
     const modelo1 = document.getElementById('modelo1').value;
     const modelo2 = document.getElementById('modelo2').value;
 
@@ -2217,8 +2345,6 @@ function compararMotosierras() {
 
     const moto1 = datosMotosierras[modelo1];
     const moto2 = datosMotosierras[modelo2];
-
-    const resultado = document.getElementById("resultado-comparacion");
 
     const numeroVisual = valor => parseFloat(valor.replace(/[$,]/g, ""));
     const favorable = (valor, otro, menor = false) => menor
