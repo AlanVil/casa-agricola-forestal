@@ -2078,7 +2078,10 @@ function mostrarCategoria(idCategoria) {
     const botones = document.querySelectorAll('.menu-categorias button');
 
     document.getElementById('resultado-comparacion').replaceChildren();
-
+const panelComparador = document.getElementById('panel-comparador');
+if (panelComparador) {
+    panelComparador.style.display = 'none';
+}
     categorias.forEach(function(categoria) {
         categoria.style.display = 'none';
     });
