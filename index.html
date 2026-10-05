@@ -304,6 +304,19 @@
     transform: scale(0.95);
 }
 .buscar-flotante {
+    position: fixed;
+    right: 22px;
+    bottom: 92px;
+    width: 60px;
+    height: 60px;
+    border: none;
+    border-radius: 50%;
+    background: #d4ad5f;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 10000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+}
     .panel-buscador {
     display: none;
     position: fixed;
@@ -2418,15 +2431,15 @@ document.getElementById("recomendacion-motosierra").innerHTML =
     
 mostrarCategoria('motosierras');
 function abrirBuscador() {
-    const buscador = document.getElementById("buscarProducto");
+    const panel = document.getElementById("panel-buscador");
+    const buscador = document.getElementById("buscar-producto");
 
-    document.getElementById("productos").scrollIntoView({
-        behavior: "smooth"
-    });
-
-    setTimeout(function() {
+    if (panel.style.display === "block") {
+        panel.style.display = "none";
+    } else {
+        panel.style.display = "block";
         buscador.focus();
-    }, 500);
+    }
 }
 function buscarProductos() {
     const texto = document
