@@ -268,6 +268,26 @@
     height: 130px;
     object-fit: contain;
 }
+.fotos-producto {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin: 10px 0;
+}
+.lista-productos .producto .fotos-producto img {
+    height: 115px;
+    margin: 0;
+    border-radius: 8px;
+}
+.lista-productos .producto .fotos-producto img:only-child {
+    grid-column: 1 / -1;
+    height: 130px;
+}
+.estado-pendiente {
+    font-size: 13px;
+    font-weight: bold;
+    color: #C6A15B;
+}
 
 .lista-productos .producto h4 {
     font-size: 18px;
@@ -920,6 +940,190 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
 #resultado-comparacion .tabla-comparacion tbody th { background-color: #17231B; color: #F3F0E8; }
 #resultado-comparacion .dato-favorable { background-color: #173D24; color: #C6A15B; }
 #resultado-comparacion .recomendacion-comparacion { background-color: #17231B; border-left-color: #C6A15B; }
+
+/* Distribución uniforme de las tarjetas del catálogo. */
+.lista-productos {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    align-items: stretch;
+}
+
+.lista-productos .producto {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    height: 100%;
+    padding: 18px;
+    border: 1px solid #415143;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+    overflow: hidden;
+}
+
+.lista-productos .producto > img,
+.lista-productos .producto .fotos-producto {
+    width: 100%;
+    height: clamp(220px, 29vw, 340px);
+    min-height: clamp(220px, 29vw, 340px);
+    margin: 0 0 16px;
+    border-radius: 12px;
+    background: #F3F0E8;
+}
+
+.lista-productos .producto > img {
+    max-width: none;
+    object-fit: contain;
+    padding: 10px;
+}
+
+.lista-productos .producto .fotos-producto {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    grid-template-columns: none;
+    gap: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #C6A15B #17231B;
+    scrollbar-width: thin;
+}
+
+.lista-productos .producto .fotos-producto img,
+.lista-productos .producto .fotos-producto img:only-child {
+    grid-column: auto;
+    width: 100%;
+    min-width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 10px;
+    object-fit: contain;
+    scroll-snap-align: start;
+}
+
+.lista-productos .producto h4 {
+    min-height: 2.5em;
+    margin: 0 0 10px;
+    line-height: 1.25;
+}
+
+.lista-productos .producto .descripcion {
+    flex: 1 1 auto;
+    margin: 0 0 14px;
+    line-height: 1.55;
+}
+
+.lista-productos .producto .estado-pendiente {
+    margin: 0 0 12px;
+    line-height: 1.4;
+}
+
+.lista-productos .producto .precio {
+    min-height: 1.5em;
+    margin: 0 0 14px;
+    line-height: 1.25;
+}
+
+.lista-productos .producto .agregar-carrito,
+.lista-productos .producto .comprar {
+    min-height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.lista-productos .producto .agregar-carrito {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.lista-productos .producto .comprar {
+    margin-top: 0;
+}
+
+.controles-flotantes {
+    display: contents;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding-bottom: calc(82px + env(safe-area-inset-bottom));
+    }
+
+    .lista-productos {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .lista-productos .producto {
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    .lista-productos .producto > img,
+    .lista-productos .producto .fotos-producto {
+        height: clamp(250px, 78vw, 330px);
+        min-height: clamp(250px, 78vw, 330px);
+        margin-bottom: 14px;
+    }
+
+    .lista-productos .producto h4 {
+        min-height: 0;
+        font-size: 20px;
+    }
+
+    .controles-flotantes {
+        position: fixed;
+        z-index: 9998;
+        left: 10px;
+        right: 10px;
+        bottom: max(8px, env(safe-area-inset-bottom));
+        display: grid;
+        grid-template-columns: 48px minmax(88px, auto) minmax(128px, 1fr);
+        align-items: center;
+        gap: 8px;
+        padding: 8px;
+        border: 1px solid #415143;
+        border-radius: 16px;
+        background: rgba(17, 19, 17, 0.96);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.34);
+    }
+
+    .controles-flotantes .buscar-flotante,
+    .controles-flotantes .inicio-flotante,
+    .controles-flotantes .carrito-flotante {
+        position: static;
+        width: 100%;
+        min-width: 0;
+        height: 48px;
+        margin: 0;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 10px;
+        box-shadow: none;
+        font-size: 14px;
+        line-height: 1.1;
+        white-space: nowrap;
+    }
+
+    .controles-flotantes .buscar-flotante {
+        padding: 0;
+        font-size: 20px;
+    }
+
+    .panel-buscador {
+        left: 10px;
+        right: 10px;
+        bottom: calc(76px + env(safe-area-inset-bottom));
+        width: auto;
+    }
+}
     </style>
 </head>
 
@@ -997,6 +1201,8 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     <button onclick="mostrarCategoria('herramientas')">🪓 Herramientas</button>
     <button onclick="mostrarCategoria('refacciones')">🔧 Refacciones</button>
     <button onclick="mostrarCategoria('maquinaria')">🚜 Maquinaria agrícola</button>
+    <button onclick="mostrarCategoria('limpieza')">🧹 Limpieza y jardín</button>
+    <button onclick="mostrarCategoria('motores-bombeo')">⚙️ Motores y bombeo</button>
 </div>
 <div class="comparador-motosierras" id="zona-comparador">
     <h2>🪚 ¿Cuál motosierra elegir?</h2>
@@ -1358,7 +1564,7 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     <h4>STIHL MSA 120 C</h4>
 
     <p class="descripcion">
-        Motosierra STIHL a batería. Consulta especificaciones y disponibilidad.
+        Batería STIHL AK de 36 V • Peso 2.3 kg sin batería, espada ni cadena • Depósito de aceite 0.11 L • Velocidad máxima de cadena 14 m/s • Paso de cadena 1/4&quot; P
     </p>
 
     <p class="precio">Consultar precio</p>
@@ -1670,7 +1876,7 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     <h4>STIHL FSA 56</h4>
 
     <p class="descripcion">
-        Desbrozadora STIHL a batería. Consulta especificaciones y disponibilidad.
+        Batería STIHL AK de 36 V • Peso 2.1 kg sin protector ni herramienta de corte • Longitud ajustable de 147 a 167 cm • Uso doméstico
     </p>
 
     <p class="precio">Consultar precio</p>
@@ -1687,7 +1893,7 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     <h4>STIHL FSA 85</h4>
 
     <p class="descripcion">
-        Desbrozadora STIHL a batería. Consulta especificaciones y disponibilidad.
+        Batería STIHL AP o AR de 36 V • Peso 2.8 kg sin batería, protector ni herramienta de corte • Longitud 165 cm
     </p>
 
     <p class="precio">Consultar precio</p>
@@ -1704,7 +1910,7 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
 
     <h3>🚜 Maquinaria agrícola</h3>
 
-    <div class="lista-productos">
+    <div class="lista-productos" data-catalogo-adicional="maquinaria">
 <div class="producto">
     <img src="ParazziniTPCOCO.png" alt="Trituradora de cocos PARAZZINI TPCOCO">
 
@@ -1790,11 +1996,25 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
         <div class="categoria categoria-contenido" id="herramientas">
             <h3>🪓 Herramientas</h3>
             <p>Hachas, machetes y herramientas para el campo.</p>
+            <div class="lista-productos" data-catalogo-adicional="herramientas"></div>
         </div>
 
         <div class="categoria categoria-contenido" id="refacciones">
             <h3>🔧 Refacciones</h3>
             <p>Cadenas, espadas, aceites y refacciones.</p>
+            <div class="lista-productos" data-catalogo-adicional="refacciones"></div>
+        </div>
+
+        <div class="categoria categoria-contenido" id="limpieza">
+            <h3>🧹 Limpieza y jardín</h3>
+            <p>Equipos para limpieza, mantenimiento de áreas verdes y jardín.</p>
+            <div class="lista-productos" data-catalogo-adicional="limpieza"></div>
+        </div>
+
+        <div class="categoria categoria-contenido" id="motores-bombeo">
+            <h3>⚙️ Motores y bombeo</h3>
+            <p>Motores, motobombas, generadores y equipos motorizados.</p>
+            <div class="lista-productos" data-catalogo-adicional="motores-bombeo"></div>
         </div>
 
     </div>
@@ -1855,17 +2075,20 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
         type="text"
         id="buscar-producto"
         placeholder="🔍 Buscar producto..."
+        oninput="sincronizarBusquedaFlotante()"
     >
 </div>
-<button class="buscar-flotante" onclick="abrirBuscador()">
-    🔍
-</button>
-<a href="#inicio" class="inicio-flotante">
-    🏠 Inicio
-</a>
-<button class="carrito-flotante" onclick="abrirCarrito()">
-    🛒 Carrito (<span id="contador-carrito">0</span>)
-</button>
+<div class="controles-flotantes" aria-label="Accesos rápidos">
+    <button class="buscar-flotante" onclick="abrirBuscador()" aria-label="Buscar productos">
+        🔍
+    </button>
+    <a href="#inicio" class="inicio-flotante">
+        🏠 Inicio
+    </a>
+    <button class="carrito-flotante" onclick="abrirCarrito()">
+        🛒 Carrito (<span id="contador-carrito">0</span>)
+    </button>
+</div>
 
 <div id="ventana-carrito" class="ventana-carrito">
     <div class="carrito-contenido">
@@ -1931,6 +2154,120 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
 
 </div>
 <script>
+const productosAdicionales = [
+    {categoria:'motosierras', nombre:'Motosierras STIHL — surtido en exhibición', imagenes:['STIHL-Motosierras-Exhibicion-01.png','STIHL-Motosierras-Exhibicion-02.png','STIHL-Motosierras-Exhibicion-03.png'], descripcion:'Surtido de motosierras STIHL disponible en exhibición.', pendiente:true},
+    {categoria:'desbrozadoras', nombre:'Desbrozadoras STIHL — surtido en exhibición', imagenes:['STIHL-Desbrozadoras-Exhibicion-01.png','STIHL-Desbrozadoras-Exhibicion-02.png','STIHL-Desbrozadoras-Exhibicion-03.png','STIHL-Desbrozadoras-Exhibicion-04.png'], descripcion:'Surtido de desbrozadoras STIHL disponible en exhibición.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Motocultor Bertolini con motor Kohler', imagenes:['Bertolini-Motocultor-Kohler.png'], descripcion:'Motocultor Bertolini con motor Kohler.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Motocultor Ducati — equipo 1', imagenes:['Ducati-Motocultor-Rojo-01.png'], descripcion:'Motocultor Ducati; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Motocultor Ducati — equipo 2', imagenes:['Ducati-Motocultor-Rojo-02.png'], descripcion:'Motocultor Ducati; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Motocultor Grillo G52', imagenes:['Grillo-G52-Motocultor.png'], descripcion:'Motor a gasolina de 4 tiempos; variante instalada pendiente de confirmar • Transmisión por engranajes en baño de aceite • 1 marcha adelante y 1 reversa • Fresa de 50 cm ajustable a 37 cm • Peso con fresa 66 kg'},
+    {categoria:'maquinaria', nombre:'Implemento agrícola Gimex', imagenes:['Implemento-Agricola-Naranja-01.png'], descripcion:'Implemento agrícola marca Gimex; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Implemento agrícola naranja', imagenes:['Implemento-Agricola-Naranja-02.png'], descripcion:'Implemento agrícola; marca y modelo pendientes de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Equipo UKURA', imagenes:['Maquinaria-Agricola-Amarilla.png'], descripcion:'Equipo agrícola UKURA con distintivo visible de 10 HP; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Equipo ARENAS', imagenes:['Maquinaria-Agricola-Azul.png'], descripcion:'Equipo agrícola con distintivo ARENAS; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Molino POWER CAT', imagenes:['Molino-Agricola-Naranja.png'], descripcion:'Molino agrícola POWER CAT; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Molinos agrícolas — modelos pendientes', imagenes:['Molinos-Agricolas.png'], descripcion:'Equipos de molienda para uso agrícola.', pendiente:true},
+    {categoria:'maquinaria', nombre:'FARMTRAC 26', imagenes:['Motocultor-Azul-01.png'], descripcion:'Tractor FT26 4WD • Motor diésel Mitsubishi de 3 cilindros y 1,318 cc • 26.6 HP a 2,700 RPM • Transmisión 9 adelante / 3 reversa • TDF 540/540E, 18 HP • Levante 800 kg • Tanque 24 L'},
+    {categoria:'maquinaria', nombre:'FARMTRAC 35', imagenes:['Motocultor-Azul-02.png'], descripcion:'Tractor FT35 4WD • Motor diésel Mitsubishi de 4 cilindros y 1,758 cc • 35 HP a 2,700 RPM • Transmisión 9 adelante / 3 reversa • TDF 540/540E, 27.5 HP • Levante 900 kg • Tanque 29 L'},
+    {categoria:'maquinaria', nombre:'Motocultor con motor Honda GX160', imagenes:['Motocultor-Honda-GX160.png'], descripcion:'Motocultor equipado con motor Honda GX160.'},
+    {categoria:'maquinaria', nombre:'Picadora roja', imagenes:['Picadora-Roja-01.png'], descripcion:'Picadora agrícola; marca y modelo pendientes de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Desintegradora / Picadora 3000', imagenes:['Picadora-Roja-02.png'], descripcion:'Desintegradora y picadora con distintivo 3000; marca y variante pendientes de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Picadora BOMERI', imagenes:['Picadora-Verde-01.png','Picadora-Verde-02.png'], descripcion:'Picadora con distintivo BOMERI; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Revolvedora Antor', imagenes:['Revolvedora-Agricola-Naranja.png'], descripcion:'Revolvedora marca Antor; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Tanque COMET', imagenes:['Tanque-Acero-Inoxidable.png'], descripcion:'Tanque de acero inoxidable marca COMET; modelo y capacidad pendientes de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Trituradora TURBO', imagenes:['Trituradora-Roja-01.png','Trituradora-Roja-02.png'], descripcion:'Trituradora con distintivos TURBO, SWISSMEX y Bellota; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Trituradora negra y naranja', imagenes:['Trituradora-Roja-04.png','Trituradora-Roja-05.png'], descripcion:'Trituradora agrícola; marca y modelo pendientes de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Trituradora con motor Kohler', imagenes:['Trituradora-Verde-Naranja.png'], descripcion:'Trituradora agrícola equipada con motor Kohler; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Maquinaria agrícola — surtido en exhibición', imagenes:['Maquinaria-Agricola-Exhibicion.png'], descripcion:'Surtido de maquinaria agrícola disponible en exhibición.', pendiente:true},
+    {categoria:'maquinaria', nombre:'Motocultores — surtido en exhibición', imagenes:['Motocultores-Exhibicion.png'], descripcion:'Surtido de motocultores disponible en exhibición.', pendiente:true},
+
+    {categoria:'herramientas', nombre:'Carretillas Truper', imagenes:['Carretillas-Truper.png'], descripcion:'Carretillas marca Truper.'},
+    {categoria:'herramientas', nombre:'Herramientas agrícolas — surtido', imagenes:['Herramientas-Agricolas-Exhibicion.png'], descripcion:'Surtido de herramientas para labores agrícolas.', pendiente:true},
+    {categoria:'herramientas', nombre:'Herramientas de mango largo — surtido', imagenes:['Herramientas-Mango-Largo.png'], descripcion:'Surtido de herramientas manuales de mango largo.', pendiente:true},
+    {categoria:'herramientas', nombre:'Herramientas manuales — surtido', imagenes:['Herramientas-Manuales-Exhibidor-01.png','Herramientas-Manuales-Exhibidor-02.png','Herramientas-Manuales-Exhibidor-03.png'], descripcion:'Surtido de herramientas manuales para campo y taller.', pendiente:true},
+    {categoria:'herramientas', nombre:'Herramientas y accesorios — surtido en tienda', imagenes:['Herramientas-y-Accesorios-Tienda.png'], descripcion:'Surtido de herramientas y accesorios disponible en tienda.', pendiente:true},
+
+    {categoria:'refacciones', nombre:'Accesorios — surtido en vitrina', imagenes:['Accesorios-Vitrina.png'], descripcion:'Surtido de accesorios disponibles en tienda.', pendiente:true},
+    {categoria:'refacciones', nombre:'Mangueras agrícolas — surtido', imagenes:['Mangueras-Agricolas.png'], descripcion:'Surtido de mangueras para uso agrícola.', pendiente:true},
+
+    {categoria:'limpieza', nombre:'Hidrolavadora Lavor Thermic 9L', imagenes:['Lavor-Thermic-9L-Hidrolavadora.png'], descripcion:'Agua fría • Motor a gasolina Lavor de 9 HP a 3,400 RPM • Presión de trabajo/máxima 220/240 bar • Caudal 900 L/h • Bomba lineal de 3 pistones cerámicos • Peso 53 kg'},
+    {categoria:'limpieza', nombre:'STIHL BGA 45', imagenes:['STIHL-BGA45.png'], descripcion:'Sopladora con batería integrada de ion-litio • 18 V • Velocidad máxima del aire 38 m/s • Peso 2.2 kg • Uso doméstico'},
+    {categoria:'limpieza', nombre:'STIHL BGA 85', imagenes:['STIHL-BGA85.png'], descripcion:'Batería STIHL AP o AR de 36 V • Velocidad del aire 46 m/s con boquilla redonda o 45 m/s con boquilla plana • Peso 3.2 kg sin batería'},
+    {categoria:'limpieza', nombre:'Cortacésped STIHL', imagenes:['STIHL-Cortacesped.png'], descripcion:'Cortacésped STIHL; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'limpieza', nombre:'STIHL HTA 85', imagenes:['STIHL-HTA85.png'], descripcion:'Podadora telescópica • Batería STIHL AP o AR de 36 V • Longitud ajustable de 2.70 a 3.90 m • Peso 4.5 kg sin batería • Depósito de aceite 0.105 L • Velocidad máxima de cadena 13.3 m/s'},
+    {categoria:'limpieza', nombre:'Equipos STIHL a batería — surtido', imagenes:['STIHL-Equipos-Bateria-Exhibidor.png'], descripcion:'Surtido de equipos STIHL a batería.', pendiente:true},
+    {categoria:'limpieza', nombre:'Equipos STIHL — surtido en exhibición', imagenes:['STIHL-Equipos-Exhibidor-01.png','STIHL-Equipos-Exhibidor-02.png'], descripcion:'Surtido de equipos STIHL disponible en exhibición.', pendiente:true},
+    {categoria:'limpieza', nombre:'Equipos STIHL de limpieza — surtido', imagenes:['STIHL-Equipos-Limpieza-Exhibicion.png','STIHL-Equipos-Limpieza-Exhibicion-02.png'], descripcion:'Surtido de equipos STIHL para labores de limpieza.', pendiente:true},
+    {categoria:'limpieza', nombre:'Equipos STIHL de mochila — surtido', imagenes:['STIHL-Equipos-Mochila.png'], descripcion:'Surtido de equipos STIHL de mochila.', pendiente:true},
+    {categoria:'limpieza', nombre:'Equipos portátiles STIHL — surtido', imagenes:['STIHL-Equipos-Portatiles-Exhibicion.png'], descripcion:'Surtido de equipos portátiles STIHL.', pendiente:true},
+    {categoria:'limpieza', nombre:'Sopladoras STIHL — surtido en exhibición', imagenes:['STIHL-Sopladoras-Exhibicion.png'], descripcion:'Surtido de sopladoras STIHL disponible en exhibición.', pendiente:true},
+
+    {categoria:'motores-bombeo', nombre:'Generador Enerwell G5000', imagenes:['Enerwell-G5000-Generador.png'], descripcion:'Generador portátil a gasolina • 5,000 W en operación y 5,500 W de arranque • Salida 120/240 VCA, 60 Hz • Motor OHV de 13 HP y 389 cc • Arranque eléctrico/manual • Tanque 25 L • Autonomía continua 10 h'},
+    {categoria:'motores-bombeo', nombre:'Bomba HG Hard Gear', imagenes:['Honda-Motobomba-01.png'], descripcion:'Bomba con distintivo HG Hard Gear; modelo y motor pendientes de confirmar.', pendiente:true},
+    {categoria:'limpieza', nombre:'Kawashima II Pro AK-35GX', imagenes:['Honda-Motobomba-02.png'], descripcion:'Aspersora motorizada de mochila • Motor Honda GX35 de 4 tiempos y 35 cc • Tanque 25 L • Volumen de aspersión hasta 8 L/min • Presión 498–569 PSI / 34–39 bar • Peso 9 kg'},
+    {categoria:'motores-bombeo', nombre:'Honda WX10T', imagenes:['Honda-Motobomba-03.png'], descripcion:'Motobomba centrífuga autocebante de 1 pulgada • Motor Honda GX25T de 4 tiempos y 25 cc • Caudal máximo 32 gal/min (121 L/min) • Altura total 121 ft (36.9 m) • Succión 26 ft (7.9 m) • Peso en seco 13 lb (5.9 kg)'},
+    {categoria:'motores-bombeo', nombre:'Equipo de bombeo Honda GX160', imagenes:['Honda-Motobomba-04.png'], descripcion:'Equipo de bombeo con motor Honda GX160; modelo de la bomba pendiente de confirmar.', pendiente:true},
+    {categoria:'motores-bombeo', nombre:'Equipo de bombeo Honda GP160', imagenes:['Honda-Motobomba-05.png'], descripcion:'Equipo de bombeo con motor Honda GP160; modelo de la bomba pendiente de confirmar.', pendiente:true},
+    {categoria:'motores-bombeo', nombre:'Motor Honda GX390', imagenes:['Honda-Motor-Gasolina-01.png'], descripcion:'Motor OHV de 4 tiempos refrigerado por aire • 389 cc • Potencia neta 11.7 HP (8.7 kW) a 3,600 RPM • Torque neto 26.5 Nm a 2,500 RPM • Arranque manual o eléctrico según variante • Tanque 6.1 L • Peso en seco 31.5 kg'},
+    {categoria:'motores-bombeo', nombre:'Motor Honda GP160', imagenes:['Honda-Motor-Gasolina-02.png'], descripcion:'Motor OHV de 4 tiempos refrigerado por aire • 163 cc • Potencia neta 4.8 HP (3.6 kW) a 3,600 RPM • Torque neto 10.3 Nm a 2,500 RPM • Arranque manual • Tanque 3.1 L • Peso en seco 15.1 kg'},
+    {categoria:'motores-bombeo', nombre:'Motobomba con motor blanco — pendiente de identificar', imagenes:['Motobomba-Motor-Blanco.png'], descripcion:'Motobomba con motor de color blanco.', pendiente:true},
+    {categoria:'motores-bombeo', nombre:'Kohler Command PRO', imagenes:['Motor-Diesel-01.png'], descripcion:'Motor Kohler Command PRO con distintivos visibles de 14 HP y 429 cc; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'motores-bombeo', nombre:'Motor POWER CAT', imagenes:['Motor-Diesel-02.png'], descripcion:'Motor POWER CAT con distintivo visible de 12 HP; modelo pendiente de confirmar.', pendiente:true},
+    {categoria:'motores-bombeo', nombre:'Compresor Power Hunt 25L', imagenes:['Power-Hunt-Compresor-25L.png'], descripcion:'Compresor Power Hunt de 25 litros.'},
+    {categoria:'motores-bombeo', nombre:'Motobombas — surtido en exhibición', imagenes:['Motobombas-Exhibicion-01.png','Motobombas-Exhibicion-02.png','Motobombas-Exhibicion-03.png'], descripcion:'Surtido de motobombas disponible en exhibición.', pendiente:true},
+    {categoria:'motores-bombeo', nombre:'Motores — surtido en exhibición', imagenes:['Motores-Exhibicion.png'], descripcion:'Surtido de motores disponible en exhibición.', pendiente:true}
+];
+
+function cargarProductosAdicionales() {
+    productosAdicionales.forEach(function(datos) {
+        const lista = document.querySelector(`[data-catalogo-adicional="${datos.categoria}"]`) ||
+            document.querySelector(`#${datos.categoria} .lista-productos`);
+        if (!lista) return;
+
+        const tarjeta = document.createElement('div');
+        tarjeta.className = 'producto';
+
+        const fotos = document.createElement('div');
+        fotos.className = 'fotos-producto';
+        datos.imagenes.forEach(function(archivo, indice) {
+            const imagen = document.createElement('img');
+            imagen.src = archivo;
+            imagen.alt = `${datos.nombre}${datos.imagenes.length > 1 ? ` — foto ${indice + 1}` : ''}`;
+            imagen.loading = 'lazy';
+            fotos.appendChild(imagen);
+        });
+
+        const titulo = document.createElement('h4');
+        titulo.textContent = datos.nombre;
+        const descripcion = document.createElement('p');
+        descripcion.className = 'descripcion';
+        descripcion.textContent = datos.descripcion;
+        const precio = document.createElement('p');
+        precio.className = 'precio';
+        precio.textContent = 'Consultar precio';
+
+        tarjeta.append(fotos, titulo, descripcion);
+        if (datos.pendiente) {
+            const estado = document.createElement('p');
+            estado.className = 'estado-pendiente';
+            estado.textContent = 'Información pendiente de confirmar';
+            tarjeta.appendChild(estado);
+        }
+        tarjeta.appendChild(precio);
+
+        const enlace = document.createElement('a');
+        enlace.href = `https://wa.me/523461230733?text=${encodeURIComponent(`Hola, me interesa ${datos.nombre}`)}`;
+        enlace.target = '_blank';
+        enlace.rel = 'noopener';
+        enlace.className = 'comprar';
+        enlace.textContent = 'Consultar por WhatsApp';
+        tarjeta.appendChild(enlace);
+        lista.appendChild(tarjeta);
+    });
+}
+
+cargarProductosAdicionales();
+
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 function agregarCarrito(nombre, precio) {
@@ -2126,7 +2463,12 @@ buscador.addEventListener('input', function() {
             producto.style.display = '';
         });
 
-        mostrarCategoria('motosierras');
+        categorias.forEach(function(categoria) {
+            categoria.style.display = categoria.id === 'motosierras' ? 'block' : 'none';
+        });
+        document.querySelectorAll('.menu-categorias button').forEach(function(boton) {
+            boton.classList.toggle('activo', boton.getAttribute('onclick').includes("'motosierras'"));
+        });
         return;
     }
 
@@ -2440,6 +2782,13 @@ function abrirBuscador() {
         panel.style.display = "block";
         buscador.focus();
     }
+}
+function sincronizarBusquedaFlotante() {
+    const buscadorPrincipal = document.getElementById("buscarProducto");
+    const buscadorFlotante = document.getElementById("buscar-producto");
+
+    buscadorPrincipal.value = buscadorFlotante.value;
+    buscadorPrincipal.dispatchEvent(new Event("input", { bubbles: true }));
 }
 function buscarProductos() {
     const texto = document
