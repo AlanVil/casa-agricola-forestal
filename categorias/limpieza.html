@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <title>Limpieza y jardín | Casa Agrícola y Forestal</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body data-categoria="limpieza">
+<header>
+    <div class="logo">
+        <a href="index.html#inicio" aria-label="Ir al inicio">
+            <img src="Logo-transparente.png" alt="Casa Agrícola y Forestal">
+        </a>
+    </div>
+    <div class="header-actions">
+        <nav aria-label="Navegación principal">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="index.html#sucursales">Sucursales</a>
+            <a href="index.html#contacto">Contacto</a>
+        </nav>
+        <div class="header-social" aria-label="Redes sociales">
+            <a class="social-link" href="https://www.facebook.com/casaagricolayforestal" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.25c-1.24 0-1.63.77-1.63 1.56v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
+            </a>
+            <a class="social-link" href="https://www.instagram.com/casaagricolayforestal/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            </a>
+        </div>
+    </div>
+</header>
+
+<main class="pagina-categoria">
+    <section class="categoria-portada">
+        <a class="volver-inicio" href="index.html#productos">← Volver a Inicio y Productos</a>
+        <h1>🧹 Limpieza y jardín</h1>
+        <p>Equipos para limpieza, mantenimiento de áreas verdes y jardín.</p>
+    </section>
+
+    <div class="buscador-productos">
+        <span aria-hidden="true">🔎</span>
+        <input type="search" id="buscarProducto" placeholder="Buscar en limpieza y jardín..." aria-label="Buscar productos en Limpieza y jardín">
+    </div>
+    <p id="sinResultados" style="display: none;">🔎 No encontramos productos con esa búsqueda.</p>
+
+    <nav class="menu-categorias" aria-label="Categorías del catálogo">
+            <a href="categorias/motosierras.html">🪚 Motosierras</a>
+            <a href="categorias/desbrozadoras.html">🌿 Desbrozadoras</a>
+            <a href="categorias/maquinaria.html">🚜 Maquinaria agrícola</a>
+            <a href="categorias/herramientas.html">🪓 Herramientas</a>
+            <a href="categorias/refacciones.html">🔧 Refacciones</a>
+            <a href="categorias/limpieza.html" aria-current="page">🧹 Limpieza y jardín</a>
+            <a href="categorias/motores-bombeo.html">⚙️ Motores y bombeo</a>
+    </nav>
+
+    <div id="comparador-categoria"></div>
+
+    <section class="categoria categoria-contenido" id="limpieza" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Limpieza y jardín</h2>
+        <div class="lista-productos" data-categoria-productos="limpieza"></div>
+    </section>
+</main>
+
+<footer id="contacto" class="site-footer">
+    <h2>Síguenos en nuestras redes sociales</h2>
+    <p>Conoce novedades, equipos y promociones de Casa Agrícola y Forestal.</p>
+    <div class="footer-social" aria-label="Perfiles oficiales en redes sociales">
+        <a class="social-link" href="https://www.facebook.com/casaagricolayforestal" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.25c-1.24 0-1.63.77-1.63 1.56v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
+            <span>Facebook</span>
+        </a>
+        <a class="social-link" href="https://www.instagram.com/casaagricolayforestal/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            <span>Instagram</span>
+        </a>
+    </div>
+</footer>
+
+<div id="panel-buscador" class="panel-buscador">
+    <input type="search" id="buscar-producto" placeholder="🔍 Buscar en esta categoría..." oninput="sincronizarBusquedaFlotante()" aria-label="Buscar en esta categoría">
+</div>
+<div class="controles-flotantes" aria-label="Accesos rápidos">
+    <button class="buscar-flotante" type="button" onclick="abrirBuscador()" aria-label="Buscar productos">🔍</button>
+    <a href="index.html#inicio" class="inicio-flotante">🏠 Inicio</a>
+    <button class="carrito-flotante" type="button" onclick="abrirCarrito()">🛒 Carrito (<span id="contador-carrito">0</span>)</button>
+</div>
+
+<div id="ventana-carrito" class="ventana-carrito">
+    <div class="carrito-contenido">
+        <button class="cerrar-carrito" type="button" onclick="cerrarCarrito()" aria-label="Cerrar carrito">✕</button>
+        <h2>🛒 Mi carrito</h2>
+        <div id="productos-carrito"><p>Tu carrito está vacío.</p></div>
+        <h3>Total: $<span id="total-carrito">0</span> MXN</h3>
+        <button class="boton-pagar" type="button" onclick="abrirCheckout()">💳 Proceder al pago</button>
+    </div>
+</div>
+
+<div id="checkout" class="ventana-checkout">
+    <div class="checkout-contenido">
+        <button class="cerrar-carrito" type="button" onclick="cerrarCheckout()" aria-label="Cerrar pago">✕</button>
+        <h2>Finalizar compra</h2>
+        <p class="checkout-texto">Ingresa los datos para preparar tu pedido.</p>
+        <label for="cliente-nombre">Nombre completo</label>
+        <input type="text" id="cliente-nombre" placeholder="Nombre y apellidos">
+        <label for="cliente-telefono">Teléfono</label>
+        <input type="tel" id="cliente-telefono" placeholder="10 dígitos">
+        <label for="cliente-email">Correo electrónico</label>
+        <input type="email" id="cliente-email" placeholder="correo@ejemplo.com">
+        <div class="recoger-tienda">
+            <strong>🏪 Entrega: Recoger en tienda</strong>
+            <p>Tu pedido estará disponible para recoger directamente en nuestra tienda.</p>
+        </div>
+        <div class="checkout-total">Total a pagar: <strong>$<span id="checkout-total">0</span> MXN</strong></div>
+        <button class="boton-tarjeta" type="button" onclick="continuarPago()">💳 Continuar al pago con tarjeta</button>
+        <p class="aviso-pago">El pago con tarjeta todavía no está habilitado.</p>
+    </div>
+</div>
+
+<script src="assets/js/productos.js"></script>
+<script src="assets/js/catalogo.js"></script>
+<script src="assets/js/carrito.js"></script>
+<script src="assets/js/comparador.js"></script>
+<script src="assets/js/pagina-categoria.js"></script>
+</body>
+</html>
