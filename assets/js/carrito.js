@@ -1,12 +1,33 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
-function agregarCarrito(nombre, precio) {
-    let producto = carrito.find(item => item.nombre === nombre);
+function buscarProductoCatalogo(productoId, nombre) {
+    return (window.PRODUCTOS || []).find(producto => producto.id === productoId)
+        || (window.PRODUCTOS || []).find(producto => producto.carrito?.nombre === nombre)
+        || null;
+}
+
+function precioVigente(producto, ahora) {
+    if (!producto) return null;
+    if (window.Promociones) return window.Promociones.obtenerPrecio(producto, ahora).precioActual;
+    return producto.carrito?.precio ?? null;
+}
+
+function agregarProductoAlCarrito(productoId) {
+    const ficha = buscarProductoCatalogo(productoId);
+    if (!ficha || !ficha.carrito) return;
+    agregarCarrito(ficha.carrito.nombre, precioVigente(ficha), ficha.id);
+}
+
+function agregarCarrito(nombre, precio, productoId) {
+    let producto = carrito.find(item => (productoId && item.productoId === productoId) || item.nombre === nombre);
 
     if (producto) {
         producto.cantidad++;
+        producto.precio = precio;
+        if (productoId) producto.productoId = productoId;
     } else {
         carrito.push({
+            productoId: productoId || null,
             nombre: nombre,
             precio: precio,
             cantidad: 1
@@ -15,9 +36,7 @@ function agregarCarrito(nombre, precio) {
 
     actualizarCarrito(); }
 
-function actualizarCarrito() {
-    localStorage.setItem("carrito", JSON.stringify(carrito));
-
+function actualizarCarrito(ahora) {
     let contenedor = document.getElementById("productos-carrito");
     let contador = document.getElementById("contador-carrito");
     let totalElemento = document.getElementById("total-carrito");
@@ -28,6 +47,13 @@ function actualizarCarrito() {
     let cantidadTotal = 0;
 
     carrito.forEach((producto, indice) => {
+        const ficha = buscarProductoCatalogo(producto.productoId, producto.nombre);
+        const precioActual = precioVigente(ficha, ahora);
+        if (ficha?.carrito) {
+            producto.productoId = ficha.id;
+            producto.nombre = ficha.carrito.nombre;
+            producto.precio = precioActual;
+        }
 
         total += producto.precio * producto.cantidad;
         cantidadTotal += producto.cantidad;
@@ -68,6 +94,7 @@ function actualizarCarrito() {
         contenedor.innerHTML = "<p>Tu carrito está vacío.</p>";
     }
 
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     contador.textContent = cantidadTotal;
     totalElemento.textContent = total.toLocaleString();
 }
@@ -98,7 +125,24 @@ function abrirCarrito() {
 function cerrarCarrito() {
     document.getElementById("ventana-carrito").style.display = "none";
 }
+
+function generarEnlacePedidoWhatsApp(ahora) {
+    actualizarCarrito(ahora);
+    const total = carrito.reduce((suma, producto) => suma + producto.precio * producto.cantidad, 0);
+    const detalle = carrito.map(producto =>
+        `- ${producto.nombre} x${producto.cantidad}: $${(producto.precio * producto.cantidad).toLocaleString("es-MX")} MXN`
+    );
+    const mensaje = [
+        "Hola, quiero consultar este pedido:",
+        ...detalle,
+        `Total: $${total.toLocaleString("es-MX")} MXN`
+    ].join("\n");
+    return `https://wa.me/523461230733?text=${encodeURIComponent(mensaje)}`;
+}
+
 function abrirCheckout() {
+
+    actualizarCarrito();
 
     if (carrito.length === 0) {
         alert("Tu carrito está vacío.");
@@ -124,6 +168,8 @@ function cerrarCheckout() {
 }
 
 function continuarPago() {
+
+    actualizarCarrito();
 
     let nombre = document.getElementById("cliente-nombre").value.trim();
     let telefono = document.getElementById("cliente-telefono").value.trim();

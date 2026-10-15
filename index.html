@@ -61,6 +61,30 @@
     </div>
 
 </section>
+
+<section id="promociones" class="promociones" aria-labelledby="promociones-titulo" hidden>
+    <div class="promociones-encabezado">
+        <div>
+            <span class="promociones-etiqueta">Ofertas vigentes</span>
+            <h2 id="promociones-titulo">Productos en promoción</h2>
+        </div>
+        <div class="promociones-controles" aria-label="Controles del carrusel">
+            <button type="button" data-promocion-anterior aria-label="Ver promociones anteriores">←</button>
+            <button type="button" data-promocion-siguiente aria-label="Ver promociones siguientes">→</button>
+        </div>
+    </div>
+    <div class="promociones-carrusel" data-carrusel-promociones aria-live="polite"></div>
+</section>
+
+<section id="buen-fin" class="buen-fin" aria-labelledby="buen-fin-titulo" hidden>
+    <div class="buen-fin-contenido">
+        <span class="promociones-etiqueta">Campaña especial</span>
+        <h2 id="buen-fin-titulo">Buen Fin</h2>
+        <p>Consulta los productos participantes durante la vigencia de la campaña.</p>
+        <div data-productos-buen-fin></div>
+    </div>
+</section>
+
  <section class="catalogo">
     <h2>Consulta nuestro catálogo</h2>
     <p>Conoce nuestros equipos, herramientas, accesorios y refacciones.</p>
@@ -369,6 +393,8 @@
 
 </div>
 <script src="assets/js/productos.js"></script>
+<script src="assets/js/promociones-config.js"></script>
+<script src="assets/js/promociones.js"></script>
 <script src="assets/js/catalogo.js"></script>
 <script src="assets/js/carrito.js"></script>
 <script src="assets/js/comparador.js"></script>

@@ -253,6 +253,193 @@ rgba(0,0,0,.45)
     }
 }
 
+/* Promociones configurables */
+.promociones,
+.buen-fin {
+    padding: 52px 6%;
+    background: #111311;
+    color: #F3F0E8;
+}
+
+.promociones[hidden],
+.buen-fin[hidden] {
+    display: none !important;
+}
+
+.promociones-encabezado {
+    max-width: 1240px;
+    margin: 0 auto 24px;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.promociones-encabezado h2,
+.buen-fin h2 {
+    margin: 6px 0 0;
+    color: #C6A15B;
+    font-size: clamp(28px, 4vw, 42px);
+}
+
+.promociones-etiqueta {
+    color: #D3D0C7;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.promociones-controles {
+    display: flex;
+    gap: 10px;
+}
+
+.promociones-controles button {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #C6A15B;
+    border-radius: 50%;
+    background: #173D24;
+    color: #F3F0E8;
+    cursor: pointer;
+    font-size: 22px;
+    transition: transform 180ms ease, background-color 180ms ease;
+}
+
+.promociones-controles button:hover,
+.promociones-controles button:focus-visible {
+    background: #C6A15B;
+    color: #111311;
+    transform: translateY(-2px);
+}
+
+.promociones-carrusel {
+    max-width: 1240px;
+    margin: 0 auto;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(280px, 31%);
+    gap: 18px;
+    overflow-x: auto;
+    padding: 4px 2px 18px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-color: #C6A15B #17231B;
+}
+
+.promocion-tarjeta {
+    overflow: hidden;
+    border: 1px solid #415143;
+    border-radius: 16px;
+    background: #17231B;
+    scroll-snap-align: start;
+}
+
+.promocion-tarjeta img {
+    width: 100%;
+    height: 230px;
+    display: block;
+    object-fit: contain;
+    background: #F3F0E8;
+}
+
+.promocion-contenido {
+    padding: 20px;
+}
+
+.promocion-contenido h3 {
+    margin: 0 0 14px;
+    color: #F3F0E8;
+}
+
+.promocion-precios,
+.precio-promocional {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 12px;
+}
+
+.promocion-precios del,
+.precio-promocional del {
+    color: #BEBBAD;
+    font-size: 14px;
+}
+
+.promocion-precios strong,
+.precio-promocional strong {
+    color: #C6A15B;
+    font-size: 20px;
+}
+
+.promocion-acciones {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.boton-promocion {
+    min-height: 46px;
+    padding: 10px 12px;
+    border: 1px solid #C6A15B;
+    border-radius: 8px;
+    background: #C6A15B;
+    color: #111311;
+    cursor: pointer;
+    font: inherit;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+}
+
+.boton-promocion.secundario {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #F3F0E8;
+}
+
+.buen-fin {
+    background: linear-gradient(135deg, #173D24, #111311);
+}
+
+.buen-fin-contenido {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 36px;
+    border: 1px solid #C6A15B;
+    border-radius: 18px;
+}
+
+@media (max-width: 700px) {
+    .promociones,
+    .buen-fin {
+        padding: 36px 4%;
+    }
+
+    .promociones-encabezado {
+        align-items: center;
+    }
+
+    .promociones-carrusel {
+        grid-auto-columns: minmax(270px, 88%);
+    }
+
+    .promocion-tarjeta img {
+        height: 210px;
+    }
+
+    .promocion-acciones {
+        grid-template-columns: 1fr;
+    }
+
+    .buen-fin-contenido {
+        padding: 26px 20px;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .social-link { transition: none; }
 }

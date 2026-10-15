@@ -10,7 +10,10 @@
         return imagen;
     }
 
-    function crearTarjeta(producto) {
+    function crearTarjeta(producto, ahora) {
+        const datosPrecio = window.Promociones
+            ? window.Promociones.obtenerPrecio(producto, ahora)
+            : { precioNormal: producto.carrito?.precio ?? null, precioActual: producto.carrito?.precio ?? null, promocion: null };
         const tarjeta = document.createElement("div");
         tarjeta.className = "producto";
         tarjeta.id = producto.id;
@@ -43,7 +46,16 @@
 
         const precio = document.createElement("p");
         precio.className = "precio";
-        precio.textContent = producto.precioTexto;
+        if (datosPrecio.promocion) {
+            precio.classList.add("precio-promocional");
+            const normal = document.createElement("del");
+            normal.textContent = window.Promociones.textoPrecio(datosPrecio.precioNormal);
+            const promocional = document.createElement("strong");
+            promocional.textContent = window.Promociones.textoPrecio(datosPrecio.precioActual);
+            precio.append(normal, promocional);
+        } else {
+            precio.textContent = producto.precioTexto;
+        }
         tarjeta.appendChild(precio);
 
         if (producto.carrito) {
@@ -52,14 +64,16 @@
             boton.className = "agregar-carrito";
             boton.textContent = "🛒 Agregar al carrito";
             boton.addEventListener("click", function () {
-                agregarCarrito(producto.carrito.nombre, producto.carrito.precio);
+                agregarProductoAlCarrito(producto.id);
             });
             tarjeta.appendChild(boton);
         }
 
         if (producto.whatsapp) {
             const enlace = document.createElement("a");
-            enlace.href = producto.whatsapp;
+            enlace.href = window.Promociones
+                ? window.Promociones.crearWhatsApp(producto, datosPrecio)
+                : producto.whatsapp;
             enlace.className = "comprar";
             enlace.textContent = "Consultar por WhatsApp";
             if (producto.whatsappTarget) enlace.target = producto.whatsappTarget;
@@ -70,7 +84,7 @@
         return tarjeta;
     }
 
-    function renderizarCatalogo() {
+    function renderizarCatalogo(ahora) {
         const productos = window.PRODUCTOS || [];
         document.querySelectorAll("[data-categoria-productos]").forEach(function (lista) {
             const categoria = lista.dataset.categoriaProductos;
@@ -78,7 +92,7 @@
             productos
                 .filter(producto => producto.categoria === categoria)
                 .sort((a, b) => a.orden - b.orden)
-                .forEach(producto => fragmento.appendChild(crearTarjeta(producto)));
+                .forEach(producto => fragmento.appendChild(crearTarjeta(producto, ahora)));
             lista.replaceChildren(fragmento);
         });
     }
