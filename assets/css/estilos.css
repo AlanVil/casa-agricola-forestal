@@ -71,6 +71,108 @@ nav a {
     gap: 9px; font-weight: 700;
 }
 
+.contacto-intro {
+    max-width: 720px;
+    margin: 0 auto 30px;
+}
+
+.contacto-kicker {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: #C6A15B;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.contacto-canales {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.contacto-tarjeta {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 16px;
+    min-height: 190px;
+    padding: 24px;
+    border: 1px solid rgba(198, 161, 91, 0.42);
+    border-radius: 16px;
+    background: linear-gradient(145deg, rgba(31, 50, 36, 0.98), rgba(17, 19, 17, 0.98));
+    color: #F3F0E8;
+    text-align: left;
+    text-decoration: none;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.contacto-tarjeta:hover {
+    transform: translateY(-4px);
+    border-color: #C6A15B;
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.32);
+}
+
+.contacto-tarjeta:focus-visible {
+    outline: 3px solid #C6A15B;
+    outline-offset: 4px;
+}
+
+.contacto-icono {
+    display: inline-flex;
+    width: 54px;
+    height: 54px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #C6A15B;
+    color: #111311;
+}
+
+.contacto-icono-whatsapp {
+    background: #25D366;
+}
+
+.contacto-icono svg {
+    width: 27px;
+    height: 27px;
+    fill: currentColor;
+}
+
+.contacto-contenido {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contacto-contenido strong {
+    color: #F3F0E8;
+    font-size: 21px;
+}
+
+.contacto-contenido small {
+    margin-top: 6px;
+    color: #D3D0C7;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.contacto-accion {
+    grid-column: 1 / -1;
+    align-self: end;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(198, 161, 91, 0.26);
+    color: #C6A15B;
+    font-size: 14px;
+    font-weight: 800;
+}
+
 .hero {
     min-height: 600px;
     display: flex;
@@ -135,6 +237,8 @@ rgba(0,0,0,.45)
     .site-footer { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
     .footer-social { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .footer-social .social-link { width: 100%; min-width: 0; }
+    .contacto-canales { grid-template-columns: 1fr; }
+    .contacto-tarjeta { min-height: 0; padding: 20px; }
 
     .hero {
         min-height: 500px;
@@ -635,7 +739,9 @@ html {
     background: white;
     padding: 25px 18px;
     border-radius: 15px;
+    border-top: 4px solid #C6A15B;
     box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    text-align: left;
 }
 
 .sucursal h3 {
@@ -654,6 +760,23 @@ html {
     color: #173d24;
     font-weight: bold;
     text-decoration: none;
+}
+
+.sucursal-etiqueta {
+    display: block;
+    margin-bottom: 5px;
+    color: #C6A15B;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.sucursal-telefono a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 18px;
 }
 
 .boton-mapa {
