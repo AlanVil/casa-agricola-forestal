@@ -47,6 +47,39 @@
             margin-left: 25px;
         }
 
+        .header-actions { display: flex; align-items: center; gap: 22px; }
+        .header-social, .footer-social { display: flex; align-items: center; gap: 10px; }
+        .social-link {
+            display: inline-flex; align-items: center; justify-content: center;
+            min-width: 44px; min-height: 44px;
+            border: 1px solid rgba(198, 161, 91, 0.7); border-radius: 50%;
+            color: #F3F0E8; text-decoration: none;
+            transition: transform 180ms ease, background-color 180ms ease,
+                        color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+        }
+        .social-link svg { width: 21px; height: 21px; fill: currentColor; }
+        .social-link:hover {
+            transform: translateY(-2px); background-color: #C6A15B;
+            border-color: #C6A15B; color: #111311;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.24);
+        }
+        .social-link:focus-visible { outline: 3px solid #F3F0E8; outline-offset: 3px; }
+        .site-footer {
+            padding: 42px 6% calc(42px + env(safe-area-inset-bottom));
+            border-top: 1px solid #415143; background: #0d100e;
+            color: #F3F0E8; text-align: center;
+        }
+        .site-footer h2 {
+            margin-bottom: 10px; color: #C6A15B;
+            font-size: clamp(24px, 3vw, 32px);
+        }
+        .site-footer p { margin-bottom: 22px; color: #D3D0C7; line-height: 1.55; }
+        .footer-social { justify-content: center; flex-wrap: wrap; }
+        .footer-social .social-link {
+            min-width: 150px; padding: 11px 18px; border-radius: 999px;
+            gap: 9px; font-weight: 700;
+        }
+
         .hero {
             min-height: 600px;
             display: flex;
@@ -101,9 +134,16 @@
                 gap: 15px;
             }
 
+            .header-actions { width: 100%; flex-direction: column; gap: 10px; }
+            .header-social { justify-content: center; }
+
             nav a {
                 margin: 0 8px;
             }
+
+            .site-footer { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+            .footer-social { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .footer-social .social-link { width: 100%; min-width: 0; }
 
             .hero {
                 min-height: 500px;
@@ -116,6 +156,10 @@
             .hero p {
                 font-size: 18px;
             }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .social-link { transition: none; }
         }
         .productos {
     padding: 45px 6%;
@@ -1135,12 +1179,22 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     <img src="Logo-transparente.png" alt="Casa Agrícola y Forestal">
 </div>
 
-    <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#productos">Productos</a>
-    <a href="#sucursales">Sucursales</a>
-    <a href="#contacto">Contacto</a>
-</nav>
+    <div class="header-actions">
+        <nav aria-label="Navegación principal">
+            <a href="#inicio">Inicio</a>
+            <a href="#productos">Productos</a>
+            <a href="#sucursales">Sucursales</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="header-social" aria-label="Redes sociales">
+            <a class="social-link" href="https://www.facebook.com/casaagricolayforestal" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Facebook">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.25c-1.24 0-1.63.77-1.63 1.56v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
+            </a>
+            <a class="social-link" href="https://www.instagram.com/casaagricolayforestal/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            </a>
+        </div>
+    </div>
 
 </header>
 
@@ -2066,6 +2120,21 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     </div>
 
 </section>
+
+<footer id="contacto" class="site-footer">
+    <h2>Síguenos en nuestras redes sociales</h2>
+    <p>Conoce novedades, equipos y promociones de Casa Agrícola y Forestal.</p>
+    <div class="footer-social" aria-label="Perfiles oficiales en redes sociales">
+        <a class="social-link" href="https://www.facebook.com/casaagricolayforestal" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.25c-1.24 0-1.63.77-1.63 1.56v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
+            <span>Facebook</span>
+        </a>
+        <a class="social-link" href="https://www.instagram.com/casaagricolayforestal/" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8A3.6 3.6 0 0 0 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6A3.6 3.6 0 0 0 16.4 4H7.6Zm9.65 1.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Z"/></svg>
+            <span>Instagram</span>
+        </a>
+    </div>
+</footer>
 
 </button>
 <div id="panel-buscador" class="panel-buscador">
