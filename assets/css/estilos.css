@@ -1600,6 +1600,118 @@ width: auto;
     text-align: center;
 }
 
+.consejos-guias {
+    max-width: 1200px;
+    margin: 44px auto 0;
+    padding: 34px;
+    border: 1px solid rgba(198, 161, 91, 0.55);
+    border-radius: 18px;
+    background: linear-gradient(145deg, #101310, #18231b);
+    color: #F3F0E8;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24);
+}
+
+.consejos-encabezado {
+    max-width: 720px;
+    margin: 0 auto 26px;
+    text-align: center;
+}
+
+.consejos-encabezado > span {
+    display: block;
+    margin-bottom: 8px;
+    color: #C6A15B;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.consejos-encabezado h2 {
+    margin: 0 0 10px;
+    color: #F3F0E8;
+    font-size: clamp(26px, 4vw, 36px);
+}
+
+.consejos-encabezado p {
+    margin: 0;
+    color: #D3D0C7;
+    line-height: 1.6;
+}
+
+.consejos-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.consejo-tarjeta {
+    display: flex;
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid rgba(198, 161, 91, 0.28);
+    border-radius: 14px;
+    background: rgba(31, 43, 34, 0.88);
+    flex-direction: column;
+    transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.consejo-tarjeta:hover {
+    border-color: #C6A15B;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.24);
+}
+
+.consejo-icono {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    margin-bottom: 18px;
+    border: 1px solid #C6A15B;
+    border-radius: 50%;
+    background: #173d24;
+    color: #F1C768;
+    font-size: 20px;
+    font-weight: 800;
+    place-items: center;
+}
+
+.consejo-tarjeta h3 {
+    margin: 0 0 10px;
+    color: #F1C768;
+    font-size: 21px;
+}
+
+.consejo-tarjeta p {
+    margin: 0 0 22px;
+    color: #E0DDD4;
+    line-height: 1.6;
+}
+
+.consejo-enlace {
+    display: inline-flex;
+    min-height: 46px;
+    margin-top: auto;
+    padding: 11px 18px;
+    border: 1px solid #C6A15B;
+    border-radius: 8px;
+    align-items: center;
+    align-self: flex-start;
+    gap: 8px;
+    background: #C6A15B;
+    color: #111311;
+    font-weight: 800;
+    text-decoration: none;
+    transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.consejo-enlace:hover,
+.consejo-enlace:focus-visible {
+    background: #173d24;
+    color: #F3F0E8;
+    transform: translateY(-1px);
+}
+
 @media (max-width: 700px) {
     .pagina-categoria {
         padding: 24px 4% 110px;
@@ -1614,5 +1726,557 @@ width: auto;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .consejos-guias {
+        margin-top: 32px;
+        padding: 26px 16px;
+    }
+
+    .consejos-lista {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .consejo-tarjeta {
+        padding: 20px;
+    }
+
+    .consejo-enlace {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .consejo-tarjeta,
+    .consejo-enlace {
+        transition: none;
+    }
+}
+
+/* Guías informativas */
+.pagina-guia {
+    min-height: 70vh;
+    padding: 36px 6% 80px;
+    background: linear-gradient(180deg, rgba(23, 61, 36, 0.08), transparent 360px);
+}
+
+.migas-guia,
+.guia-articulo {
+    max-width: 920px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.migas-guia {
+    margin-bottom: 18px;
+}
+
+.migas-guia a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    color: #173d24;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.migas-guia a:hover,
+.migas-guia a:focus-visible {
+    color: #9A711F;
+}
+
+.guia-articulo {
+    overflow: hidden;
+    border: 1px solid rgba(198, 161, 91, 0.55);
+    border-radius: 20px;
+    background: #F7F5EF;
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.18);
+}
+
+.guia-portada {
+    display: block;
+    padding: 48px clamp(24px, 6vw, 64px);
+    background: linear-gradient(145deg, #101310, #1b2d20);
+    color: #F3F0E8;
+    text-align: left;
+}
+
+.guia-portada > span {
+    color: #F1C768;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.guia-portada h1 {
+    margin: 10px 0 14px;
+    color: #F3F0E8;
+    font-size: clamp(32px, 6vw, 52px);
+    line-height: 1.1;
+}
+
+.guia-portada p {
+    max-width: 720px;
+    margin: 0;
+    color: #DEDAD0;
+    font-size: 18px;
+    line-height: 1.65;
+}
+
+.guia-bloque,
+.guia-seguridad,
+.guia-acciones {
+    margin-right: clamp(24px, 6vw, 64px);
+    margin-left: clamp(24px, 6vw, 64px);
+}
+
+.guia-bloque {
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(23, 61, 36, 0.16);
+}
+
+.guia-bloque h2,
+.guia-seguridad h2 {
+    margin: 0 0 12px;
+    color: #173d24;
+    font-size: 24px;
+}
+
+.guia-bloque p,
+.guia-bloque li,
+.guia-seguridad p {
+    color: #30342F;
+    line-height: 1.7;
+}
+
+.guia-bloque ul {
+    margin: 0;
+    padding-left: 22px;
+}
+
+.guia-bloque li + li {
+    margin-top: 8px;
+}
+
+.guia-seguridad {
+    margin-top: 30px;
+    padding: 22px 24px;
+    border-left: 5px solid #C6A15B;
+    border-radius: 10px;
+    background: #EEE5CF;
+}
+
+.guia-seguridad p {
+    margin: 0;
+}
+
+.guia-acciones {
+    display: flex;
+    padding: 32px 0 42px;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.boton-guia {
+    display: inline-flex;
+    min-height: 48px;
+    padding: 12px 20px;
+    border: 2px solid #173d24;
+    border-radius: 9px;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.boton-guia:hover,
+.boton-guia:focus-visible {
+    transform: translateY(-2px);
+}
+
+.boton-guia-principal {
+    background: #173d24;
+    color: #FFFFFF;
+}
+
+.boton-guia-principal:hover,
+.boton-guia-principal:focus-visible {
+    background: #245b37;
+}
+
+.boton-guia-secundario {
+    border-color: #C6A15B;
+    background: transparent;
+    color: #173d24;
+}
+
+.boton-guia-secundario:hover,
+.boton-guia-secundario:focus-visible {
+    background: #C6A15B;
+    color: #111311;
+}
+
+.guia-footer {
+    padding: 26px 6%;
+}
+
+@media (max-width: 600px) {
+    .pagina-guia {
+        padding: 24px 4% 50px;
+    }
+
+    .guia-portada {
+        padding: 34px 22px;
+    }
+
+    .guia-portada p {
+        font-size: 16px;
+    }
+
+    .guia-bloque,
+    .guia-seguridad,
+    .guia-acciones {
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .guia-bloque {
+        padding: 24px 0;
+    }
+
+    .guia-acciones {
+        display: grid;
+    }
+
+    .boton-guia {
+        width: 100%;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .boton-guia {
+        transition: none;
+    }
+}
+
+/* Guía extensa de mantenimiento de motosierras */
+.guia-articulo-extenso .guia-alcance {
+    margin-top: 16px;
+    padding: 10px 14px;
+    border-left: 3px solid #C6A15B;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 15px;
+}
+
+.guia-indice {
+    margin: 30px clamp(24px, 6vw, 64px) 0;
+    padding: 24px;
+    border: 1px solid rgba(23, 61, 36, 0.18);
+    border-radius: 12px;
+    background: #E9EEE9;
+}
+
+.guia-indice strong {
+    display: block;
+    margin-bottom: 12px;
+    color: #173d24;
+    font-size: 20px;
+}
+
+.guia-indice ol {
+    display: grid;
+    margin: 0;
+    padding-left: 22px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px 28px;
+}
+
+.guia-indice a {
+    color: #2E4935;
+    font-weight: 700;
+    text-underline-offset: 3px;
+}
+
+.guia-articulo-extenso .guia-bloque {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 18px;
+    scroll-margin-top: 24px;
+}
+
+.guia-numero {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    border: 2px solid #C6A15B;
+    border-radius: 50%;
+    background: #173d24;
+    color: #F1C768;
+    font-size: 20px;
+    font-weight: 900;
+    place-items: center;
+}
+
+.guia-articulo-extenso h3 {
+    color: #173d24;
+}
+
+.guia-consejo,
+.guia-nota-modelo {
+    margin-top: 20px;
+    padding: 18px 20px;
+    border-left: 4px solid #C6A15B;
+    border-radius: 8px;
+    background: #F0E8D5;
+}
+
+.guia-consejo strong {
+    color: #173d24;
+    font-size: 18px;
+}
+
+.guia-consejo p,
+.guia-nota-modelo {
+    margin-bottom: 0;
+}
+
+.diagrama-motosierra {
+    margin: 24px 0;
+    padding: 18px;
+    border-radius: 14px;
+    background: #111311;
+}
+
+.diagrama-motosierra svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.diagrama-motosierra figcaption {
+    margin-top: 12px;
+    color: #D7D5CF;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.tabla-responsive {
+    overflow-x: auto;
+    margin-top: 22px;
+    border: 1px solid rgba(23, 61, 36, 0.2);
+    border-radius: 10px;
+}
+
+.tabla-guia {
+    width: 100%;
+    min-width: 620px;
+    border-collapse: collapse;
+    background: #FFFFFF;
+}
+
+.tabla-guia th,
+.tabla-guia td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #DADFD9;
+    color: #30342F;
+    line-height: 1.5;
+    text-align: left;
+    vertical-align: top;
+}
+
+.tabla-guia th {
+    background: #173d24;
+    color: #FFFFFF;
+    font-size: 15px;
+}
+
+.tabla-guia tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabla-guia tbody tr:nth-child(even) {
+    background: #F2F5F1;
+}
+
+.guia-articulo-extenso .guia-seguridad {
+    margin: 18px 0;
+    background: #F0DFC2;
+}
+
+.guia-seguridad h3 {
+    margin: 0 0 10px;
+}
+
+.guia-seguridad ul {
+    margin-bottom: 0;
+}
+
+.pasos-guia {
+    margin: 20px 0 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: paso;
+}
+
+.pasos-guia li {
+    position: relative;
+    min-height: 40px;
+    padding: 0 0 20px 50px;
+    counter-increment: paso;
+}
+
+.pasos-guia li::before {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    display: grid;
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #C6A15B;
+    color: #111311;
+    content: counter(paso);
+    font-weight: 900;
+    place-items: center;
+}
+
+.guia-columnas,
+.listas-check {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.guia-mini-tarjeta,
+.listas-check > div {
+    padding: 20px;
+    border: 1px solid rgba(23, 61, 36, 0.18);
+    border-radius: 10px;
+    background: #F1F4F0;
+}
+
+.guia-mini-tarjeta h3,
+.listas-check h3 {
+    margin: 0 0 8px;
+}
+
+.guia-mini-tarjeta p {
+    margin: 0;
+}
+
+.checklist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.checklist li {
+    position: relative;
+    padding: 7px 0 7px 30px;
+}
+
+.checklist li::before {
+    position: absolute;
+    top: 7px;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 2px solid #C6A15B;
+    border-radius: 4px;
+    content: "";
+}
+
+.preguntas-guia {
+    display: grid;
+    gap: 10px;
+}
+
+.preguntas-guia details {
+    padding: 16px 18px;
+    border: 1px solid rgba(23, 61, 36, 0.18);
+    border-radius: 9px;
+    background: #F1F4F0;
+}
+
+.preguntas-guia summary {
+    color: #173d24;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.preguntas-guia p {
+    margin: 12px 0 0;
+}
+
+.guia-enlaces-oficiales {
+    display: grid;
+    margin-top: 20px;
+    gap: 12px;
+}
+
+.guia-enlaces-oficiales a {
+    display: block;
+    padding: 16px 18px;
+    border: 1px solid #C6A15B;
+    border-radius: 9px;
+    color: #173d24;
+    line-height: 1.5;
+    text-decoration: none;
+}
+
+.guia-enlaces-oficiales a:hover,
+.guia-enlaces-oficiales a:focus-visible {
+    background: #EEE5CF;
+}
+
+.guia-acciones-finales {
+    justify-content: center;
+}
+
+@media (max-width: 700px) {
+    .guia-indice {
+        margin-right: 20px;
+        margin-left: 20px;
+        padding: 20px;
+    }
+
+    .guia-indice ol,
+    .guia-columnas,
+    .listas-check {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .guia-articulo-extenso .guia-bloque {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+    }
+
+    .guia-numero {
+        width: 38px;
+        height: 38px;
+        font-size: 17px;
+    }
+
+    .diagrama-motosierra {
+        margin-right: -8px;
+        margin-left: -8px;
+        padding: 10px;
+    }
+
+    .diagrama-motosierra svg {
+        min-width: 620px;
+    }
+
+    .diagrama-motosierra {
+        overflow-x: auto;
+    }
+
+    .tabla-guia th,
+    .tabla-guia td {
+        padding: 12px;
     }
 }

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <title>Mantenimiento de motosierras | Casa Agrícola y Forestal</title>
+    <link rel="stylesheet" href="assets/css/estilos.css">
+</head>
+<body>
+<header>
+    <div class="logo">
+        <a href="index.html#inicio" aria-label="Ir al inicio">
+            <img src="Logo-transparente.png" alt="Casa Agrícola y Forestal">
+        </a>
+    </div>
+    <div class="header-actions">
+        <nav aria-label="Navegación principal">
+            <a href="index.html#inicio">Inicio</a>
+            <a href="index.html#productos">Productos</a>
+            <a href="categorias/motosierras.html">Motosierras</a>
+            <a href="index.html#contacto">Contáctanos</a>
+        </nav>
+    </div>
+</header>
+
+<main class="pagina-guia">
+    <nav class="migas-guia" aria-label="Ruta de navegación">
+        <a href="categorias/motosierras.html">← Volver a Motosierras</a>
+    </nav>
+
+    <article class="guia-articulo guia-articulo-extenso">
+        <header class="guia-portada">
+            <span>Consejos y guías STIHL</span>
+            <h1>Mantenimiento de motosierras</h1>
+            <p>Aprende a reconocer los componentes principales, revisar el equipo antes de arrancarlo, limpiarlo después del trabajo y detectar señales que requieren atención profesional.</p>
+            <p class="guia-alcance">Guía general de orientación. El manual de instrucciones de tu modelo siempre tiene prioridad.</p>
+        </header>
+
+        <nav class="guia-indice" aria-label="Contenido de la guía">
+            <strong>En esta guía</strong>
+            <ol>
+                <li><a href="#introduccion">Introducción</a></li>
+                <li><a href="#componentes">Conoce tu motosierra</a></li>
+                <li><a href="#seguridad">Seguridad</a></li>
+                <li><a href="#inspeccion">Inspección previa</a></li>
+                <li><a href="#limpieza">Limpieza posterior</a></li>
+                <li><a href="#cadena-espada">Cadena y espada</a></li>
+                <li><a href="#filtro-refrigeracion">Filtro y refrigeración</a></li>
+                <li><a href="#combustible-almacenamiento">Energía y almacenamiento</a></li>
+                <li><a href="#problemas">Problemas frecuentes</a></li>
+                <li><a href="#lista-comprobacion">Lista de comprobación</a></li>
+                <li><a href="#preguntas">Preguntas frecuentes</a></li>
+                <li><a href="#fuentes">Fuentes y manuales</a></li>
+            </ol>
+        </nav>
+
+        <section class="guia-bloque" id="introduccion">
+            <div class="guia-numero" aria-hidden="true">1</div>
+            <div>
+                <h2>Introducción: por qué importa el mantenimiento</h2>
+                <p>Durante el corte se acumulan serrín, resina y aceite. Si permanecen en la carcasa, la espada o las entradas de aire, pueden dificultar la lubricación, la refrigeración y el movimiento de la cadena. Una rutina sencilla permite trabajar con mayor seguridad, conservar el rendimiento y descubrir desgaste o daños antes de que empeoren.</p>
+                <div class="guia-consejo">
+                    <strong>Qué aprenderás</strong>
+                    <p>Distinguirás qué revisar antes y después de usar la motosierra, qué cuidados puedes realizar de forma general y cuándo debes detenerte para consultar el manual o acudir a servicio técnico.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="componentes">
+            <div class="guia-numero" aria-hidden="true">2</div>
+            <div>
+                <h2>Conoce tu motosierra</h2>
+                <p>La ubicación y forma exactas cambian entre modelos. Este esquema original muestra los elementos habituales que conviene identificar antes de cualquier revisión.</p>
+                <figure class="diagrama-motosierra">
+                    <svg viewBox="0 0 900 430" role="img" aria-labelledby="diagrama-titulo diagrama-desc">
+                        <title id="diagrama-titulo">Componentes principales de una motosierra</title>
+                        <desc id="diagrama-desc">Esquema lateral con etiquetas para empuñadura, protector y freno, carcasa del motor, tapas de combustible y aceite, espada, cadena y zona del piñón.</desc>
+                        <defs>
+                            <linearGradient id="cuerpo-motosierra" x1="0" x2="1">
+                                <stop offset="0" stop-color="#173d24"/>
+                                <stop offset="1" stop-color="#245b37"/>
+                            </linearGradient>
+                            <marker id="flecha-guia" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                <path d="M 0 0 L 10 5 L 0 10 z" fill="#C6A15B"/>
+                            </marker>
+                        </defs>
+                        <path d="M260 240 L405 195 L525 225 L515 335 L300 340 L235 300 Z" fill="url(#cuerpo-motosierra)" stroke="#101310" stroke-width="7"/>
+                        <path d="M300 220 Q300 105 430 110 Q505 115 520 220" fill="none" stroke="#101310" stroke-width="24" stroke-linecap="round"/>
+                        <path d="M230 228 Q190 205 190 155" fill="none" stroke="#C6A15B" stroke-width="15" stroke-linecap="round"/>
+                        <path d="M505 245 L820 265 L815 315 L510 315 Z" fill="#D7D5CF" stroke="#101310" stroke-width="7"/>
+                        <path d="M510 246 L820 266 L815 315 L510 315" fill="none" stroke="#C6A15B" stroke-width="9" stroke-dasharray="13 8"/>
+                        <circle cx="500" cy="285" r="33" fill="#111311" stroke="#C6A15B" stroke-width="7"/>
+                        <circle cx="345" cy="280" r="19" fill="#C6A15B"/>
+                        <circle cx="395" cy="280" r="19" fill="#C6A15B"/>
+                        <g fill="none" stroke="#C6A15B" stroke-width="3" marker-end="url(#flecha-guia)">
+                            <path d="M160 60 L325 135"/><path d="M150 145 L196 175"/><path d="M135 365 L285 315"/>
+                            <path d="M550 85 L465 210"/><path d="M690 95 L700 260"/><path d="M770 385 L770 316"/>
+                            <path d="M470 390 L495 320"/><path d="M245 390 L345 300"/>
+                        </g>
+                        <g fill="#F3F0E8" font-family="Arial, sans-serif" font-size="20" font-weight="700">
+                            <text x="24" y="52">Empuñadura</text><text x="24" y="76">y mandos</text>
+                            <text x="20" y="136">Protector de mano</text><text x="20" y="160">y freno de cadena</text>
+                            <text x="18" y="360">Carcasa y motor</text>
+                            <text x="485" y="62">Cubierta y</text><text x="485" y="86">filtro de aire</text>
+                            <text x="650" y="62">Espada</text>
+                            <text x="710" y="414">Cadena</text>
+                            <text x="390" y="414">Zona del piñón</text>
+                            <text x="115" y="390">Tapas de aceite</text><text x="115" y="414">y combustible*</text>
+                        </g>
+                    </svg>
+                    <figcaption>*En modelos a gasolina. Los modelos a batería tienen compartimento y contactos para la batería; los eléctricos incorporan cable y conexión.</figcaption>
+                </figure>
+                <div class="tabla-responsive">
+                    <table class="tabla-guia">
+                        <thead><tr><th>Componente</th><th>Función en palabras sencillas</th><th>Qué observar</th></tr></thead>
+                        <tbody>
+                            <tr><td>Cadena</td><td>Sus dientes realizan el corte.</td><td>Filo, tensión, lubricación y daños.</td></tr>
+                            <tr><td>Espada</td><td>Guía el recorrido de la cadena.</td><td>Ranura limpia, desgaste y paso libre de aceite.</td></tr>
+                            <tr><td>Freno de cadena</td><td>Ayuda a detener la cadena ante determinadas situaciones.</td><td>Funcionamiento según el manual; no trabajar si falla.</td></tr>
+                            <tr><td>Piñón y cubierta</td><td>Transmiten el movimiento hacia la cadena y protegen el mecanismo.</td><td>Acumulación de serrín y desgaste visible.</td></tr>
+                            <tr><td>Filtro y entradas de aire</td><td>Ayudan a que el motor reciba aire limpio y pueda refrigerarse.</td><td>Polvo, residuos u obstrucciones.</td></tr>
+                            <tr><td>Depósito de aceite</td><td>Alimenta la lubricación de cadena y espada.</td><td>Nivel, tapa cerrada y ausencia de fugas.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="seguridad">
+            <div class="guia-numero" aria-hidden="true">3</div>
+            <div>
+                <h2>Seguridad antes de cualquier revisión</h2>
+                <aside class="guia-seguridad" aria-labelledby="seguridad-motosierra">
+                    <h3 id="seguridad-motosierra">Detén y asegura el equipo</h3>
+                    <ul>
+                        <li>Apaga el motor y espera a que se enfríe.</li>
+                        <li>En modelos a batería, retira la batería; en modelos eléctricos, desconecta el enchufe.</li>
+                        <li>Activa el freno de cadena cuando corresponda y usa guantes resistentes al manipular la cadena.</li>
+                        <li>Trabaja sobre una superficie estable, lejos de llamas, chispas y fuentes de calor.</li>
+                    </ul>
+                </aside>
+                <p>No desmontes el motor, el carburador, componentes eléctricos ni sistemas de seguridad. Si una comprobación exige una reparación interna o una herramienta que no conoces, consulta el manual y recurre a servicio autorizado.</p>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="inspeccion">
+            <div class="guia-numero" aria-hidden="true">4</div>
+            <div>
+                <h2>Inspección antes de utilizarla, paso a paso</h2>
+                <ol class="pasos-guia">
+                    <li><strong>Observa el conjunto.</strong> Busca grietas, tornillos flojos, piezas deformadas o cualquier cambio desde el último uso.</li>
+                    <li><strong>Confirma el montaje.</strong> Espada, cadena, cubierta y accesorios deben estar instalados como indica el manual.</li>
+                    <li><strong>Revisa los mandos.</strong> Gatillo, bloqueo del acelerador, interruptor de parada y demás controles deben moverse correctamente según el modelo.</li>
+                    <li><strong>Comprueba el freno.</strong> Verifica su funcionamiento exactamente como explica el manual. Si no actúa, no arranques la máquina.</li>
+                    <li><strong>Examina cadena y espada.</strong> Comprueba tensión, filo, libertad de movimiento y ausencia de daños.</li>
+                    <li><strong>Revisa aceite y posibles fugas.</strong> Las tapas deben cerrar bien. En equipos a gasolina, no debe existir fuga de combustible.</li>
+                    <li><strong>Despeja el área.</strong> Retira objetos que puedan entrar en contacto con la cadena y confirma que nadie esté dentro de la zona de trabajo.</li>
+                </ol>
+                <div class="guia-consejo"><strong>Regla práctica</strong><p>Si algo se ve distinto, está flojo o genera duda, detente. Una inspección profesional es preferible a trabajar con un componente incierto.</p></div>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="limpieza">
+            <div class="guia-numero" aria-hidden="true">5</div>
+            <div>
+                <h2>Limpieza y mantenimiento después del trabajo</h2>
+                <p>STIHL destaca la limpieza después de cada uso como una medida esencial, porque la mezcla de resina, serrín y aceite puede endurecerse y acumularse.</p>
+                <ol class="pasos-guia">
+                    <li>Deja el equipo seguro y frío siguiendo las indicaciones de la sección anterior.</li>
+                    <li>Retira virutas y polvo de la carcasa con un cepillo suave o pincel.</li>
+                    <li>Limpia la zona de la cubierta del piñón sin empujar residuos hacia el interior.</li>
+                    <li>Atiende la ranura de la espada y los pasos de aceite con la herramienta indicada en el manual.</li>
+                    <li>Limpia las entradas y aletas de refrigeración accesibles. No uses chorros de agua ni aire a presión salvo autorización expresa del manual.</li>
+                    <li>Seca las superficies y vuelve a inspeccionar cadena, espada, tapas y fijaciones antes de guardar.</li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="cadena-espada">
+            <div class="guia-numero" aria-hidden="true">6</div>
+            <div>
+                <h2>Cadena y espada: revisión, tensión y lubricación</h2>
+                <div class="guia-columnas">
+                    <div class="guia-mini-tarjeta"><h3>Tensión</h3><p>Con el equipo apagado y frío, la cadena debe apoyarse correctamente en la espada y poder desplazarse según lo descrito por el fabricante. El procedimiento y la tensión correcta dependen del sistema instalado: sigue el manual del modelo.</p></div>
+                    <div class="guia-mini-tarjeta"><h3>Lubricación</h3><p>Comprueba el nivel del aceite adhesivo para cadena, el cierre del depósito y los pasos de lubricación. Si la cadena trabaja seca o se calienta de forma anormal, detén el equipo.</p></div>
+                    <div class="guia-mini-tarjeta"><h3>Espada</h3><p>Limpia la ranura y el orificio de entrada de aceite. Busca desgaste irregular, rebabas o deformación. El volteo y desbarbado deben hacerse conforme al manual o por personal capacitado.</p></div>
+                    <div class="guia-mini-tarjeta"><h3>Cadena</h3><p>Revisa dientes, eslabones y remaches. Una cadena agrietada, dañada o con piezas flojas debe retirarse de servicio. Para afilar, consulta la guía específica y los datos exactos de esa cadena.</p></div>
+                </div>
+                <p class="guia-nota-modelo"><strong>Importante:</strong> no se ofrece aquí una medida universal de tensión, ángulo o lima porque esos datos cambian según la combinación de cadena, espada y modelo.</p>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="filtro-refrigeracion">
+            <div class="guia-numero" aria-hidden="true">7</div>
+            <div>
+                <h2>Filtro de aire y sistema de refrigeración</h2>
+                <p>En una motosierra a gasolina, un filtro sucio puede reducir el rendimiento y dificultar el arranque. Limpia la carcasa del filtro y atiende el elemento filtrante únicamente con el método indicado para tu modelo: distintos materiales requieren tratamientos diferentes.</p>
+                <p>Mantén libres de serrín las entradas de aire y las aletas de refrigeración accesibles. En modelos eléctricos y a batería también deben permanecer limpias las zonas de ventilación. No abras cubiertas técnicas ni introduzcas herramientas en el interior.</p>
+                <div class="guia-consejo"><strong>Cuándo detenerse</strong><p>Si el filtro está dañado, el equipo se calienta de forma inusual o persiste una pérdida de potencia después de la limpieza permitida, solicita una revisión.</p></div>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="combustible-almacenamiento">
+            <div class="guia-numero" aria-hidden="true">8</div>
+            <div>
+                <h2>Combustible, batería y almacenamiento</h2>
+                <div class="tabla-responsive">
+                    <table class="tabla-guia">
+                        <thead><tr><th>Tipo de motosierra</th><th>Antes de guardar</th><th>Precaución principal</th></tr></thead>
+                        <tbody>
+                            <tr><td>Gasolina</td><td>Limpia el equipo y revisa que los depósitos estén cerrados y sin fugas. Para almacenamiento prolongado, sigue el procedimiento del manual.</td><td>Usa exclusivamente el combustible y la mezcla especificados para el modelo. No improvises proporciones y trabaja lejos de fuentes de ignición.</td></tr>
+                            <tr><td>Batería</td><td>Retira la batería, limpia con cuidado la ranura y los contactos con un cepillo suave, y guarda cada elemento según sus instrucciones.</td><td>Protege batería y contactos contra humedad, calor, golpes y objetos metálicos. No uses una batería dañada.</td></tr>
+                            <tr><td>Eléctrica con cable</td><td>Desconecta, revisa visualmente cable y enchufe, limpia y enrolla sin dobleces forzados.</td><td>No uses el equipo si el cable o la conexión presentan daños; la reparación corresponde a personal autorizado.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p>En todos los casos, guarda la motosierra limpia, seca, estable y fuera del alcance de niños o personas no autorizadas. Coloca el protector de cadena cuando corresponda.</p>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="problemas">
+            <div class="guia-numero" aria-hidden="true">9</div>
+            <div>
+                <h2>Problemas frecuentes</h2>
+                <div class="tabla-responsive">
+                    <table class="tabla-guia tabla-diagnostico">
+                        <thead><tr><th>Síntoma</th><th>Posibles causas generales</th><th>Acción segura</th></tr></thead>
+                        <tbody>
+                            <tr><td>No arranca o arranca con dificultad</td><td>Controles en posición incorrecta, batería sin carga, filtro sucio o combustible no adecuado para el modelo.</td><td>Revisa el procedimiento de arranque y las comprobaciones permitidas por el manual. Si persiste, acude a servicio.</td></tr>
+                            <tr><td>Pierde fuerza durante el corte</td><td>Cadena sin filo, filtro obstruido, refrigeración limitada o problema técnico.</td><td>Detén, deja enfriar y revisa únicamente los puntos de mantenimiento básico. No ajustes internamente el motor.</td></tr>
+                            <tr><td>La cadena no recibe aceite</td><td>Depósito vacío, paso de aceite obstruido o fallo del sistema de lubricación.</td><td>No continúes cortando. Revisa nivel y limpieza autorizada; solicita servicio si no se restablece.</td></tr>
+                            <tr><td>Corte desviado o vibración anormal</td><td>Afilado desigual, cadena dañada, tensión incorrecta o desgaste de la espada.</td><td>Deja de usarla y revisa cadena/espada. Si hay daño o no puedes confirmar el ajuste, recurre a un especialista.</td></tr>
+                            <tr><td>Calor, humo, olor o ruido inusual</td><td>Lubricación insuficiente, obstrucción, fricción o avería.</td><td>Apaga inmediatamente, aléjala de materiales inflamables y no vuelvas a arrancar hasta identificar la causa.</td></tr>
+                            <tr><td>Fuga de combustible o aceite</td><td>Tapa mal cerrada, sello dañado o componente defectuoso.</td><td>No arranques. Aleja el equipo de fuentes de ignición y solicita revisión si cerrar correctamente no resuelve la fuga.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="lista-comprobacion">
+            <div class="guia-numero" aria-hidden="true">10</div>
+            <div>
+                <h2>Lista de comprobación</h2>
+                <div class="listas-check">
+                    <div><h3>Antes de usar</h3><ul class="checklist"><li>Sin daños o piezas flojas visibles</li><li>Mandos y freno comprobados</li><li>Cadena y espada bien montadas</li><li>Tensión revisada en frío</li><li>Lubricación disponible</li><li>Tapas cerradas y sin fugas</li><li>Área de trabajo despejada</li><li>Equipo de protección listo</li></ul></div>
+                    <div><h3>Después de usar</h3><ul class="checklist"><li>Equipo apagado, seguro y frío</li><li>Virutas, polvo y resina retirados</li><li>Cubierta del piñón limpia</li><li>Ranura y paso de aceite revisados</li><li>Entradas de refrigeración libres</li><li>Cadena y espada inspeccionadas</li><li>Fugas o daños descartados</li><li>Equipo guardado correctamente</li></ul></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="preguntas">
+            <div class="guia-numero" aria-hidden="true">11</div>
+            <div>
+                <h2>Preguntas frecuentes</h2>
+                <div class="preguntas-guia">
+                    <details><summary>¿Cada cuánto debo dar mantenimiento?</summary><p>La inspección y limpieza básica se realizan antes y después del uso. Los demás trabajos e intervalos dependen del modelo, la intensidad de trabajo y las condiciones ambientales; consulta su manual.</p></details>
+                    <details><summary>¿Puedo lavar la motosierra con agua a presión?</summary><p>No es una recomendación general segura. Retira residuos con los métodos y productos aprobados en el manual para evitar introducir humedad o suciedad en componentes sensibles.</p></details>
+                    <details><summary>¿Cómo sé si la tensión de la cadena es correcta?</summary><p>Debe verificarse con el equipo apagado y frío siguiendo el procedimiento exacto del modelo. Si no puedes moverla como describe el manual o se separa excesivamente de la espada, no trabajes hasta corregirla.</p></details>
+                    <details><summary>¿Qué aceite o combustible debo utilizar?</summary><p>Usa únicamente los productos y, en equipos a gasolina, la mezcla que indique el manual de tu motosierra. Esta guía no proporciona una proporción universal porque puede depender del motor y del producto utilizado.</p></details>
+                    <details><summary>¿Cuándo debo acudir a servicio técnico?</summary><p>Ante fallos del freno, fugas persistentes, daños en cadena o espada, sobrecalentamiento, humo, ruidos inusuales, fallas eléctricas o problemas que continúan después del mantenimiento básico autorizado.</p></details>
+                </div>
+            </div>
+        </section>
+
+        <section class="guia-bloque" id="fuentes">
+            <div class="guia-numero" aria-hidden="true">12</div>
+            <div>
+                <h2>Fuente oficial y manual de tu modelo</h2>
+                <p>Esta guía resume y explica recomendaciones generales basadas en documentación de STIHL México. Para datos de tu equipo —procedimientos, consumibles, intervalos, cadena, espada y herramientas— localiza el manual específico por modelo.</p>
+                <div class="guia-enlaces-oficiales">
+                    <a href="https://www.stihl.com.mx/es/asesor-de-productos-proyectos/mantenimiento-de-maquinas/consejos-motosierras/mantenimiento-motosierras" target="_blank" rel="noopener noreferrer"><strong>Fuente oficial:</strong> mantenimiento de motosierras STIHL México <span aria-hidden="true">↗</span></a>
+                    <a href="https://www.stihl.com.mx/es/informacion-y-servicios/manuales-instrucciones" target="_blank" rel="noopener noreferrer"><strong>Manuales oficiales:</strong> busca las instrucciones de tu modelo <span aria-hidden="true">↗</span></a>
+                    <a href="https://www.stihl.com.mx/es/tiendas" target="_blank" rel="noopener noreferrer"><strong>Servicio especializado:</strong> encuentra un distribuidor STIHL <span aria-hidden="true">↗</span></a>
+                </div>
+            </div>
+        </section>
+
+        <div class="guia-acciones guia-acciones-finales">
+            <a class="boton-guia boton-guia-principal" href="categorias/motosierras.html">Ver productos relacionados</a>
+            <a class="boton-guia boton-guia-secundario" href="categorias/motosierras.html#guias-motosierras-titulo">Regresar a Consejos y guías</a>
+        </div>
+    </article>
+</main>
+
+<footer class="site-footer guia-footer">
+    <p>Casa Agrícola y Forestal · Equipos y asesoría para el campo, el bosque y el jardín.</p>
+</footer>
+</body>
+</html>
