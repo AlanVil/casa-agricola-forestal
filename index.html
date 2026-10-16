@@ -111,6 +111,7 @@
 <p id="sinResultados" style="display: none;">
     🔎 No encontramos productos con esa búsqueda.
 </p>
+<div id="resultadosBusqueda" class="resultados-busqueda" aria-live="polite" hidden></div>
 <div class="menu-categorias">
     <a href="categorias/motosierras.html">🪚 Motosierras</a>
     <a href="categorias/desbrozadoras.html">🌿 Desbrozadoras</a>
@@ -178,51 +179,6 @@
 
 <div id="resultado-comparacion"></div>
 </div>
-    <div class="categorias">
-
-        <div class="categoria categoria-contenido" id="motosierras">
-    <h3>🪚 Motosierras</h3>
-<div class="lista-productos" data-categoria-productos="motosierras"></div>
-</div>
-
-        <div class="categoria categoria-contenido" id="desbrozadoras">
-            <h3>🌿 Desbrozadoras</h3>
-            <p>Equipos para limpieza de terrenos y parcelas.</p>
-            <div class="lista-productos" data-categoria-productos="desbrozadoras"></div>
-        </div>
-<div class="categoria categoria-contenido" id="maquinaria">
-
-    <h3>🚜 Maquinaria agrícola</h3>
-
-    <div class="lista-productos" data-categoria-productos="maquinaria"></div>
-
-</div>
-        <div class="categoria categoria-contenido" id="herramientas">
-            <h3>🪓 Herramientas</h3>
-            <p>Hachas, machetes y herramientas para el campo.</p>
-            <div class="lista-productos" data-categoria-productos="herramientas"></div>
-        </div>
-
-        <div class="categoria categoria-contenido" id="refacciones">
-            <h3>🔧 Refacciones</h3>
-            <p>Cadenas, espadas, aceites y refacciones.</p>
-            <div class="lista-productos" data-categoria-productos="refacciones"></div>
-        </div>
-
-        <div class="categoria categoria-contenido" id="limpieza">
-            <h3>🧹 Limpieza y jardín</h3>
-            <p>Equipos para limpieza, mantenimiento de áreas verdes y jardín.</p>
-            <div class="lista-productos" data-categoria-productos="limpieza"></div>
-        </div>
-
-        <div class="categoria categoria-contenido" id="motores-bombeo">
-            <h3>⚙️ Motores y bombeo</h3>
-            <p>Motores, motobombas, generadores y equipos motorizados.</p>
-            <div class="lista-productos" data-categoria-productos="motores-bombeo"></div>
-        </div>
-
-    </div>
-
 </section>
 <section id="sucursales" class="sucursales">
 
@@ -400,76 +356,26 @@
 <script src="assets/js/comparador.js"></script>
 <script>
 // El carrito compartido se carga desde assets/js/carrito.js.
-function mostrarCategoria(idCategoria) {
-    const categorias = document.querySelectorAll('.categoria-contenido');
-    const seleccionada = document.getElementById(idCategoria);
-    const estabaAbierta = seleccionada && seleccionada.style.display === 'block';
-    const botones = document.querySelectorAll('.menu-categorias a');
-
-    document.getElementById('resultado-comparacion').replaceChildren();
-const panelComparador = document.getElementById('panel-comparador');
-if (panelComparador) {
-    panelComparador.style.display = 'none';
-}
-    categorias.forEach(function(categoria) {
-        categoria.style.display = 'none';
-    });
-    botones.forEach(function(boton) {
-        boton.classList.remove('activo');
-    });
-
-    if (seleccionada && !estabaAbierta) {
-        seleccionada.style.display = 'block';
-        const botonActivo = document.querySelector(
-            `.menu-categorias a[href$="/${idCategoria}.html"]`
-        );
-        if (botonActivo) {
-            botonActivo.classList.add('activo');
-        }
-    }
-}
-const buscador = document.getElementById('buscarProducto');
-
-buscador.addEventListener('input', function() {
-
-    const texto = buscador.value.toLowerCase().trim();
-    const categorias = document.querySelectorAll('.categoria-contenido');
-    const productos = document.querySelectorAll('.producto');
-
-    // Si el buscador está vacío, volvemos a Motosierras
-    if (texto === '') {
-        productos.forEach(function(producto) {
-            producto.style.display = '';
-        });
-
-        categorias.forEach(function(categoria) {
-            categoria.style.display = categoria.id === 'motosierras' ? 'block' : 'none';
-        });
-        document.querySelectorAll('.menu-categorias a').forEach(function(boton) {
-            boton.classList.toggle('activo', boton.getAttribute('href').endsWith('/motosierras.html'));
-        });
-        return;
-    }
-
-    // Mostramos las categorías mientras buscamos
-    categorias.forEach(function(categoria) {
-    categoria.style.display = 'block';
-    });
-
-    productos.forEach(function(producto) {
-
-        const contenido = producto.textContent.toLowerCase();
-
-        if (contenido.includes(texto)) {
-            producto.style.display = '';
-        } else {
-            producto.style.display = 'none';
-        }
-
-    });
-
+const rutasCategorias = Object.freeze({
+    motosierras: "categorias/motosierras.html",
+    desbrozadoras: "categorias/desbrozadoras.html",
+    maquinaria: "categorias/maquinaria.html",
+    herramientas: "categorias/herramientas.html",
+    refacciones: "categorias/refacciones.html",
+    limpieza: "categorias/limpieza.html",
+    "motores-bombeo": "categorias/motores-bombeo.html"
 });
-mostrarCategoria('motosierras');
+
+const nombresCategorias = Object.freeze({
+    motosierras: "Motosierras",
+    desbrozadoras: "Desbrozadoras",
+    maquinaria: "Maquinaria agrícola",
+    herramientas: "Herramientas",
+    refacciones: "Refacciones",
+    limpieza: "Limpieza y jardín",
+    "motores-bombeo": "Motores y bombeo"
+});
+
 function abrirBuscador() {
     const panel = document.getElementById("panel-buscador");
     const buscador = document.getElementById("buscar-producto");
@@ -489,34 +395,43 @@ function sincronizarBusquedaFlotante() {
     buscadorPrincipal.dispatchEvent(new Event("input", { bubbles: true }));
 }
 function buscarProductos() {
-    const texto = document
-        .getElementById("buscarProducto")
-        .value
-        .toLowerCase()
-        .trim();
-const productos = document.querySelectorAll(".producto");
+    const texto = document.getElementById("buscarProducto").value.toLowerCase().trim();
+    const resultados = document.getElementById("resultadosBusqueda");
+    const sinResultados = document.getElementById("sinResultados");
     const zonaComparador = document.getElementById("zona-comparador");
-    if (texto !== "") {
-    zonaComparador.style.display = "none";
-} else {
-    zonaComparador.style.display = "";
-}
+    resultados.replaceChildren();
+    resultados.hidden = true;
+    sinResultados.style.display = "none";
+    zonaComparador.style.display = texto ? "none" : "";
 
-if (texto !== "") {
-    zonaComparador.style.display = "none";
-} else {
-    zonaComparador.style.display = "";
-}
+    if (!texto) return;
 
-    productos.forEach(function(producto) {
-        const contenido = producto.textContent.toLowerCase();
-
-        if (contenido.includes(texto)) {
-            producto.style.display = "";
-        } else {
-            producto.style.display = "none";
-        }
+    const coincidencias = (window.PRODUCTOS || []).filter(function (producto) {
+        return `${producto.nombre} ${producto.descripcion} ${nombresCategorias[producto.categoria] || ""}`
+            .toLowerCase()
+            .includes(texto);
     });
+
+    if (!coincidencias.length) {
+        sinResultados.style.display = "block";
+        return;
+    }
+
+    const fragmento = document.createDocumentFragment();
+    coincidencias.forEach(function (producto) {
+        const enlace = document.createElement("a");
+        enlace.className = "resultado-busqueda";
+        enlace.href = `${rutasCategorias[producto.categoria]}#${producto.id}`;
+
+        const nombre = document.createElement("strong");
+        nombre.textContent = producto.nombre;
+        const categoria = document.createElement("span");
+        categoria.textContent = nombresCategorias[producto.categoria];
+        enlace.append(nombre, categoria);
+        fragmento.appendChild(enlace);
+    });
+    resultados.appendChild(fragmento);
+    resultados.hidden = false;
 }
 </script>
 

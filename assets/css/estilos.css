@@ -485,6 +485,45 @@ rgba(0,0,0,.45)
 .buscador-productos input::placeholder {
     color: #777;
 }
+
+.resultados-busqueda {
+    max-width: 900px;
+    margin: 0 auto 28px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 10px;
+}
+
+.resultados-busqueda[hidden] {
+    display: none;
+}
+
+.resultado-busqueda {
+    min-height: 58px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    border: 1px solid #415143;
+    border-radius: 10px;
+    background: #17231B;
+    color: #F3F0E8;
+    text-decoration: none;
+    transition: border-color 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+.resultado-busqueda span {
+    color: #C6A15B;
+    font-size: 13px;
+}
+
+.resultado-busqueda:hover,
+.resultado-busqueda:focus-visible {
+    border-color: #C6A15B;
+    background: #1f3024;
+    transform: translateY(-2px);
+}
 .categorias {
     display: grid;
     grid-template-columns: 1fr;
