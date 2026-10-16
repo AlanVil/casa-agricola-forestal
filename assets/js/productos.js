@@ -1434,6 +1434,31 @@ window.PRODUCTOS = Object.freeze([
     "whatsappRel": "noopener"
   },
   {
+    "id": "stihl-bt-230",
+    "categoria": "maquinaria",
+    "orden": 27,
+    "nombre": "STIHL BT 230",
+    "descripcion": "Ahoyadora STIHL para perforaciones en suelo • Código STIHL UB01 011 2100 • No incluye barrena",
+    "imagenes": [
+      {
+        "src": "STIHL-Vertederas-BT131-barrena elicoidal.png",
+        "alt": "Ahoyadora STIHL BT 230 en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$5,684.00 MXN",
+    "carrito": {
+      "nombre": "STIHL BT 230",
+      "precio": 5684
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20ahoyadora%20STIHL%20BT%20230%20%28c%C3%B3digo%20UB01%20011%202100%29.%20No%20incluye%20barrena.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
     "id": "herramientas-agricolas-surtido",
     "categoria": "herramientas",
     "orden": 1,
@@ -2142,6 +2167,31 @@ window.PRODUCTOS = Object.freeze([
     "pendiente": true,
     "estadoTexto": "Información pendiente de confirmar",
     "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20Motores%20%E2%80%94%20surtido%20en%20exhibici%C3%B3n",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-wp-230",
+    "categoria": "motores-bombeo",
+    "orden": 13,
+    "nombre": "STIHL WP 230",
+    "descripcion": "Motobomba portátil STIHL para traslado de agua • Código STIHL VB02 011 2000 • No incluye mangueras de carga ni de descarga",
+    "imagenes": [
+      {
+        "src": "STIHL-WP230.png",
+        "alt": "Motobomba STIHL WP 230 en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$4,450.00 MXN",
+    "carrito": {
+      "nombre": "STIHL WP 230",
+      "precio": 4450
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motobomba%20STIHL%20WP%20230%20%28c%C3%B3digo%20VB02%20011%202000%29.%20No%20incluye%20mangueras%20de%20carga%20ni%20de%20descarga.",
     "whatsappTarget": "_blank",
     "whatsappRel": "noopener"
   }
