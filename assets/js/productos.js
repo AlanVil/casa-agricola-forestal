@@ -1853,6 +1853,56 @@ window.PRODUCTOS = Object.freeze([
     "whatsappRel": "noopener"
   },
   {
+    "id": "stihl-br-420",
+    "categoria": "limpieza",
+    "orden": 10.1,
+    "nombre": "STIHL BR 420",
+    "descripcion": "Sopladora de mochila STIHL de 56.5 cm³ • Fuerza de soplado 19 N • Caudal de aire 790 m³/h • Código STIHL 4203 011 1653",
+    "imagenes": [
+      {
+        "src": "STIHL-BR600-BR420.png",
+        "alt": "Sopladoras STIHL BR 600 y BR 420; modelo BR 420 a la derecha",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$12,180.00 MXN",
+    "carrito": {
+      "nombre": "STIHL BR 420",
+      "precio": 12180
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20sopladora%20STIHL%20BR%20420%20(c%C3%B3digo%204203%20011%201653)%2C%20con%20precio%20de%20lista%20de%20%2412%2C180.00%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-br-600",
+    "categoria": "limpieza",
+    "orden": 10.2,
+    "nombre": "STIHL BR 600",
+    "descripcion": "Sopladora de mochila STIHL de 64.8 cm³ • Fuerza de soplado 32 N • Caudal de aire 1,150 m³/h • Código STIHL 4282 011 1629",
+    "imagenes": [
+      {
+        "src": "STIHL-BR600-BR420.png",
+        "alt": "Sopladoras STIHL BR 600 y BR 420; modelo BR 600 a la izquierda",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$16,280.60 MXN",
+    "carrito": {
+      "nombre": "STIHL BR 600",
+      "precio": 16280.6
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20sopladora%20STIHL%20BR%20600%20(c%C3%B3digo%204282%20011%201629)%2C%20con%20precio%20de%20lista%20de%20%2416%2C280.60%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
     "id": "kawashima-ii-pro-ak-35gx",
     "categoria": "limpieza",
     "orden": 11,
