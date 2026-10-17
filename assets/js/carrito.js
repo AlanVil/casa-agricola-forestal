@@ -1,5 +1,23 @@
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
+const SUCURSALES_RECOGIDA = Object.freeze({
+    "san-felipe": Object.freeze({
+        nombre: "Sucursal San Felipe / Zitácuaro",
+        direccion: "Carretera Toluca–Morelia km 105 SN, CP 61529, Zitácuaro, Michoacán"
+    }),
+    "ciudad-hidalgo": Object.freeze({
+        nombre: "Sucursal Ciudad Hidalgo",
+        direccion: "Av. Morelos Oriente N342, Col. El Paraíso, CP 61183, Ciudad Hidalgo, Michoacán"
+    })
+});
+
+function formatearMonto(monto) {
+    return monto.toLocaleString("es-MX", {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+    });
+}
+
 function buscarProductoCatalogo(productoId, nombre) {
     return (window.PRODUCTOS || []).find(producto => producto.id === productoId)
         || (window.PRODUCTOS || []).find(producto => producto.carrito?.nombre === nombre)
@@ -64,7 +82,7 @@ function actualizarCarrito(ahora) {
         <strong>${producto.nombre}</strong>
 
         <p>
-            $${producto.precio.toLocaleString()} MXN
+            $${formatearMonto(producto.precio)} MXN
         </p>
 
         <div class="cantidad-carrito">
@@ -96,7 +114,13 @@ function actualizarCarrito(ahora) {
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
     contador.textContent = cantidadTotal;
-    totalElemento.textContent = total.toLocaleString();
+    totalElemento.textContent = formatearMonto(total);
+
+    const botonPedido = document.querySelector(".boton-pagar");
+    if (botonPedido) {
+        botonPedido.disabled = carrito.length === 0;
+        botonPedido.setAttribute("aria-disabled", String(carrito.length === 0));
+    }
 }
 function aumentarCantidad(indice) {
     carrito[indice].cantidad++;
@@ -126,16 +150,25 @@ function cerrarCarrito() {
     document.getElementById("ventana-carrito").style.display = "none";
 }
 
-function generarEnlacePedidoWhatsApp(ahora) {
+function generarEnlacePedidoWhatsApp(sucursalId, ahora) {
+    const sucursal = SUCURSALES_RECOGIDA[sucursalId];
+    if (!sucursal || carrito.length === 0) return null;
+
     actualizarCarrito(ahora);
     const total = carrito.reduce((suma, producto) => suma + producto.precio * producto.cantidad, 0);
     const detalle = carrito.map(producto =>
-        `- ${producto.nombre} x${producto.cantidad}: $${(producto.precio * producto.cantidad).toLocaleString("es-MX")} MXN`
+        `- ${producto.nombre} x${producto.cantidad}: $${formatearMonto(producto.precio * producto.cantidad)} MXN`
     );
     const mensaje = [
-        "Hola, quiero consultar este pedido:",
+        "Hola, quiero consultar este pedido para recoger en tienda:",
         ...detalle,
-        `Total: $${total.toLocaleString("es-MX")} MXN`
+        `Total estimado: $${formatearMonto(total)} MXN`,
+        "",
+        `Sucursal para recoger: ${sucursal.nombre}`,
+        `Dirección: ${sucursal.direccion}`,
+        "",
+        "El pedido está sujeto a confirmación de disponibilidad y precio final por parte de la tienda.",
+        "El envío de este mensaje no confirma el pedido."
     ].join("\n");
     return `https://wa.me/523461230733?text=${encodeURIComponent(mensaje)}`;
 }
@@ -156,15 +189,60 @@ function abrirCheckout() {
     });
 
     document.getElementById("checkout-total").textContent =
-        total.toLocaleString();
+        formatearMonto(total);
 
     cerrarCarrito();
 
     document.getElementById("checkout").style.display = "block";
+
+    const errorSucursal = document.getElementById("error-sucursal");
+    if (errorSucursal) errorSucursal.hidden = true;
+    const sucursalSeleccionada = document.querySelector('input[name="sucursal-recogida"]:checked');
+    const primeraSucursal = document.querySelector('input[name="sucursal-recogida"]');
+    (sucursalSeleccionada || primeraSucursal)?.focus();
 }
 
 function cerrarCheckout() {
     document.getElementById("checkout").style.display = "none";
+}
+
+function volverAlCarrito() {
+    cerrarCheckout();
+    abrirCarrito();
+}
+
+function enviarPedidoWhatsApp() {
+    actualizarCarrito();
+
+    if (carrito.length === 0) {
+        cerrarCheckout();
+        abrirCarrito();
+        alert("Tu carrito está vacío. Agrega al menos un producto antes de preparar el pedido.");
+        return;
+    }
+
+    const totalVigente = carrito.reduce(
+        (suma, producto) => suma + producto.precio * producto.cantidad,
+        0
+    );
+    const totalCheckout = document.getElementById("checkout-total");
+    if (totalCheckout) totalCheckout.textContent = formatearMonto(totalVigente);
+
+    const sucursalSeleccionada = document.querySelector('input[name="sucursal-recogida"]:checked');
+    const errorSucursal = document.getElementById("error-sucursal");
+
+    if (!sucursalSeleccionada) {
+        if (errorSucursal) errorSucursal.hidden = false;
+        document.querySelector('input[name="sucursal-recogida"]')?.focus();
+        return;
+    }
+
+    if (errorSucursal) errorSucursal.hidden = true;
+    const enlace = generarEnlacePedidoWhatsApp(sucursalSeleccionada.value);
+    if (!enlace) return;
+
+    const ventanaWhatsApp = window.open(enlace, "_blank", "noopener,noreferrer");
+    if (ventanaWhatsApp) ventanaWhatsApp.opener = null;
 }
 
 function continuarPago() {

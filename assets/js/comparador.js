@@ -92,20 +92,20 @@ const datosMotosierras = window.DATOS_MOTOSIERRAS = {
     ms382: {
     imagen: "Ms382.png",
     nombre: "MS 382",
-    potencia: "5.3 HP",
+    potencia: "5.2 HP",
     cilindrada: "72.2 cm³",
     peso: "6.2 kg",
-    espada: '20-25"',
+    espada: '25-30"',
     precio: "$14,778"
 },
 
     ms462: {
     imagen: "Ms462.png",
     nombre: "MS 462 C-M",
-    potencia: "6.0 HP",
+    potencia: "5.9 HP",
     cilindrada: "72.2 cm³",
     peso: "6.0 kg",
-    espada: '20-25"',
+    espada: '30"',
     precio: "$23,311"
 },
 

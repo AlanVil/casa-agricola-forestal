@@ -137,7 +137,7 @@
 <h3>⚖️ Comparar motosierras</h3>
 <p>Selecciona dos modelos:</p>
 
-<select id="modelo1">
+<select id="modelo1" aria-label="Primera motosierra para comparar">
     <option value="">Modelo 1</option>
 <option value="ms162">STIHL MS 162</option>
 <option value="ms172">STIHL MS 172</option>
@@ -155,7 +155,7 @@
 <option value="ms201tcm">STIHL MS 201 TC-M</option>
 </select>
 
-<select id="modelo2">
+<select id="modelo2" aria-label="Segunda motosierra para comparar">
 <option value="">Modelo 2</option>
 <option value="ms162">STIHL MS 162</option>
 <option value="ms172">STIHL MS 172</option>
@@ -297,9 +297,12 @@
 
         <h3>Total: $<span id="total-carrito">0</span> MXN</h3>
 
-       <button class="boton-pagar" onclick="abrirCheckout()">
-    💳 Proceder al pago
-</button>
+        <button class="boton-pagar" type="button" onclick="abrirCheckout()">
+            Enviar pedido por WhatsApp
+        </button>
+        <button class="boton-secundario-carrito" type="button" onclick="cerrarCarrito()">
+            ← Seguir comprando
+        </button>
     </div>
 </div>
 
@@ -308,42 +311,41 @@
 
     <div class="checkout-contenido">
 
-        <button class="cerrar-carrito" onclick="cerrarCheckout()">✕</button>
+        <button class="cerrar-carrito" type="button" onclick="cerrarCheckout()" aria-label="Cerrar preparación del pedido">✕</button>
 
-        <h2>Finalizar compra</h2>
-        <p class="checkout-texto">
-            Ingresa los datos para preparar tu pedido.
-        </p>
+        <h2>Enviar pedido por WhatsApp</h2>
+        <p class="checkout-texto">Selecciona la sucursal donde deseas recogerlo.</p>
 
-        <label>Nombre completo</label>
-        <input type="text" id="cliente-nombre"
-               placeholder="Nombre y apellidos">
-
-        <label>Teléfono</label>
-        <input type="tel" id="cliente-telefono"
-               placeholder="10 dígitos">
-
-        <label>Correo electrónico</label>
-        <input type="email" id="cliente-email"
-               placeholder="correo@ejemplo.com">
+        <fieldset class="selector-sucursal">
+            <legend>Sucursal de recogida</legend>
+            <label class="opcion-sucursal">
+                <input type="radio" name="sucursal-recogida" value="san-felipe">
+                <span><strong>Sucursal San Felipe / Zitácuaro</strong><small>Carretera Toluca–Morelia km 105 SN, CP 61529, Zitácuaro, Michoacán.</small></span>
+            </label>
+            <label class="opcion-sucursal">
+                <input type="radio" name="sucursal-recogida" value="ciudad-hidalgo">
+                <span><strong>Sucursal Ciudad Hidalgo</strong><small>Av. Morelos Oriente N342, Col. El Paraíso, CP 61183, Ciudad Hidalgo, Michoacán.</small></span>
+            </label>
+        </fieldset>
+        <p id="error-sucursal" class="mensaje-error-sucursal" role="alert" hidden>Selecciona una sucursal para continuar.</p>
 
         <div class="recoger-tienda">
-    <strong>🏪 Entrega: Recoger en tienda</strong>
-    <p>Tu pedido estará disponible para recoger directamente en nuestra tienda.</p>
-</div>
-
-        <div class="checkout-total">
-            Total a pagar:
-            <strong>$<span id="checkout-total">0</span> MXN</strong>
+            <strong>🏪 Modalidad: Recoger en tienda</strong>
+            <p>La tienda confirmará por WhatsApp la disponibilidad y el precio final.</p>
         </div>
 
-        <button class="boton-tarjeta" onclick="continuarPago()">
-            💳 Continuar al pago con tarjeta
-        </button>
+        <div class="checkout-total">Total estimado: <strong>$<span id="checkout-total">0</span> MXN</strong></div>
 
-        <p class="aviso-pago">
-            El pago con tarjeta todavía no está habilitado.
-        </p>
+        <button class="boton-whatsapp-pedido" type="button" onclick="enviarPedidoWhatsApp()">Enviar pedido por WhatsApp</button>
+        <button class="boton-volver-carrito" type="button" onclick="volverAlCarrito()">← Volver al carrito</button>
+        <p class="aviso-pedido">Abrir WhatsApp no confirma el pedido. No se realizará ningún pago en línea.</p>
+
+        <div class="pago-en-linea-inactivo" hidden aria-hidden="true">
+            <input type="text" id="cliente-nombre" disabled>
+            <input type="tel" id="cliente-telefono" disabled>
+            <input type="email" id="cliente-email" disabled>
+            <button type="button" onclick="continuarPago()" disabled>Pago con tarjeta no disponible</button>
+        </div>
 
     </div>
 

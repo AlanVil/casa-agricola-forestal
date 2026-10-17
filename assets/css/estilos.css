@@ -813,6 +813,24 @@ html {
     font-weight: bold;
     margin-top: 15px;
 }
+
+.boton-pagar:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.boton-secundario-carrito,
+.boton-volver-carrito {
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border: 1px solid #C6A15B;
+    border-radius: 8px;
+    background: transparent;
+    color: inherit;
+    font-size: 16px;
+    font-weight: bold;
+}
 .item-carrito {
     padding: 12px 0;
     border-bottom: 1px solid #ddd;
@@ -921,6 +939,84 @@ html {
     font-size: 13px;
     margin-top: 10px;
     color: #666;
+}
+
+.selector-sucursal {
+    display: grid;
+    gap: 10px;
+    margin: 18px 0 0;
+    padding: 0;
+    border: 0;
+}
+
+.selector-sucursal legend {
+    margin-bottom: 8px;
+    color: #C6A15B;
+    font-weight: bold;
+}
+
+.checkout-contenido .opcion-sucursal {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 0;
+    padding: 14px;
+    border: 1px solid #415143;
+    border-radius: 10px;
+    background: #17231B;
+    cursor: pointer;
+}
+
+.checkout-contenido .opcion-sucursal:has(input:checked) {
+    border-color: #C6A15B;
+    box-shadow: 0 0 0 2px rgba(198, 161, 91, 0.2);
+}
+
+.checkout-contenido .opcion-sucursal input {
+    width: 20px;
+    height: 20px;
+    margin: 2px 0 0;
+    flex: 0 0 auto;
+    accent-color: #C6A15B;
+}
+
+.opcion-sucursal span,
+.opcion-sucursal strong,
+.opcion-sucursal small {
+    display: block;
+}
+
+.opcion-sucursal small {
+    margin-top: 5px;
+    color: #D3D0C7;
+    font-weight: normal;
+    line-height: 1.45;
+}
+
+.mensaje-error-sucursal {
+    margin-top: 10px;
+    color: #ffb4a8;
+    font-weight: bold;
+}
+
+.boton-whatsapp-pedido {
+    width: 100%;
+    margin-top: 18px;
+    padding: 14px;
+    border: 0;
+    border-radius: 8px;
+    background: #1f7a43;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.aviso-pedido {
+    margin-top: 12px;
+    color: #D3D0C7;
+    font-size: 13px;
+    line-height: 1.45;
+    text-align: center;
 }
 .recoger-tienda {
     margin-top: 20px;

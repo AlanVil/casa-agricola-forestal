@@ -119,28 +119,24 @@
         <h2>🛒 Mi carrito</h2>
         <div id="productos-carrito"><p>Tu carrito está vacío.</p></div>
         <h3>Total: $<span id="total-carrito">0</span> MXN</h3>
-        <button class="boton-pagar" type="button" onclick="abrirCheckout()">💳 Proceder al pago</button>
+        <button class="boton-pagar" type="button" onclick="abrirCheckout()">Enviar pedido por WhatsApp</button>
+        <button class="boton-secundario-carrito" type="button" onclick="cerrarCarrito()">← Seguir comprando</button>
     </div>
 </div>
 
 <div id="checkout" class="ventana-checkout">
     <div class="checkout-contenido">
-        <button class="cerrar-carrito" type="button" onclick="cerrarCheckout()" aria-label="Cerrar pago">✕</button>
-        <h2>Finalizar compra</h2>
-        <p class="checkout-texto">Ingresa los datos para preparar tu pedido.</p>
-        <label for="cliente-nombre">Nombre completo</label>
-        <input type="text" id="cliente-nombre" placeholder="Nombre y apellidos">
-        <label for="cliente-telefono">Teléfono</label>
-        <input type="tel" id="cliente-telefono" placeholder="10 dígitos">
-        <label for="cliente-email">Correo electrónico</label>
-        <input type="email" id="cliente-email" placeholder="correo@ejemplo.com">
-        <div class="recoger-tienda">
-            <strong>🏪 Entrega: Recoger en tienda</strong>
-            <p>Tu pedido estará disponible para recoger directamente en nuestra tienda.</p>
-        </div>
-        <div class="checkout-total">Total a pagar: <strong>$<span id="checkout-total">0</span> MXN</strong></div>
-        <button class="boton-tarjeta" type="button" onclick="continuarPago()">💳 Continuar al pago con tarjeta</button>
-        <p class="aviso-pago">El pago con tarjeta todavía no está habilitado.</p>
+        <button class="cerrar-carrito" type="button" onclick="cerrarCheckout()" aria-label="Cerrar preparación del pedido">✕</button>
+        <h2>Enviar pedido por WhatsApp</h2>
+        <p class="checkout-texto">Selecciona la sucursal donde deseas recogerlo.</p>
+        <fieldset class="selector-sucursal"><legend>Sucursal de recogida</legend><label class="opcion-sucursal"><input type="radio" name="sucursal-recogida" value="san-felipe"><span><strong>Sucursal San Felipe / Zitácuaro</strong><small>Carretera Toluca–Morelia km 105 SN, CP 61529, Zitácuaro, Michoacán.</small></span></label><label class="opcion-sucursal"><input type="radio" name="sucursal-recogida" value="ciudad-hidalgo"><span><strong>Sucursal Ciudad Hidalgo</strong><small>Av. Morelos Oriente N342, Col. El Paraíso, CP 61183, Ciudad Hidalgo, Michoacán.</small></span></label></fieldset>
+        <p id="error-sucursal" class="mensaje-error-sucursal" role="alert" hidden>Selecciona una sucursal para continuar.</p>
+        <div class="recoger-tienda"><strong>🏪 Modalidad: Recoger en tienda</strong><p>La tienda confirmará por WhatsApp la disponibilidad y el precio final.</p></div>
+        <div class="checkout-total">Total estimado: <strong>$<span id="checkout-total">0</span> MXN</strong></div>
+        <button class="boton-whatsapp-pedido" type="button" onclick="enviarPedidoWhatsApp()">Enviar pedido por WhatsApp</button>
+        <button class="boton-volver-carrito" type="button" onclick="volverAlCarrito()">← Volver al carrito</button>
+        <p class="aviso-pedido">Abrir WhatsApp no confirma el pedido. No se realizará ningún pago en línea.</p>
+        <div class="pago-en-linea-inactivo" hidden aria-hidden="true"><input type="text" id="cliente-nombre" disabled><input type="tel" id="cliente-telefono" disabled><input type="email" id="cliente-email" disabled><button type="button" onclick="continuarPago()" disabled>Pago con tarjeta no disponible</button></div>
     </div>
 </div>
 
