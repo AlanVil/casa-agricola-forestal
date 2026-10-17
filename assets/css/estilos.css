@@ -1445,8 +1445,8 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
 .lista-productos .producto > img,
 .lista-productos .producto .fotos-producto {
     width: 100%;
-    height: clamp(220px, 29vw, 340px);
-    min-height: clamp(220px, 29vw, 340px);
+    height: clamp(220px, 24vw, 300px);
+    min-height: clamp(220px, 24vw, 300px);
     margin: 0 0 16px;
     border-radius: 12px;
     background: #F3F0E8;
@@ -1455,7 +1455,8 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
 .lista-productos .producto > img {
     max-width: none;
     object-fit: contain;
-    padding: 10px;
+    object-position: center;
+    padding: clamp(16px, 2vw, 24px);
 }
 
 .lista-productos .producto .fotos-producto {
@@ -1463,6 +1464,7 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     grid-auto-flow: column;
     grid-auto-columns: 100%;
     grid-template-columns: none;
+    grid-template-rows: minmax(0, 1fr);
     gap: 0;
     overflow-x: auto;
     overflow-y: hidden;
@@ -1476,10 +1478,16 @@ input::placeholder, .buscador-productos input::placeholder { color: #BEBBAD; }
     grid-column: auto;
     width: 100%;
     min-width: 100%;
+    max-width: none;
     height: 100%;
+    min-height: 0;
+    max-height: 100%;
     margin: 0;
-    padding: 10px;
+    padding: clamp(16px, 2vw, 24px);
+    display: block;
     object-fit: contain;
+    object-position: center;
+    background: #F3F0E8;
     scroll-snap-align: start;
 }
 
@@ -1546,8 +1554,8 @@ border-radius: 14px;
 
     .lista-productos .producto > img,
     .lista-productos .producto .fotos-producto {
-height: clamp(250px, 78vw, 330px);
-min-height: clamp(250px, 78vw, 330px);
+height: clamp(230px, 68vw, 280px);
+min-height: clamp(230px, 68vw, 280px);
 margin-bottom: 14px;
     }
 
