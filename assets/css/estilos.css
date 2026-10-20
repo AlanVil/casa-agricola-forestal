@@ -71,6 +71,30 @@ nav a {
     gap: 9px; font-weight: 700;
 }
 
+.developer-credit {
+    width: min(100%, 420px);
+    margin: 30px auto 0;
+    padding-top: 18px;
+    border-top: 1px solid rgba(198, 161, 91, 0.24);
+    color: #A9ADA9;
+    font-size: clamp(12px, 1.2vw, 14px);
+    line-height: 1.5;
+    text-align: center;
+}
+
+.developer-credit span,
+.developer-credit strong {
+    display: block;
+}
+
+.developer-credit strong {
+    margin-top: 2px;
+    color: #B99A5E;
+    font-size: clamp(14px, 1.4vw, 16px);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
 .contacto-intro {
     max-width: 720px;
     margin: 0 auto 30px;
