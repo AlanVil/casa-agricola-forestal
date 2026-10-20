@@ -2244,5 +2244,230 @@ window.PRODUCTOS = Object.freeze([
     "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motobomba%20STIHL%20WP%20230%20%28c%C3%B3digo%20VB02%20011%202000%29.%20No%20incluye%20mangueras%20de%20carga%20ni%20de%20descarga.",
     "whatsappTarget": "_blank",
     "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-bg-50",
+    "categoria": "limpieza",
+    "orden": 14,
+    "nombre": "STIHL BG 50",
+    "descripcion": "Sopladora de mano STIHL a gasolina • 27.2 cm³ • 0.9 kW / 1 HP • Caudal máximo de aire 700 m³/h • Velocidad máxima del aire 60 m/s • Peso 3.6 kg • Código STIHL 4229 011 1723",
+    "imagenes": [
+      {
+        "src": "STIHL-Motosierras-Exhibicion-01.png",
+        "alt": "Sopladora STIHL BG 50 a la izquierda en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$4,924.20 MXN",
+    "carrito": {
+      "nombre": "STIHL BG 50",
+      "precio": 4924.2
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20sopladora%20STIHL%20BG%2050%20%28c%C3%B3digo%204229%20011%201723%29%2C%20con%20precio%20de%20lista%20de%20%244%2C924.20%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-bg-56",
+    "categoria": "limpieza",
+    "orden": 15,
+    "nombre": "STIHL BG 56",
+    "descripcion": "Sopladora de mano STIHL a gasolina • 27.2 cm³ • 0.7 kW / 1 HP • Caudal máximo de aire 700 m³/h • Velocidad máxima del aire 60 m/s • Peso 4.1 kg • Código STIHL 4241 011 1749",
+    "imagenes": [
+      {
+        "src": "STIHL-Motosierras-Exhibicion-01.png",
+        "alt": "Sopladora STIHL BG 56 a la derecha en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$5,892.08 MXN",
+    "carrito": {
+      "nombre": "STIHL BG 56",
+      "precio": 5892.08
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20sopladora%20STIHL%20BG%2056%20%28c%C3%B3digo%204241%20011%201749%29%2C%20con%20precio%20de%20lista%20de%20%245%2C892.08%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-se-33",
+    "categoria": "limpieza",
+    "orden": 16,
+    "nombre": "STIHL SE 33",
+    "descripcion": "Aspiradora STIHL para trabajo en seco y mojado • Flujo de aire 3,600 L/min • Manguera de aspiración de 2 m • Cable de alimentación de 4 m • Peso 5.5 kg • Código STIHL SE01 012 4410",
+    "imagenes": [
+      {
+        "src": "STIHL-Motosierras-Exhibicion-01.png",
+        "alt": "Aspiradora STIHL SE 33 abajo a la izquierda en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$2,030.00 MXN",
+    "carrito": {
+      "nombre": "STIHL SE 33",
+      "precio": 2030
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20aspiradora%20STIHL%20SE%2033%20%28c%C3%B3digo%20SE01%20012%204410%29%2C%20con%20precio%20de%20lista%20de%20%242%2C030.00%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-re-80-x",
+    "categoria": "limpieza",
+    "orden": 17,
+    "nombre": "STIHL RE 80 X",
+    "descripcion": "Hidrolavadora eléctrica STIHL • Manguera de alta presión de 6 m • Presión 1,450 psi • Caudal 5.1 L/min • Peso con accesorios 8.8 kg • Código STIHL RE02 011 4552",
+    "imagenes": [
+      {
+        "src": "STIHL-Hidrolavadoras-RE90-RE80-RE100-RE110-RE120-RE80X.png",
+        "alt": "Hidrolavadora STIHL RE 80 X arriba a la izquierda en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$2,505.60 MXN",
+    "carrito": {
+      "nombre": "STIHL RE 80 X",
+      "precio": 2505.6
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20hidrolavadora%20STIHL%20RE%2080%20X%20%28c%C3%B3digo%20RE02%20011%204552%29%2C%20con%20precio%20de%20lista%20de%20%242%2C505.60%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-re-90",
+    "categoria": "limpieza",
+    "orden": 18,
+    "nombre": "STIHL RE 90",
+    "descripcion": "Hidrolavadora eléctrica STIHL • Manguera de alta presión de 6 m • Presión 1,450 psi • Caudal 5.5 L/min • Peso con accesorios 8.8 kg • Código STIHL RE02 011 4522",
+    "imagenes": [
+      {
+        "src": "STIHL-Hidrolavadoras-RE90-RE80-RE100-RE110-RE120-RE80X.png",
+        "alt": "Hidrolavadora STIHL RE 90 arriba al centro en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$3,607.60 MXN",
+    "carrito": {
+      "nombre": "STIHL RE 90",
+      "precio": 3607.6
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20hidrolavadora%20STIHL%20RE%2090%20%28c%C3%B3digo%20RE02%20011%204522%29%2C%20con%20precio%20de%20lista%20de%20%243%2C607.60%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-re-110",
+    "categoria": "limpieza",
+    "orden": 19,
+    "nombre": "STIHL RE 110",
+    "descripcion": "Hidrolavadora eléctrica STIHL • Manguera de alta presión de 7 m • Presión 1,885 psi • Caudal 7.3 L/min • Peso con accesorios 17.6 kg • Código STIHL 4950 011 4526",
+    "imagenes": [
+      {
+        "src": "STIHL-Hidrolavadoras-RE90-RE80-RE100-RE110-RE120-RE80X.png",
+        "alt": "Hidrolavadora STIHL RE 110 abajo a la izquierda en exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$8,004.00 MXN",
+    "carrito": {
+      "nombre": "STIHL RE 110",
+      "precio": 8004
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20hidrolavadora%20STIHL%20RE%20110%20%28c%C3%B3digo%204950%20011%204526%29%2C%20con%20precio%20de%20lista%20de%20%248%2C004.00%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-sr-420",
+    "categoria": "limpieza",
+    "orden": 20,
+    "nombre": "STIHL SR 420",
+    "descripcion": "Fumigadora STIHL de mochila para líquidos • Motor de 2 tiempos de 56.5 cm³ y 3.5 HP • Depósito de 13 L • Alcance horizontal 12 m • Caudal de aire 750 m³/h • Peso 11.1 kg sin líquidos ni combustible • Código STIHL 4203 011 2619",
+    "imagenes": [
+      {
+        "src": "STIHL-Atomizadores de mochila a gasolina SR420-SR430.png",
+        "alt": "Fumigadoras STIHL SR 420 en la parte superior de la exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$11,800.00 MXN",
+    "carrito": {
+      "nombre": "STIHL SR 420",
+      "precio": 11800
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20fumigadora%20STIHL%20SR%20420%20%28c%C3%B3digo%204203%20011%202619%29%2C%20con%20precio%20de%20lista%20p%C3%BAblico%20de%20%2411%2C800.00%20MXN.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-sr-450",
+    "categoria": "limpieza",
+    "orden": 21,
+    "nombre": "STIHL SR 450",
+    "descripcion": "Fumigadora STIHL de mochila para líquidos, polvos y granulados • Motor STIHL 2-MIX de 63.3 cm³ y 3.9 HP • Depósito de 14 L • Alcance horizontal 14.5 m • Caudal de aire 920 m³/h • Peso 12.8 kg sin líquidos ni combustible • Código STIHL 4244 011 2641",
+    "imagenes": [
+      {
+        "src": "STIHL-Atomizadores de mochila a gasolina SR420-SR430.png",
+        "alt": "Fumigadoras STIHL SR 450 en la parte inferior de la exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$14,370.00 MXN",
+    "carrito": {
+      "nombre": "STIHL SR 450",
+      "precio": 14370
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20fumigadora%20STIHL%20SR%20450%20%28c%C3%B3digo%204244%20011%202641%29%2C%20con%20precio%20de%20lista%20p%C3%BAblico%20de%20%2414%2C370.00%20MXN.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
+  },
+  {
+    "id": "stihl-wp-600",
+    "categoria": "motores-bombeo",
+    "orden": 14,
+    "nombre": "STIHL WP 600",
+    "descripcion": "Motobomba STIHL a gasolina de 4 tiempos • Motor STIHL EHC 605 de 212 cm³ y 6 HP • Conexión de descarga de 3 pulgadas • Capacidad de salida 1,050 L/min • Altura de bombeo 31 m • Altura máxima de succión 7 m • Peso 29 kg • Código STIHL VB04 011 2000",
+    "imagenes": [
+      {
+        "src": "STIHL-Hisdroaspersora-motobomba portatil-Motobombas WP600-WP900.png",
+        "alt": "Motobomba STIHL WP 600 al centro de la exhibición",
+        "loading": "lazy"
+      }
+    ],
+    "galeria": false,
+    "precioTexto": "$8,150.00 MXN",
+    "carrito": {
+      "nombre": "STIHL WP 600",
+      "precio": 8150
+    },
+    "pendiente": false,
+    "estadoTexto": "",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20motobomba%20STIHL%20WP%20600%20%28c%C3%B3digo%20VB04%20011%202000%29%2C%20con%20precio%20de%20lista%20de%20%248%2C150.00%20MXN%20IVA%20incluido.",
+    "whatsappTarget": "_blank",
+    "whatsappRel": "noopener"
   }
 ]);
