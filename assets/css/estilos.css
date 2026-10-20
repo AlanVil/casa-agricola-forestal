@@ -506,8 +506,62 @@ rgba(0,0,0,.45)
     color: #222;
 }
 
+.limpiar-busqueda {
+    min-height: 36px;
+    padding: 7px 13px;
+    border: 1px solid #9A7A3F;
+    border-radius: 999px;
+    background: #173D24;
+    color: #F3F0E8;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.limpiar-busqueda[hidden] {
+    display: none;
+}
+
+.limpiar-busqueda:hover,
+.limpiar-busqueda:focus-visible {
+    border-color: #C6A15B;
+    background: #C6A15B;
+    color: #111311;
+}
+
+.limpiar-busqueda:focus-visible {
+    outline: 3px solid rgba(198, 161, 91, 0.35);
+    outline-offset: 2px;
+}
+
 .buscador-productos input::placeholder {
     color: #777;
+}
+
+.mensaje-sin-resultados {
+    max-width: 620px;
+    margin: 0 auto 24px;
+    padding: 15px 18px;
+    border: 1px solid rgba(198, 161, 91, 0.45);
+    border-radius: 12px;
+    background: #17231B;
+    color: #E6E2D8;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.16);
+}
+
+@media (max-width: 600px) {
+    .buscador-productos {
+        padding-right: 10px;
+    }
+
+    .limpiar-busqueda {
+        min-height: 40px;
+        padding-inline: 12px;
+    }
 }
 
 .resultados-busqueda {
