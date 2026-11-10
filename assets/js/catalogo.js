@@ -58,6 +58,13 @@
         }
         tarjeta.appendChild(precio);
 
+        const detalles = document.createElement("a");
+        detalles.href = `producto.html?id=${encodeURIComponent(producto.id)}`;
+        detalles.className = "ver-detalles";
+        detalles.textContent = "Ver detalles";
+        detalles.setAttribute("aria-label", `Ver detalles de ${producto.nombre}`);
+        tarjeta.appendChild(detalles);
+
         if (producto.carrito) {
             const boton = document.createElement("button");
             boton.type = "button";
