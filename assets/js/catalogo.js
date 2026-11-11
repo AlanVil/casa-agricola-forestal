@@ -6,7 +6,9 @@
         const imagen = document.createElement("img");
         imagen.src = datos.src;
         imagen.alt = datos.alt;
-        if (datos.loading) imagen.loading = datos.loading;
+        imagen.loading = datos.loading || "lazy";
+        imagen.decoding = "async";
+        imagen.fetchPriority = datos.loading === "eager" ? "high" : "low";
         return imagen;
     }
 
@@ -77,15 +79,19 @@
         }
 
         if (producto.whatsapp) {
-            const enlace = document.createElement("a");
-            enlace.href = window.Promociones
-                ? window.Promociones.crearWhatsApp(producto, datosPrecio)
-                : producto.whatsapp;
-            enlace.className = "comprar";
-            enlace.textContent = "Consultar por WhatsApp";
-            if (producto.whatsappTarget) enlace.target = producto.whatsappTarget;
-            if (producto.whatsappRel) enlace.rel = producto.whatsappRel;
-            tarjeta.appendChild(enlace);
+            const consulta = document.createElement("button");
+            consulta.type = "button";
+            consulta.className = "comprar consulta-sucursal";
+            consulta.textContent = "Consultar por WhatsApp";
+            consulta.setAttribute("aria-label", `Elegir sucursal para consultar por ${producto.nombre}`);
+            consulta.addEventListener("click", function () {
+                if (!window.Contactos) return;
+                window.Contactos.abrirSelector({
+                    titulo: `Consultar ${producto.nombre}`,
+                    mensaje: window.Contactos.mensajeProducto(producto, datosPrecio)
+                });
+            });
+            tarjeta.appendChild(consulta);
         }
 
         return tarjeta;

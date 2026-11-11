@@ -3,6 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Casa Agrícola y Forestal: maquinaria, herramientas y equipos para el campo, jardín y trabajo forestal en Michoacán.">
+    <link rel="canonical" href="https://alanvil.github.io/casa-agricola-forestal/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="es_MX">
+    <meta property="og:title" content="Casa Agrícola y Forestal">
+    <meta property="og:description" content="Maquinaria, herramientas y equipos para el campo, jardín y trabajo forestal.">
+    <meta property="og:url" content="https://alanvil.github.io/casa-agricola-forestal/">
+    <meta property="og:image" content="https://alanvil.github.io/casa-agricola-forestal/Logo.png">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Casa Agrícola y Forestal">
+    <meta name="twitter:description" content="Maquinaria, herramientas y equipos para el campo, jardín y trabajo forestal.">
+    <meta name="twitter:image" content="https://alanvil.github.io/casa-agricola-forestal/Logo.png">
 
     <title>Casa Agrícola y Forestal</title>
 
@@ -52,11 +64,9 @@
         <a href="#productos" class="boton">
             Ver productos
         </a>
-<a href="https://wa.me/523461230733"
-   class="boton whatsapp"
-   target="_blank">
-    WhatsApp
-</a>
+<button class="boton whatsapp contacto-general" type="button">
+    WhatsApp por sucursal
+</button>
 
     </div>
 
@@ -104,6 +114,7 @@
     type="text"
     id="buscarProducto"
     placeholder="Buscar producto..."
+    aria-label="Buscar producto"
     oninput="buscarProductos()"
 >
 
@@ -121,64 +132,15 @@
     <a href="categorias/limpieza.html">🧹 Limpieza y jardín</a>
     <a href="categorias/motores-bombeo.html">⚙️ Motores y bombeo</a>
 </div>
-<div class="comparador-motosierras" id="zona-comparador">
-    <h2>🪚 ¿Cuál motosierra elegir?</h2>
-
-    <p>
-        Compara nuestros modelos y encuentra la motosierra
-        más adecuada para tu trabajo.
-    </p>
-
-    <button class="boton-comparar" onclick="abrirComparador()">
-        ⚖️ Comparar motosierras
-    </button>
-</div>
-<div id="panel-comparador" class="panel-comparador">
-<h3>⚖️ Comparar motosierras</h3>
-<p>Selecciona dos modelos:</p>
-
-<select id="modelo1" aria-label="Primera motosierra para comparar">
-    <option value="">Modelo 1</option>
-<option value="ms162">STIHL MS 162</option>
-<option value="ms172">STIHL MS 172</option>
-<option value="ms182">STIHL MS 182 C-BE</option>
-<option value="ms212">STIHL MS 212</option>
-<option value="ms250">STIHL MS 250</option>
-<option value="ms260">STIHL MS 260</option>
-<option value="ms310">STIHL MS 310</option>
-<option value="ms363">STIHL MS 363</option>
-<option value="ms382">STIHL MS 382</option>
-<option value="ms462">STIHL MS 462 C-M</option>
-<option value="ms651">STIHL MS 651</option>
-<option value="ms661">STIHL MS 661</option>
-<option value="ms194t">STIHL MS 194 T</option>
-<option value="ms201tcm">STIHL MS 201 TC-M</option>
-</select>
-
-<select id="modelo2" aria-label="Segunda motosierra para comparar">
-<option value="">Modelo 2</option>
-<option value="ms162">STIHL MS 162</option>
-<option value="ms172">STIHL MS 172</option>
-<option value="ms182">STIHL MS 182 C-BE</option>
-<option value="ms212">STIHL MS 212</option>
-<option value="ms250">STIHL MS 250</option>
-<option value="ms260">STIHL MS 260</option>
-<option value="ms310">STIHL MS 310</option>
-<option value="ms363">STIHL MS 363</option>
-<option value="ms382">STIHL MS 382</option>
-<option value="ms462">STIHL MS 462 C-M</option>
-<option value="ms651">STIHL MS 651</option>
-<option value="ms661">STIHL MS 661</option>
-<option value="ms194t">STIHL MS 194 T</option>
-<option value="ms201tcm">STIHL MS 201 TC-M</option>
-</select>
-
-<button onclick="compararMotosierras()">
-    ⚖️ Comparar
-</button>
-
-<div id="resultado-comparacion"></div>
-</div>
+<section class="asesoria-maquinaria" aria-labelledby="asesoria-maquinaria-titulo">
+    <span>Elección informada</span>
+    <h2 id="asesoria-maquinaria-titulo">Encuentra la máquina adecuada para tu trabajo</h2>
+    <p>Responde unas preguntas o compara especificaciones, aplicaciones, ventajas y limitaciones sin utilizar el precio como criterio técnico.</p>
+    <div class="asesoria-maquinaria-opciones">
+        <a href="categorias/motosierras.html#asesor-categoria"><strong>Ayúdame a elegir una motosierra</strong><small>Desde poda en suelo hasta trabajo forestal profesional.</small></a>
+        <a href="categorias/desbrozadoras.html#asesor-categoria"><strong>Ayúdame a elegir una desbrozadora</strong><small>Desde jardín y bordes hasta maleza y terrenos extensos.</small></a>
+    </div>
+</section>
 </section>
 <section id="sucursales" class="sucursales">
 
@@ -200,6 +162,7 @@
             </p>
 
             <p class="sucursal-telefono"><span class="sucursal-etiqueta">Teléfono</span><a href="tel:7861256908">786 125 6908</a></p>
+            <a class="sucursal-whatsapp" href="https://wa.me/527861256908" target="_blank" rel="noopener noreferrer">WhatsApp Ciudad Hidalgo</a>
 
             <a href="https://maps.app.goo.gl/N9tVo9o7Jt3PYi7d8?g_st=ac"
                target="_blank"
@@ -219,7 +182,8 @@
                 Zitácuaro, Michoacán
             </p>
 
-            <p class="sucursal-telefono"><span class="sucursal-etiqueta">Teléfono</span><a href="tel:8007778445">800 777 8445</a></p>
+            <p class="sucursal-telefono"><span class="sucursal-etiqueta">Teléfono</span><a href="tel:7151348109">715 134 8109</a></p>
+            <a class="sucursal-whatsapp" href="https://wa.me/527151348109" target="_blank" rel="noopener noreferrer">WhatsApp San Felipe</a>
 
             <a href="https://maps.app.goo.gl/iPpwk3dCWcKAiV8L9?g_st=ac"
                target="_blank"
@@ -240,13 +204,13 @@
         <p>Elige el medio que prefieras para comunicarte con Casa Agrícola y Forestal.</p>
     </div>
     <div class="contacto-canales" aria-label="Medios de contacto oficiales">
-        <a class="contacto-tarjeta" href="https://wa.me/523461230733" target="_blank" rel="noopener noreferrer" aria-label="Contactar a Casa Agrícola y Forestal por WhatsApp">
+        <button class="contacto-tarjeta contacto-general" type="button" aria-label="Elegir sucursal para contactar por WhatsApp">
             <span class="contacto-icono contacto-icono-whatsapp" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M12.04 2a9.84 9.84 0 0 0-8.5 14.78L2.1 22l5.36-1.4A9.94 9.94 0 1 0 12.04 2Zm0 17.97a8 8 0 0 1-4.08-1.11l-.29-.17-3.18.83.85-3.1-.19-.32a8.08 8.08 0 1 1 6.89 3.87Zm4.43-6.05c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.02-.38-1.94-1.2a7.27 7.27 0 0 1-1.34-1.67c-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.58 4.1 3.62.57.25 1.02.39 1.37.5.58.18 1.1.16 1.51.1.46-.07 1.44-.59 1.64-1.16.2-.57.2-1.06.14-1.16-.06-.1-.22-.16-.46-.28Z"/></svg>
             </span>
             <span class="contacto-contenido"><strong>WhatsApp</strong><small>Consulta productos y disponibilidad</small></span>
             <span class="contacto-accion">Abrir conversación <span aria-hidden="true">→</span></span>
-        </a>
+        </button>
         <a class="contacto-tarjeta" href="https://www.facebook.com/casaagricolayforestal" target="_blank" rel="noopener noreferrer" aria-label="Visitar Casa Agrícola y Forestal en Facebook">
             <span class="contacto-icono" aria-hidden="true">
                 <svg viewBox="0 0 24 24"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.19 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.23.2 2.23.2v2.47h-1.25c-1.24 0-1.63.77-1.63 1.56v1.89h2.77l-.44 2.91h-2.33V22C18.34 21.25 22 17.08 22 12.06Z"/></svg>
@@ -268,13 +232,13 @@
     </div>
 </footer>
 
-</button>
 <div id="panel-buscador" class="panel-buscador">
     <input
         type="text"
         id="buscar-producto"
         placeholder="🔍 Buscar producto..."
         oninput="sincronizarBusquedaFlotante()"
+        aria-label="Buscar productos"
     >
 </div>
 <div class="controles-flotantes" aria-label="Accesos rápidos">
@@ -284,14 +248,14 @@
     <a href="#inicio" class="inicio-flotante">
         🏠 Inicio
     </a>
-    <button class="carrito-flotante" onclick="abrirCarrito()">
+    <button class="carrito-flotante" type="button" onclick="abrirCarrito()">
         🛒 Carrito (<span id="contador-carrito">0</span>)
     </button>
 </div>
 
 <div id="ventana-carrito" class="ventana-carrito">
     <div class="carrito-contenido">
-        <button class="cerrar-carrito" onclick="cerrarCarrito()">✕</button>
+        <button class="cerrar-carrito" type="button" onclick="cerrarCarrito()" aria-label="Cerrar carrito">✕</button>
 
         <h2>🛒 Mi carrito</h2>
 
@@ -310,7 +274,6 @@
     </div>
 </div>
 
-</div>
 <div id="checkout" class="ventana-checkout">
 
     <div class="checkout-contenido">
@@ -357,6 +320,7 @@
 <script src="assets/js/productos.js"></script>
 <script src="assets/js/promociones-config.js"></script>
 <script src="assets/js/promociones.js"></script>
+<script src="assets/js/contactos.js"></script>
 <script src="assets/js/catalogo.js"></script>
 <script src="assets/js/carrito.js"></script>
 <script src="assets/js/comparador.js"></script>

@@ -82,27 +82,18 @@
 
     function prepararComparador() {
         const contenedor = document.getElementById("comparador-categoria");
-        if (!contenedor || categoria !== "motosierras") return;
+        if (!contenedor || !window.inicializarComparador) return;
+        if (categoria === "motosierras" || categoria === "desbrozadoras") {
+            window.inicializarComparador(categoria, contenedor);
+        }
+    }
 
-        const datos = window.DATOS_MOTOSIERRAS || {};
-        const opciones = Object.entries(datos)
-            .map(([id, moto]) => `<option value="${id}">STIHL ${moto.nombre}</option>`)
-            .join("");
-
-        contenedor.innerHTML = `
-            <div class="comparador-motosierras" id="zona-comparador">
-                <h2>🪚 ¿Cuál motosierra elegir?</h2>
-                <p>Compara nuestros modelos y encuentra la motosierra más adecuada para tu trabajo.</p>
-                <button class="boton-comparar" type="button" onclick="abrirComparador()">⚖️ Comparar motosierras</button>
-            </div>
-            <div id="panel-comparador" class="panel-comparador">
-                <h3>⚖️ Comparar motosierras</h3>
-                <p>Selecciona dos modelos:</p>
-                <select id="modelo1" aria-label="Primer modelo"><option value="">Modelo 1</option>${opciones}</select>
-                <select id="modelo2" aria-label="Segundo modelo"><option value="">Modelo 2</option>${opciones}</select>
-                <button type="button" onclick="compararMotosierras()">⚖️ Comparar</button>
-                <div id="resultado-comparacion"></div>
-            </div>`;
+    function prepararAsesor() {
+        const contenedor = document.getElementById("asesor-categoria");
+        if (!contenedor || !window.inicializarAsesor) return;
+        if (categoria === "motosierras" || categoria === "desbrozadoras") {
+            window.inicializarAsesor(categoria, contenedor);
+        }
     }
 
     window.abrirBuscador = function () {
@@ -120,5 +111,6 @@
     window.buscarProductos = filtrarProductos;
     botonLimpiar.addEventListener("click", limpiarBusqueda);
     buscadorPrincipal.addEventListener("input", filtrarProductos);
+    prepararAsesor();
     prepararComparador();
 }());

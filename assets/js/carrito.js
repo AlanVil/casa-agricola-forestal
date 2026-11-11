@@ -1,13 +1,37 @@
-let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+function cargarCarritoGuardado() {
+    try {
+        const guardado = JSON.parse(localStorage.getItem("carrito") || "[]");
+        if (!Array.isArray(guardado)) return [];
+        return guardado
+            .filter(item => item && typeof item === "object")
+            .map(item => ({
+                productoId: typeof item.productoId === "string" ? item.productoId : null,
+                nombre: typeof item.nombre === "string" ? item.nombre : "Producto",
+                precio: Number(item.precio),
+                cantidad: Math.min(99, Math.max(1, Math.trunc(Number(item.cantidad) || 1)))
+            }))
+            .filter(item => Number.isFinite(item.precio) && item.precio >= 0);
+    } catch (error) {
+        console.warn("No fue posible recuperar el carrito guardado; se iniciará uno nuevo.");
+        return [];
+    }
+}
+
+let carrito = cargarCarritoGuardado();
+let elementoFocoAnterior = null;
 
 const SUCURSALES_RECOGIDA = Object.freeze({
     "san-felipe": Object.freeze({
         nombre: "Sucursal San Felipe / Zitácuaro",
-        direccion: "Carretera Toluca–Morelia km 105 SN, CP 61529, Zitácuaro, Michoacán"
+        direccion: "Carretera Toluca–Morelia km 105 SN, CP 61529, Zitácuaro, Michoacán",
+        telefono: "7151348109",
+        whatsapp: "527151348109"
     }),
     "ciudad-hidalgo": Object.freeze({
         nombre: "Sucursal Ciudad Hidalgo",
-        direccion: "Av. Morelos Oriente N342, Col. El Paraíso, CP 61183, Ciudad Hidalgo, Michoacán"
+        direccion: "Av. Morelos Oriente N342, Col. El Paraíso, CP 61183, Ciudad Hidalgo, Michoacán",
+        telefono: "7861256908",
+        whatsapp: "527861256908"
     })
 });
 
@@ -76,40 +100,46 @@ function actualizarCarrito(ahora) {
         total += producto.precio * producto.cantidad;
         cantidadTotal += producto.cantidad;
 
-        contenedor.innerHTML += `
-    <div class="item-carrito">
+        const item = document.createElement("div");
+        item.className = "item-carrito";
 
-        <strong>${producto.nombre}</strong>
+        const nombre = document.createElement("strong");
+        nombre.textContent = producto.nombre;
+        const precio = document.createElement("p");
+        precio.textContent = `$${formatearMonto(producto.precio)} MXN`;
 
-        <p>
-            $${formatearMonto(producto.precio)} MXN
-        </p>
+        const controles = document.createElement("div");
+        controles.className = "cantidad-carrito";
+        const disminuir = document.createElement("button");
+        disminuir.type = "button";
+        disminuir.textContent = "➖";
+        disminuir.setAttribute("aria-label", `Disminuir cantidad de ${producto.nombre}`);
+        disminuir.addEventListener("click", () => disminuirCantidad(indice));
+        const cantidad = document.createElement("span");
+        cantidad.textContent = producto.cantidad;
+        cantidad.setAttribute("aria-label", `Cantidad: ${producto.cantidad}`);
+        const aumentar = document.createElement("button");
+        aumentar.type = "button";
+        aumentar.textContent = "➕";
+        aumentar.setAttribute("aria-label", `Aumentar cantidad de ${producto.nombre}`);
+        aumentar.addEventListener("click", () => aumentarCantidad(indice));
+        controles.append(disminuir, cantidad, aumentar);
 
-        <div class="cantidad-carrito">
+        const eliminar = document.createElement("button");
+        eliminar.type = "button";
+        eliminar.className = "eliminar-producto";
+        eliminar.textContent = "🗑️ Eliminar";
+        eliminar.setAttribute("aria-label", `Eliminar ${producto.nombre} del carrito`);
+        eliminar.addEventListener("click", () => quitarProducto(indice));
 
-            <button onclick="disminuirCantidad(${indice})">
-                ➖
-            </button>
-
-            <span>${producto.cantidad}</span>
-
-            <button onclick="aumentarCantidad(${indice})">
-                ➕
-            </button>
-
-        </div>
-
-        <button class="eliminar-producto"
-                onclick="quitarProducto(${indice})">
-            🗑️ Eliminar
-        </button>
-
-    </div>
-`;
+        item.append(nombre, precio, controles, eliminar);
+        contenedor.appendChild(item);
     });
 
     if (carrito.length === 0) {
-        contenedor.innerHTML = "<p>Tu carrito está vacío.</p>";
+        const vacio = document.createElement("p");
+        vacio.textContent = "Tu carrito está vacío. Explora las categorías para agregar productos con precio disponible.";
+        contenedor.appendChild(vacio);
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -143,11 +173,18 @@ function quitarProducto(indice) {
 }
 
 function abrirCarrito() {
-    document.getElementById("ventana-carrito").style.display = "block";
+    elementoFocoAnterior = document.activeElement;
+    const ventana = document.getElementById("ventana-carrito");
+    ventana.style.display = "block";
+    ventana.setAttribute("aria-hidden", "false");
+    ventana.querySelector(".cerrar-carrito")?.focus();
 }
 
 function cerrarCarrito() {
-    document.getElementById("ventana-carrito").style.display = "none";
+    const ventana = document.getElementById("ventana-carrito");
+    ventana.style.display = "none";
+    ventana.setAttribute("aria-hidden", "true");
+    elementoFocoAnterior?.focus?.();
 }
 
 function generarEnlacePedidoWhatsApp(sucursalId, ahora) {
@@ -170,7 +207,8 @@ function generarEnlacePedidoWhatsApp(sucursalId, ahora) {
         "El pedido está sujeto a confirmación de disponibilidad y precio final por parte de la tienda.",
         "El envío de este mensaje no confirma el pedido."
     ].join("\n");
-    return `https://wa.me/523461230733?text=${encodeURIComponent(mensaje)}`;
+    if (window.Contactos) return window.Contactos.crearEnlaceWhatsApp(sucursalId, mensaje);
+    return `https://wa.me/${sucursal.whatsapp}?text=${encodeURIComponent(mensaje)}`;
 }
 
 function abrirCheckout() {
@@ -193,7 +231,9 @@ function abrirCheckout() {
 
     cerrarCarrito();
 
-    document.getElementById("checkout").style.display = "block";
+    const checkout = document.getElementById("checkout");
+    checkout.style.display = "block";
+    checkout.setAttribute("aria-hidden", "false");
 
     const errorSucursal = document.getElementById("error-sucursal");
     if (errorSucursal) errorSucursal.hidden = true;
@@ -203,7 +243,10 @@ function abrirCheckout() {
 }
 
 function cerrarCheckout() {
-    document.getElementById("checkout").style.display = "none";
+    const checkout = document.getElementById("checkout");
+    checkout.style.display = "none";
+    checkout.setAttribute("aria-hidden", "true");
+    elementoFocoAnterior?.focus?.();
 }
 
 function volverAlCarrito() {
@@ -275,3 +318,22 @@ function continuarPago() {
 }
 
 actualizarCarrito();
+
+document.querySelectorAll(".ventana-carrito, .ventana-checkout").forEach(function (ventana) {
+    ventana.setAttribute("aria-hidden", ventana.style.display === "block" ? "false" : "true");
+    const contenido = ventana.querySelector(".carrito-contenido, .checkout-contenido");
+    const titulo = contenido?.querySelector("h2");
+    if (!contenido || !titulo) return;
+    if (!titulo.id) titulo.id = ventana.id === "checkout" ? "titulo-checkout" : "titulo-carrito";
+    contenido.setAttribute("role", "dialog");
+    contenido.setAttribute("aria-modal", "true");
+    contenido.setAttribute("aria-labelledby", titulo.id);
+});
+
+document.addEventListener("keydown", function (evento) {
+    if (evento.key !== "Escape") return;
+    const checkout = document.getElementById("checkout");
+    const ventanaCarrito = document.getElementById("ventana-carrito");
+    if (checkout?.style.display === "block") cerrarCheckout();
+    else if (ventanaCarrito?.style.display === "block") cerrarCarrito();
+});

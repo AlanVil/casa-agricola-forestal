@@ -22,7 +22,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor a gasolina de 2 tiempos • 30.1 cm³ • 1.3 kW / 1.7 HP • 4.5 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Light de 16\", paso 3/8\" P y cadena Picco Micro Mini 3 (PMM3) de 1.1 mm • La configuración instalada en la unidad fotografiada no puede confirmarse",
     "imagenes": [
       {
-        "src": "ms162.png",
+        "src": "assets/img/productos/stihl/stihl-ms-162.jpg",
         "alt": "Motosierra STIHL MS 162",
         "loading": null
       }
@@ -47,7 +47,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor a gasolina de 2 tiempos • 31.8 cm³ • 1.5 kW / 2.01 HP • 4.5 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Light 04 de 16\", paso 3/8\" P y cadena Picco Micro 3 (PM3) de 1.3 mm • La imagen promocional agrupa MS 162 y MS 172 y no permite confirmar la configuración instalada",
     "imagenes": [
       {
-        "src": "Ms172.png",
+        "src": "assets/img/productos/stihl/stihl-ms-172.jpg",
         "alt": "Motosierra STIHL MS 172",
         "loading": null
       }
@@ -72,7 +72,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor a gasolina de 2 tiempos • 35.8 cm³ • 1.6 kW / 2.15 HP • 4.8 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Light 04 de 16\", paso 3/8\" P y cadena Picco Micro 3 (PM3) de 1.3 mm • La configuración instalada en la unidad fotografiada no puede confirmarse",
     "imagenes": [
       {
-        "src": "Ms182.png",
+        "src": "assets/img/productos/stihl/stihl-ms-182-c-be.jpg",
         "alt": "Motosierra STIHL MS 182 C-BE",
         "loading": null
       }
@@ -97,7 +97,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor STIHL 2-MIX de 2 tiempos • 38.6 cm³ • 1.8 kW / 2.4 HP • 4.6 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Light 04 de 18\", paso 3/8\" P y cadena Picco Micro 3 (PM3) de 1.3 mm • La configuración instalada en la unidad fotografiada no puede confirmarse",
     "imagenes": [
       {
-        "src": "Ms212.png",
+        "src": "assets/img/productos/stihl/stihl-ms-212.jpg",
         "alt": "Motosierra STIHL MS 212",
         "loading": null
       }
@@ -122,7 +122,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor a gasolina de 2 tiempos • 45.4 cm³ • 2.3 kW / 3.1 HP • 4.6 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Rollomatic de 18\", paso .325\" y cadena Rapid Micro (RM) de 1.6 mm • La configuración instalada en la unidad fotografiada no puede confirmarse",
     "imagenes": [
       {
-        "src": "Ms250.png",
+        "src": "assets/img/productos/stihl/stihl-ms-250.jpg",
         "alt": "Motosierra STIHL MS 250",
         "loading": null
       }
@@ -147,7 +147,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor a gasolina de 2 tiempos • 50.2 cm³ • 2.6 kW / 3.5 HP • 4.9 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Rollomatic de 20\", paso .325\" y cadena Rapid Super (RS) de 1.6 mm • La configuración instalada en la unidad fotografiada no puede confirmarse",
     "imagenes": [
       {
-        "src": "Ms260.png",
+        "src": "assets/img/productos/stihl/stihl-ms-260.png",
         "alt": "Motosierra STIHL MS 260",
         "loading": null
       }
@@ -172,7 +172,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor a gasolina de 2 tiempos • 59 cm³ • 3.2 kW / 4.3 HP • 6.1 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Rollomatic de 25\", paso 3/8\" y cadena Rapid Super (RS) de 1.6 mm • La configuración instalada en la unidad fotografiada no puede confirmarse",
     "imagenes": [
       {
-        "src": "Ms310.png",
+        "src": "assets/img/productos/stihl/stihl-ms-310.webp",
         "alt": "Motosierra STIHL MS 310",
         "loading": null
       }
@@ -197,7 +197,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor a gasolina de 2 tiempos • 62.6 cm³ • 3.5 kW / 4.8 HP • 5.5 kg sin combustible, espada ni cadena • Configuración comercial publicada por STIHL México: espada Light 06 de 25\", paso 3/8\" y cadena 36 Rapid Super (RS) de 1.6 mm • La configuración instalada en la unidad fotografiada no puede confirmarse",
     "imagenes": [
       {
-        "src": "Ms363.png",
+        "src": "assets/img/productos/stihl/stihl-ms-363.jpg",
         "alt": "Motosierra STIHL MS 363",
         "loading": null
       }
@@ -222,7 +222,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2 tiempos • 72.2 cm³ • 5.2 HP • 6.2 kg • Espada 25-30\"",
     "imagenes": [
       {
-        "src": "Ms382.png",
+        "src": "assets/img/productos/stihl/stihl-ms-382.jpg",
         "alt": "Motosierra STIHL MS 382",
         "loading": null
       }
@@ -247,7 +247,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 72.2 cm³ • 5.9 HP • 6 kg • Espada 30\"",
     "imagenes": [
       {
-        "src": "Ms462.png",
+        "src": "assets/img/productos/stihl/stihl-ms-462-c-m.jpg",
         "alt": "Motosierra STIHL MS 462 C-M",
         "loading": null
       }
@@ -272,8 +272,13 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "MS 651: 91.1 cm³ • 5.0 kW / 6.7 HP • 7.3 kg • MS 661: 91.1 cm³ • 5.4 kW / 7.2 HP • 7.5 kg • La imagen promocional agrupa ambos modelos y no permite distinguir visualmente cuál de los dos aparece",
     "imagenes": [
       {
-        "src": "Ms651-Ms661.png",
-        "alt": "Motosierra STIHL MS 651 / MS 661",
+        "src": "assets/img/productos/stihl/stihl-ms-651.jpg",
+        "alt": "Motosierra STIHL MS 651",
+        "loading": null
+      },
+      {
+        "src": "assets/img/productos/stihl/stihl-ms-661.jpg",
+        "alt": "Motosierra STIHL MS 661",
         "loading": null
       }
     ],
@@ -297,7 +302,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 31.8 cm³ • 1.8 HP • 3.3 kg • Espada 14-16\"",
     "imagenes": [
       {
-        "src": "Ms194T.png",
+        "src": "assets/img/productos/stihl/stihl-ms-194-t.jpg",
         "alt": "Motosierra STIHL MS 194 T",
         "loading": null
       }
@@ -322,7 +327,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 35.2 cm³ • 2.4 HP • 3.7 kg • Espada 16\"",
     "imagenes": [
       {
-        "src": "Ms201TCM.png",
+        "src": "assets/img/productos/stihl/stihl-ms-201-tc-m.webp",
         "alt": "Motosierra STIHL MS 201 TC-M",
         "loading": null
       }
@@ -347,7 +352,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Batería STIHL AK de 36 V • Peso 2.3 kg sin batería, espada ni cadena • Depósito de aceite 0.11 L • Velocidad máxima de cadena 14 m/s • Paso de cadena 1/4\" P",
     "imagenes": [
       {
-        "src": "STIHL-MSA120C.png",
+        "src": "assets/img/productos/stihl/stihl-msa-120-c.jpg",
         "alt": "Motosierra STIHL MSA 120 C",
         "loading": null
       }
@@ -401,7 +406,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2 tiempos • 40.2 cm³ • 2 HP • 7.5 kg • AutoCut 27-2",
     "imagenes": [
       {
-        "src": "Fs230.png",
+        "src": "assets/img/productos/stihl/stihl-fs-230.jpg",
         "alt": "Desbrozadora STIHL FS 230",
         "loading": null
       }
@@ -426,7 +431,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2 tiempos • 27.2 cm³ • 0.9 HP • 4.2 kg • AutoCut C 6-2",
     "imagenes": [
       {
-        "src": "Fs38.png",
+        "src": "assets/img/productos/stihl/stihl-fs-38.jpg",
         "alt": "Desmalezadora STIHL FS 38",
         "loading": null
       }
@@ -451,7 +456,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2 tiempos • 27.2 cm³ • 1 HP • 4.9 kg • AutoCut 27-2",
     "imagenes": [
       {
-        "src": "Fs55.png",
+        "src": "assets/img/productos/stihl/stihl-fs-55.jpg",
         "alt": "Desmalezadora STIHL FS 55",
         "loading": null
       }
@@ -476,7 +481,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2 tiempos • 30.8 cm³ • 1.74 HP • 6.1 kg • AutoCut 27-2",
     "imagenes": [
       {
-        "src": "Fs120.png",
+        "src": "assets/img/productos/stihl/stihl-fs-120.jpg",
         "alt": "Desmalezadora STIHL FS 120",
         "loading": null
       }
@@ -501,7 +506,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor STIHL 2-MIX • 37.7 cm³ • 1.5 kW / 2.0 HP • 7.6 kg sin combustible • Cuchilla BrushCut 300-3 • La imagen promocional agrupa FS 161 L y FS 221 L y no permite distinguir visualmente la unidad individual",
     "imagenes": [
       {
-        "src": "Fs161-221.png",
+        "src": "assets/img/productos/stihl/stihl-fs-161-l.jpg",
         "alt": "Desmalezadora STIHL FS 161 L",
         "loading": null
       }
@@ -526,7 +531,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor STIHL 2-MIX • 37.7 cm³ • 1.7 kW / 2.2 HP • 7.7 kg sin combustible • Cuchilla BrushCut 300-3 • La imagen promocional agrupa FS 161 L y FS 221 L y no permite distinguir visualmente la unidad individual",
     "imagenes": [
       {
-        "src": "Fs161-221.png",
+        "src": "assets/img/productos/stihl/stihl-fs-221-l.jpg",
         "alt": "Desmalezadora STIHL FS 221 L",
         "loading": null
       }
@@ -551,7 +556,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 36.3 cm³ • 2.1 HP • 6.8 kg • AutoCut 27-2 • Uso frecuente",
     "imagenes": [
       {
-        "src": "Fs235.png",
+        "src": "assets/img/productos/stihl/stihl-fs-235.jpg",
         "alt": "Desmalezadora STIHL FS 235",
         "loading": null
       }
@@ -576,7 +581,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 36.3 cm³ • 2.01 HP • 7.9 kg • AutoCut 46-2 • Uso intensivo",
     "imagenes": [
       {
-        "src": "Fs255.png",
+        "src": "assets/img/productos/stihl/stihl-fs-255.jpg",
         "alt": "Desmalezadora STIHL FS 255",
         "loading": null
       }
@@ -601,7 +606,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 41.6 cm³ • 2.7 HP • 7.8 kg • AutoCut 46-2 • Uso intensivo",
     "imagenes": [
       {
-        "src": "Fs261L.png",
+        "src": "assets/img/productos/stihl/stihl-fs-261-l.jpg",
         "alt": "Desmalezadora STIHL FS 261 L",
         "loading": null
       }
@@ -626,7 +631,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 41.6 cm³ • 2.7 HP • 8 kg • Cuchilla 300-3 • Uso intensivo",
     "imagenes": [
       {
-        "src": "Fs291L.png",
+        "src": "assets/img/productos/stihl/stihl-fs-291-l.jpg",
         "alt": "Desmalezadora STIHL FS 291 L",
         "loading": null
       }
@@ -651,7 +656,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 37.7 cm³ • 2.3 HP • 8.8 kg • Cuchilla 305-2 • Uso intensivo",
     "imagenes": [
       {
-        "src": "Fs351L.png",
+        "src": "assets/img/productos/stihl/stihl-fs-351-l.jpg",
         "alt": "Desmalezadora STIHL FS 351 L",
         "loading": null
       }
@@ -676,7 +681,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Motor 2-Mix • 45.6 cm³ • 3.0 HP • 8.8 kg • AutoCut 46-2 • Uso intensivo",
     "imagenes": [
       {
-        "src": "Fs460L.png",
+        "src": "assets/img/productos/stihl/stihl-fs-460-l.jpg",
         "alt": "Desmalezadora STIHL FS 460 L",
         "loading": null
       }
@@ -697,24 +702,24 @@ window.PRODUCTOS = Object.freeze([
     "id": "stihl-fr-235",
     "categoria": "desbrozadoras",
     "orden": 12,
-    "nombre": "STIHL FR 235",
+    "nombre": "STIHL FR 235 T",
     "descripcion": "Motor 2 tiempos • 36.3 cm³ • 2.1 HP • 10.3 kg • AutoCut 36-2 • Uso frecuente",
     "imagenes": [
       {
-        "src": "Fr235.png",
-        "alt": "Desmalezadora STIHL FR 235",
+        "src": "assets/img/productos/stihl/stihl-fr-235-t.jpg",
+        "alt": "Desmalezadora STIHL FR 235 T",
         "loading": null
       }
     ],
     "galeria": false,
     "precioTexto": "$10,499 MXN",
     "carrito": {
-      "nombre": "STIHL FR 235",
+      "nombre": "STIHL FR 235 T",
       "precio": 10499
     },
     "pendiente": false,
     "estadoTexto": "",
-    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FR%20235",
+    "whatsapp": "https://wa.me/523461230733?text=Hola%2C%20me%20interesa%20la%20desmalezadora%20STIHL%20FR%20235%20T",
     "whatsappTarget": "_blank",
     "whatsappRel": null
   },
@@ -726,7 +731,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Batería STIHL AK de 36 V • Peso 2.1 kg sin protector ni herramienta de corte • Longitud ajustable de 147 a 167 cm • Uso doméstico",
     "imagenes": [
       {
-        "src": "STIHL-FSA56.png",
+        "src": "assets/img/productos/stihl/stihl-fsa-56.webp",
         "alt": "Desbrozadora STIHL FSA 56",
         "loading": null
       }
@@ -748,7 +753,7 @@ window.PRODUCTOS = Object.freeze([
     "descripcion": "Batería STIHL AP o AR de 36 V • Peso 2.8 kg sin batería, protector ni herramienta de corte • Longitud 165 cm",
     "imagenes": [
       {
-        "src": "STIHL-FSA85.png",
+        "src": "assets/img/productos/stihl/stihl-fsa-85.webp",
         "alt": "Desbrozadora STIHL FSA 85",
         "loading": null
       }

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alanvil.github.io/casa-agricola-forestal/sitemap.xml

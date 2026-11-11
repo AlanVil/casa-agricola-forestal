@@ -57,7 +57,9 @@
         principal.className = "producto-imagen-principal";
         principal.src = primera.src;
         principal.alt = primera.alt;
+        principal.loading = "eager";
         principal.decoding = "async";
+        principal.fetchPriority = "high";
         alternativa.hidden = true;
         principal.addEventListener("error", function () {
             principal.hidden = true;
@@ -112,6 +114,103 @@
         return bloque;
     }
 
+    function crearOrientacionTrabajo(producto) {
+        const config = window.COMPARADORES_DATOS?.[producto.categoria];
+        const datos = config?.modelos?.[producto.id];
+        if (!config) return null;
+
+        if (!datos) {
+            const seccion = elemento("section", "producto-orientacion-trabajo orientacion-sin-datos");
+            seccion.setAttribute("aria-labelledby", "titulo-orientacion-trabajo");
+            const encabezado = elemento("div", "producto-orientacion-encabezado");
+            encabezado.append(
+                elemento("span", "producto-eyebrow", "Orientación técnica"),
+                elemento("h2", null, "¿PARA QUÉ TRABAJOS ES IDEAL ESTA MÁQUINA?"),
+                elemento("p", null, "Esta ficha agrupa modelos o tiene datos pendientes. No hay información suficiente para recomendarla con seguridad como una sola máquina.")
+            );
+            encabezado.querySelector("h2").id = "titulo-orientacion-trabajo";
+            const aviso = elemento("aside", "orientacion-resumen");
+            const bloque = elemento("div");
+            bloque.append(
+                elemento("strong", null, "Requiere confirmar modelo"),
+                elemento("p", null, "Confirma el modelo exacto, su configuración y el trabajo previsto con una sucursal antes de elegir.")
+            );
+            aviso.appendChild(bloque);
+            const consultar = elemento("button", "comprar consulta-aplicacion", "Solicitar asesoría por WhatsApp");
+            consultar.type = "button";
+            consultar.addEventListener("click", () => window.Contactos?.abrirSelector({
+                titulo: "Elige una sucursal para recibir asesoría",
+                mensaje: window.Contactos.mensajeProducto(producto, window.Promociones?.obtenerPrecio(producto))
+            }));
+            seccion.append(encabezado, aviso, consultar);
+            return seccion;
+        }
+
+        const nombresEstado = {
+            recomendado: "Recomendado",
+            condicionado: "Adecuado con condiciones",
+            no: "No es la opción ideal",
+            insuficiente: "Información insuficiente"
+        };
+        const seccion = elemento("section", "producto-orientacion-trabajo");
+        seccion.setAttribute("aria-labelledby", "titulo-orientacion-trabajo");
+        const cabecera = elemento("div", "producto-orientacion-cabecera");
+        const etiqueta = elemento("span", "producto-etiqueta", "Orientación técnica");
+        const titulo = elemento("h2", null, "¿PARA QUÉ TRABAJOS ES IDEAL ESTA MÁQUINA?");
+        titulo.id = "titulo-orientacion-trabajo";
+        const introduccion = elemento(
+            "p",
+            null,
+            "Esta orientación utiliza las aplicaciones y especificaciones verificadas del comparador. No sustituye el manual ni una evaluación de seguridad."
+        );
+        cabecera.append(etiqueta, titulo, introduccion);
+
+        const escenarios = elemento("div", "producto-orientacion-escenarios");
+        config.escenarios.forEach(function ([id, nombre]) {
+            const evaluacion = datos.escenarios[id];
+            const tarjeta = elemento("article", `orientacion-escenario estado-${evaluacion?.estado || "insuficiente"}`);
+            tarjeta.append(
+                elemento("span", "orientacion-estado", nombresEstado[evaluacion?.estado] || nombresEstado.insuficiente),
+                elemento("h3", null, nombre),
+                elemento("p", null, evaluacion?.porque || "No hay información suficiente para recomendar este modelo con seguridad.")
+            );
+            escenarios.appendChild(tarjeta);
+        });
+
+        const resumen = elemento("div", "producto-orientacion-resumen");
+        const ventaja = elemento("div", null);
+        ventaja.append(elemento("strong", null, "Ventaja relevante"), elemento("p", null, datos.ventaja));
+        const limitacion = elemento("div", null);
+        limitacion.append(elemento("strong", null, "Limitación o precaución"), elemento("p", null, datos.limitacion));
+        resumen.append(ventaja, limitacion);
+
+        const asesoria = elemento("button", "producto-boton producto-boton-whatsapp", "Solicitar asesoría por WhatsApp");
+        asesoria.type = "button";
+        asesoria.addEventListener("click", function () {
+            if (!window.Contactos) return;
+            window.Contactos.abrirSelector({
+                titulo: `Asesoría sobre ${producto.nombre}`,
+                mensaje: `Hola, quiero recibir asesoría sobre ${producto.nombre} y confirmar para qué trabajos es adecuado.`
+            });
+        });
+        seccion.append(cabecera, escenarios, resumen, asesoria);
+        return seccion;
+    }
+
+    function crearAplicacionesOpcionales(producto) {
+        if (!producto.aplicacionesDetalle || typeof producto.aplicacionesDetalle !== "object") return null;
+        const seccion = elemento("section", "producto-orientacion-trabajo producto-orientacion-opcional");
+        seccion.appendChild(elemento("h2", null, "¿PARA QUÉ TRABAJOS ES IDEAL ESTA MÁQUINA?"));
+        ["trabajos", "frecuencia", "ventajas", "limitaciones", "precauciones"].forEach(campo => {
+            const valor = producto.aplicacionesDetalle[campo];
+            if (!valor) return;
+            const bloque = elemento("div", "producto-aplicacion-campo");
+            bloque.append(elemento("strong", null, campo.charAt(0).toUpperCase() + campo.slice(1)), elemento("p", null, valor));
+            seccion.appendChild(bloque);
+        });
+        return seccion;
+    }
+
     function renderizar(producto) {
         const categoria = categorias[producto.categoria] || { nombre: "Productos", url: "index.html#productos" };
         const datosPrecio = window.Promociones
@@ -132,7 +231,19 @@
             : partesDescripcion.slice(1).filter(esAclaracion);
 
         document.title = `${producto.nombre} | Casa Agrícola y Forestal`;
-        document.querySelector('meta[name="description"]').content = producto.descripcion.slice(0, 155);
+        const descripcionMeta = producto.descripcion.slice(0, 155);
+        document.querySelector('meta[name="description"]').content = descripcionMeta;
+        document.querySelector('meta[property="og:title"]')?.setAttribute("content", `${producto.nombre} | Casa Agrícola y Forestal`);
+        document.querySelector('meta[property="og:description"]')?.setAttribute("content", descripcionMeta);
+        document.querySelector('meta[property="og:image"]')?.setAttribute("content", new URL(producto.imagenes[0].src, window.location.href).href);
+        document.querySelector('meta[property="og:url"]')?.setAttribute("content", window.location.href.split("&")[0]);
+        document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", `${producto.nombre} | Casa Agrícola y Forestal`);
+        document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", descripcionMeta);
+        document.querySelector('meta[name="twitter:image"]')?.setAttribute("content", new URL(producto.imagenes[0].src, window.location.href).href);
+        document.querySelector('link[rel="canonical"]')?.setAttribute(
+            "href",
+            `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(producto.id)}`
+        );
         enlaceCategoria.textContent = categoria.nombre;
         enlaceCategoria.href = categoria.url;
         migaProducto.textContent = producto.nombre;
@@ -164,12 +275,15 @@
             acciones.appendChild(agregar);
         }
 
-        const whatsapp = elemento("a", "producto-boton producto-boton-whatsapp", "Consultar por WhatsApp");
-        whatsapp.href = window.Promociones
-            ? window.Promociones.crearWhatsApp(producto, datosPrecio)
-            : producto.whatsapp;
-        whatsapp.target = producto.whatsappTarget || "_blank";
-        whatsapp.rel = "noopener noreferrer";
+        const whatsapp = elemento("button", "producto-boton producto-boton-whatsapp", "Consultar por WhatsApp");
+        whatsapp.type = "button";
+        whatsapp.addEventListener("click", function () {
+            if (!window.Contactos) return;
+            window.Contactos.abrirSelector({
+                titulo: `Consultar ${producto.nombre}`,
+                mensaje: window.Contactos.mensajeProducto(producto, datosPrecio)
+            });
+        });
         acciones.appendChild(whatsapp);
 
         const volver = elemento("a", "producto-regresar", `← Volver a ${categoria.nombre}`);
@@ -219,6 +333,8 @@
 
         contenedor.append(galeria, contenido);
         if (detalles.childElementCount) contenedor.appendChild(detalles);
+        const orientacion = crearOrientacionTrabajo(producto) || crearAplicacionesOpcionales(producto);
+        if (orientacion) contenedor.appendChild(orientacion);
     }
 
     const id = new URLSearchParams(window.location.search).get("id");
