@@ -23,10 +23,45 @@
         return nodo;
     }
 
+    function textoPrecioPublico(producto) {
+        const precio = producto.carrito?.precio;
+        if (Number.isFinite(precio) && /^\$/.test(producto.precioTexto || "")) {
+            return precio.toLocaleString("es-MX", {
+                style: "currency",
+                currency: "MXN",
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }) + " MXN";
+        }
+        return producto.precioTexto;
+    }
+
+    function actualizarDatosEstructurados(producto, categoria, descripcionMeta, imagenPrincipal) {
+        const datos = {
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: producto.nombre,
+            description: descripcionMeta,
+            category: categoria.nombre,
+            url: `https://alanvil.github.io/casa-agricola-forestal/producto.html?id=${encodeURIComponent(producto.id)}`
+        };
+        if (producto.codigo) datos.sku = producto.codigo;
+        if (producto.marca) datos.brand = { "@type": "Brand", name: producto.marca };
+        if (imagenPrincipal) {
+            datos.image = new URL(
+                imagenPrincipal,
+                "https://alanvil.github.io/casa-agricola-forestal/"
+            ).href;
+        }
+        const script = document.getElementById("producto-datos-estructurados");
+        if (script) script.textContent = JSON.stringify(datos);
+    }
+
     function mostrarError() {
         const idSolicitado = new URLSearchParams(window.location.search).get("id");
         document.title = "Producto no encontrado | Casa Agrícola y Forestal";
         document.querySelector('meta[name="description"]').content = "Producto no encontrado en el catálogo de Casa Agrícola y Forestal.";
+        document.querySelector('meta[name="robots"]')?.setAttribute("content", "noindex,follow");
         migaProducto.textContent = "Producto no encontrado";
         contenedor.className = "producto-premium producto-no-encontrado";
         contenedor.setAttribute("aria-busy", "false");
@@ -51,6 +86,22 @@
     function crearGaleria(producto) {
         const galeria = elemento("div", "producto-galeria");
         const marco = elemento("div", "producto-imagen-marco");
+
+        if (producto.sinImagen || !producto.imagenes?.length) {
+            const marcador = elemento("div", "producto-marcador-imagen producto-marcador-imagen-detalle");
+            marcador.setAttribute("role", "img");
+            marcador.setAttribute("aria-label", `Fotografía pendiente para ${producto.nombre}`);
+            marcador.append(
+                elemento("span", "producto-marcador-identidad", "Casa Agrícola y Forestal"),
+                elemento("strong", null, "Fotografía en preparación"),
+                elemento("small", null, producto.nombre)
+            );
+            marco.appendChild(marcador);
+            galeria.classList.add("sin-imagen");
+            galeria.appendChild(marco);
+            return galeria;
+        }
+
         const principal = document.createElement("img");
         const alternativa = elemento("p", "producto-imagen-no-disponible", "Imagen no disponible");
         const primera = producto.imagenes[0];
@@ -108,7 +159,7 @@
             const promocional = elemento("strong", null, window.Promociones.textoPrecio(datosPrecio.precioActual));
             precio.append(normal, promocional);
         } else {
-            precio.textContent = producto.precioTexto;
+            precio.textContent = textoPrecioPublico(producto);
         }
         bloque.appendChild(precio);
         return bloque;
@@ -211,6 +262,54 @@
         return seccion;
     }
 
+    function crearProductosRelacionados(producto) {
+        const relacionados = (window.PRODUCTOS || [])
+            .filter(item => item.id !== producto.id && item.categoria === producto.categoria)
+            .sort(function (a, b) {
+                const afinidadA = a.alimentacion && a.alimentacion === producto.alimentacion ? 0 : 1;
+                const afinidadB = b.alimentacion && b.alimentacion === producto.alimentacion ? 0 : 1;
+                return afinidadA - afinidadB || a.orden - b.orden;
+            })
+            .slice(0, 3);
+        if (!relacionados.length) return null;
+
+        const seccion = elemento("section", "productos-relacionados");
+        seccion.setAttribute("aria-labelledby", "titulo-productos-relacionados");
+        const titulo = elemento("h2", null, "Productos relacionados");
+        titulo.id = "titulo-productos-relacionados";
+        const introduccion = elemento("p", "productos-relacionados-intro", "Explora otras opciones de la misma categoría.");
+        const rejilla = elemento("div", "productos-relacionados-rejilla");
+
+        relacionados.forEach(function (relacionado) {
+            const tarjeta = elemento("article", "producto-relacionado");
+            if (relacionado.imagenes?.[0]?.src) {
+                const imagen = document.createElement("img");
+                imagen.src = relacionado.imagenes[0].src;
+                imagen.alt = relacionado.imagenes[0].alt || relacionado.nombre;
+                imagen.loading = "lazy";
+                imagen.decoding = "async";
+                tarjeta.appendChild(imagen);
+            } else {
+                const marcador = elemento("div", "producto-relacionado-marcador", "Fotografía en preparación");
+                marcador.setAttribute("role", "img");
+                marcador.setAttribute("aria-label", `Fotografía pendiente para ${relacionado.nombre}`);
+                tarjeta.appendChild(marcador);
+            }
+            tarjeta.append(
+                elemento("h3", null, relacionado.nombre),
+                elemento("p", "producto-relacionado-precio", textoPrecioPublico(relacionado))
+            );
+            const enlace = elemento("a", "producto-boton producto-boton-secundario", "Ver detalles");
+            enlace.href = `producto.html?id=${encodeURIComponent(relacionado.id)}`;
+            enlace.setAttribute("aria-label", `Ver detalles de ${relacionado.nombre}`);
+            tarjeta.appendChild(enlace);
+            rejilla.appendChild(tarjeta);
+        });
+
+        seccion.append(titulo, introduccion, rejilla);
+        return seccion;
+    }
+
     function renderizar(producto) {
         const categoria = categorias[producto.categoria] || { nombre: "Productos", url: "index.html#productos" };
         const datosPrecio = window.Promociones
@@ -232,18 +331,29 @@
 
         document.title = `${producto.nombre} | Casa Agrícola y Forestal`;
         const descripcionMeta = producto.descripcion.slice(0, 155);
+        document.querySelector('meta[name="robots"]')?.setAttribute("content", "index,follow");
         document.querySelector('meta[name="description"]').content = descripcionMeta;
         document.querySelector('meta[property="og:title"]')?.setAttribute("content", `${producto.nombre} | Casa Agrícola y Forestal`);
         document.querySelector('meta[property="og:description"]')?.setAttribute("content", descripcionMeta);
-        document.querySelector('meta[property="og:image"]')?.setAttribute("content", new URL(producto.imagenes[0].src, window.location.href).href);
-        document.querySelector('meta[property="og:url"]')?.setAttribute("content", window.location.href.split("&")[0]);
+        const imagenPrincipal = producto.imagenes?.[0]?.src;
+        if (imagenPrincipal) {
+            document.querySelector('meta[property="og:image"]')?.setAttribute("content", new URL(imagenPrincipal, window.location.href).href);
+            document.querySelector('meta[name="twitter:image"]')?.setAttribute("content", new URL(imagenPrincipal, window.location.href).href);
+        } else {
+            document.querySelector('meta[property="og:image"]')?.removeAttribute("content");
+            document.querySelector('meta[name="twitter:image"]')?.removeAttribute("content");
+        }
+        document.querySelector('meta[property="og:url"]')?.setAttribute(
+            "content",
+            `https://alanvil.github.io/casa-agricola-forestal/producto.html?id=${encodeURIComponent(producto.id)}`
+        );
         document.querySelector('meta[name="twitter:title"]')?.setAttribute("content", `${producto.nombre} | Casa Agrícola y Forestal`);
         document.querySelector('meta[name="twitter:description"]')?.setAttribute("content", descripcionMeta);
-        document.querySelector('meta[name="twitter:image"]')?.setAttribute("content", new URL(producto.imagenes[0].src, window.location.href).href);
         document.querySelector('link[rel="canonical"]')?.setAttribute(
             "href",
-            `${window.location.origin}${window.location.pathname}?id=${encodeURIComponent(producto.id)}`
+            `https://alanvil.github.io/casa-agricola-forestal/producto.html?id=${encodeURIComponent(producto.id)}`
         );
+        actualizarDatosEstructurados(producto, categoria, descripcionMeta, imagenPrincipal);
         enlaceCategoria.textContent = categoria.nombre;
         enlaceCategoria.href = categoria.url;
         migaProducto.textContent = producto.nombre;
@@ -265,17 +375,27 @@
         estadoAccion.setAttribute("role", "status");
         estadoAccion.setAttribute("aria-live", "polite");
 
-        if (producto.carrito) {
-            const agregar = elemento("button", "producto-boton producto-boton-principal", "Agregar al carrito");
+        if (!producto.soloCotizacion) {
+            const agregar = elemento(
+                "button",
+                "producto-boton producto-boton-principal",
+                producto.carrito ? "Agregar al carrito" : "Agregar a solicitud"
+            );
             agregar.type = "button";
             agregar.addEventListener("click", function () {
                 agregarProductoAlCarrito(producto.id);
-                estadoAccion.textContent = `${producto.nombre} se agregó al carrito.`;
+                estadoAccion.textContent = producto.carrito
+                    ? `${producto.nombre} se agregó al carrito.`
+                    : `${producto.nombre} se agregó a la solicitud de cotización.`;
             });
             acciones.appendChild(agregar);
         }
 
-        const whatsapp = elemento("button", "producto-boton producto-boton-whatsapp", "Consultar por WhatsApp");
+        const whatsapp = elemento(
+            "button",
+            "producto-boton producto-boton-whatsapp",
+            producto.soloCotizacion ? "Consultar modelo y precio" : "Consultar por WhatsApp"
+        );
         whatsapp.type = "button";
         whatsapp.addEventListener("click", function () {
             if (!window.Contactos) return;
@@ -333,12 +453,14 @@
 
         contenedor.append(galeria, contenido);
         if (detalles.childElementCount) contenedor.appendChild(detalles);
-        const orientacion = crearOrientacionTrabajo(producto) || crearAplicacionesOpcionales(producto);
+        const orientacion = crearAplicacionesOpcionales(producto) || crearOrientacionTrabajo(producto);
         if (orientacion) contenedor.appendChild(orientacion);
+        const relacionados = crearProductosRelacionados(producto);
+        if (relacionados) contenedor.appendChild(relacionados);
     }
 
     const id = new URLSearchParams(window.location.search).get("id");
     const producto = (window.PRODUCTOS || []).find(item => item.id === id);
-    if (!producto || !producto.imagenes?.length) mostrarError();
+    if (!producto) mostrarError();
     else renderizar(producto);
 }());

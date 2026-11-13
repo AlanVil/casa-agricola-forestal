@@ -54,6 +54,7 @@
         } else if (producto.precioTexto) {
             lineas.push(`Precio publicado: ${producto.precioTexto}.`);
         }
+        if (producto.mensajeCotizacion) lineas.push(producto.mensajeCotizacion);
         lineas.push("Agradezco confirmar disponibilidad, configuración y precio final.");
         return lineas.join("\n");
     }

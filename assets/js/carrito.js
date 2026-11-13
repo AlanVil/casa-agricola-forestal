@@ -4,13 +4,20 @@ function cargarCarritoGuardado() {
         if (!Array.isArray(guardado)) return [];
         return guardado
             .filter(item => item && typeof item === "object")
-            .map(item => ({
-                productoId: typeof item.productoId === "string" ? item.productoId : null,
-                nombre: typeof item.nombre === "string" ? item.nombre : "Producto",
-                precio: Number(item.precio),
-                cantidad: Math.min(99, Math.max(1, Math.trunc(Number(item.cantidad) || 1)))
-            }))
-            .filter(item => Number.isFinite(item.precio) && item.precio >= 0);
+            .map(item => {
+                const precio = item.precio === null || item.precio === undefined || item.precio === ""
+                    ? null
+                    : Number(item.precio);
+                return {
+                    productoId: typeof item.productoId === "string" ? item.productoId : null,
+                    nombre: typeof item.nombre === "string" ? item.nombre : "Producto",
+                    modelo: typeof item.modelo === "string" ? item.modelo : (typeof item.nombre === "string" ? item.nombre : "Producto"),
+                    precio: Number.isFinite(precio) && precio >= 0 ? precio : null,
+                    requiereCotizacion: Boolean(item.requiereCotizacion) || !(Number.isFinite(precio) && precio >= 0),
+                    cantidad: Math.min(99, Math.max(1, Math.trunc(Number(item.cantidad) || 1)))
+                };
+            })
+            .filter(item => item.nombre && (item.requiereCotizacion || Number.isFinite(item.precio)));
     } catch (error) {
         console.warn("No fue posible recuperar el carrito guardado; se iniciará uno nuevo.");
         return [];
@@ -49,29 +56,46 @@ function buscarProductoCatalogo(productoId, nombre) {
 }
 
 function precioVigente(producto, ahora) {
-    if (!producto) return null;
+    if (!producto || producto.soloCotizacion || !Number.isFinite(producto.carrito?.precio)) return null;
     if (window.Promociones) return window.Promociones.obtenerPrecio(producto, ahora).precioActual;
     return producto.carrito?.precio ?? null;
 }
 
-function agregarProductoAlCarrito(productoId) {
-    const ficha = buscarProductoCatalogo(productoId);
-    if (!ficha || !ficha.carrito) return;
-    agregarCarrito(ficha.carrito.nombre, precioVigente(ficha), ficha.id);
+function requiereCotizacion(producto, precio) {
+    return Boolean(producto?.soloCotizacion) || !Number.isFinite(precio);
 }
 
-function agregarCarrito(nombre, precio, productoId) {
+function agregarProductoAlCarrito(productoId) {
+    const ficha = buscarProductoCatalogo(productoId);
+    if (!ficha) return;
+    const precio = precioVigente(ficha);
+    agregarCarrito(
+        ficha.carrito?.nombre || ficha.nombre,
+        precio,
+        ficha.id,
+        requiereCotizacion(ficha, precio),
+        ficha.modelo || ficha.nombre
+    );
+}
+
+function agregarCarrito(nombre, precio, productoId, pendienteCotizacion, modelo) {
+    const precioNormalizado = Number.isFinite(precio) && precio >= 0 ? precio : null;
+    const esPendiente = Boolean(pendienteCotizacion) || precioNormalizado === null;
     let producto = carrito.find(item => (productoId && item.productoId === productoId) || item.nombre === nombre);
 
     if (producto) {
         producto.cantidad++;
-        producto.precio = precio;
+        producto.precio = precioNormalizado;
+        producto.requiereCotizacion = esPendiente;
+        producto.modelo = modelo || producto.modelo || nombre;
         if (productoId) producto.productoId = productoId;
     } else {
         carrito.push({
             productoId: productoId || null,
             nombre: nombre,
-            precio: precio,
+            modelo: modelo || nombre,
+            precio: precioNormalizado,
+            requiereCotizacion: esPendiente,
             cantidad: 1
         });
     }
@@ -87,17 +111,23 @@ function actualizarCarrito(ahora) {
 
     let total = 0;
     let cantidadTotal = 0;
+    let hayPendientes = false;
 
     carrito.forEach((producto, indice) => {
         const ficha = buscarProductoCatalogo(producto.productoId, producto.nombre);
         const precioActual = precioVigente(ficha, ahora);
-        if (ficha?.carrito) {
+        if (ficha) {
             producto.productoId = ficha.id;
-            producto.nombre = ficha.carrito.nombre;
+            producto.nombre = ficha.carrito?.nombre || ficha.nombre;
             producto.precio = precioActual;
+            producto.requiereCotizacion = requiereCotizacion(ficha, precioActual);
         }
 
-        total += producto.precio * producto.cantidad;
+        if (producto.requiereCotizacion || !Number.isFinite(producto.precio)) {
+            hayPendientes = true;
+        } else {
+            total += producto.precio * producto.cantidad;
+        }
         cantidadTotal += producto.cantidad;
 
         const item = document.createElement("div");
@@ -106,7 +136,12 @@ function actualizarCarrito(ahora) {
         const nombre = document.createElement("strong");
         nombre.textContent = producto.nombre;
         const precio = document.createElement("p");
-        precio.textContent = `$${formatearMonto(producto.precio)} MXN`;
+        if (producto.requiereCotizacion || !Number.isFinite(producto.precio)) {
+            precio.className = "precio-pendiente-carrito";
+            precio.textContent = "Pendiente de cotización";
+        } else {
+            precio.textContent = `$${formatearMonto(producto.precio)} MXN`;
+        }
 
         const controles = document.createElement("div");
         controles.className = "cantidad-carrito";
@@ -138,13 +173,31 @@ function actualizarCarrito(ahora) {
 
     if (carrito.length === 0) {
         const vacio = document.createElement("p");
-        vacio.textContent = "Tu carrito está vacío. Explora las categorías para agregar productos con precio disponible.";
+        vacio.textContent = "Tu solicitud está vacía. Explora las categorías para agregar productos.";
         contenedor.appendChild(vacio);
     }
 
     localStorage.setItem("carrito", JSON.stringify(carrito));
     contador.textContent = cantidadTotal;
     totalElemento.textContent = formatearMonto(total);
+
+    const encabezadoTotal = totalElemento.closest("h3");
+    if (encabezadoTotal?.firstChild) {
+        encabezadoTotal.firstChild.nodeValue = hayPendientes ? "Total parcial: $" : "Total: $";
+    }
+    let avisoParcial = document.querySelector(".aviso-total-parcial");
+    if (!avisoParcial && encabezadoTotal) {
+        avisoParcial = document.createElement("p");
+        avisoParcial.className = "aviso-total-parcial";
+        avisoParcial.setAttribute("role", "status");
+        encabezadoTotal.after(avisoParcial);
+    }
+    if (avisoParcial) {
+        avisoParcial.hidden = !hayPendientes;
+        avisoParcial.textContent = hayPendientes
+            ? "El total parcial sólo incluye productos con precio publicado; los demás se cotizarán por separado."
+            : "";
+    }
 
     const botonPedido = document.querySelector(".boton-pagar");
     if (botonPedido) {
@@ -192,14 +245,19 @@ function generarEnlacePedidoWhatsApp(sucursalId, ahora) {
     if (!sucursal || carrito.length === 0) return null;
 
     actualizarCarrito(ahora);
-    const total = carrito.reduce((suma, producto) => suma + producto.precio * producto.cantidad, 0);
-    const detalle = carrito.map(producto =>
-        `- ${producto.nombre} x${producto.cantidad}: $${formatearMonto(producto.precio * producto.cantidad)} MXN`
+    const hayPendientes = carrito.some(producto => producto.requiereCotizacion || !Number.isFinite(producto.precio));
+    const total = carrito.reduce((suma, producto) =>
+        suma + (producto.requiereCotizacion || !Number.isFinite(producto.precio) ? 0 : producto.precio * producto.cantidad), 0
+    );
+    const detalle = carrito.map(producto => producto.requiereCotizacion || !Number.isFinite(producto.precio)
+        ? `- ${producto.nombre} x${producto.cantidad}: Pendiente de cotización`
+        : `- ${producto.nombre} x${producto.cantidad}: $${formatearMonto(producto.precio * producto.cantidad)} MXN`
     );
     const mensaje = [
         "Hola, quiero consultar este pedido para recoger en tienda:",
         ...detalle,
-        `Total estimado: $${formatearMonto(total)} MXN`,
+        `${hayPendientes ? "Total parcial" : "Total estimado"}: $${formatearMonto(total)} MXN`,
+        ...(hayPendientes ? ["El total parcial sólo incluye los productos con precio publicado."] : []),
         "",
         `Sucursal para recoger: ${sucursal.nombre}`,
         `Dirección: ${sucursal.direccion}`,
@@ -223,11 +281,18 @@ function abrirCheckout() {
     let total = 0;
 
     carrito.forEach(producto => {
-        total += producto.precio * producto.cantidad;
+        if (!producto.requiereCotizacion && Number.isFinite(producto.precio)) {
+            total += producto.precio * producto.cantidad;
+        }
     });
 
     document.getElementById("checkout-total").textContent =
         formatearMonto(total);
+    const resumenCheckout = document.querySelector(".checkout-total");
+    if (resumenCheckout?.firstChild) {
+        const hayPendientes = carrito.some(producto => producto.requiereCotizacion || !Number.isFinite(producto.precio));
+        resumenCheckout.firstChild.nodeValue = hayPendientes ? "Total parcial: " : "Total estimado: ";
+    }
 
     cerrarCarrito();
 
@@ -265,7 +330,7 @@ function enviarPedidoWhatsApp() {
     }
 
     const totalVigente = carrito.reduce(
-        (suma, producto) => suma + producto.precio * producto.cantidad,
+        (suma, producto) => suma + (producto.requiereCotizacion || !Number.isFinite(producto.precio) ? 0 : producto.precio * producto.cantidad),
         0
     );
     const totalCheckout = document.getElementById("checkout-total");

@@ -12,6 +12,36 @@
         return imagen;
     }
 
+    function crearMarcadorImagen(producto) {
+        const marcador = document.createElement("div");
+        marcador.className = "producto-marcador-imagen";
+        marcador.setAttribute("role", "img");
+        marcador.setAttribute("aria-label", `Fotografía pendiente para ${producto.nombre}`);
+
+        const identidad = document.createElement("span");
+        identidad.className = "producto-marcador-identidad";
+        identidad.textContent = "Casa Agrícola y Forestal";
+        const estado = document.createElement("strong");
+        estado.textContent = "Fotografía en preparación";
+        const modelo = document.createElement("small");
+        modelo.textContent = producto.nombre;
+        marcador.append(identidad, estado, modelo);
+        return marcador;
+    }
+
+    function textoPrecioPublico(producto) {
+        const precio = producto.carrito?.precio;
+        if (Number.isFinite(precio) && /^\$/.test(producto.precioTexto || "")) {
+            return precio.toLocaleString("es-MX", {
+                style: "currency",
+                currency: "MXN",
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }) + " MXN";
+        }
+        return producto.precioTexto;
+    }
+
     function crearTarjeta(producto, ahora) {
         const datosPrecio = window.Promociones
             ? window.Promociones.obtenerPrecio(producto, ahora)
@@ -21,7 +51,9 @@
         tarjeta.id = producto.id;
         tarjeta.dataset.productoId = producto.id;
 
-        if (producto.galeria) {
+        if (producto.sinImagen || !producto.imagenes?.length) {
+            tarjeta.appendChild(crearMarcadorImagen(producto));
+        } else if (producto.galeria) {
             const fotos = document.createElement("div");
             fotos.className = "fotos-producto";
             producto.imagenes.forEach(datos => fotos.appendChild(crearImagen(datos)));
@@ -56,7 +88,7 @@
             promocional.textContent = window.Promociones.textoPrecio(datosPrecio.precioActual);
             precio.append(normal, promocional);
         } else {
-            precio.textContent = producto.precioTexto;
+            precio.textContent = textoPrecioPublico(producto);
         }
         tarjeta.appendChild(precio);
 
@@ -67,11 +99,15 @@
         detalles.setAttribute("aria-label", `Ver detalles de ${producto.nombre}`);
         tarjeta.appendChild(detalles);
 
-        if (producto.carrito) {
+        if (!producto.soloCotizacion) {
             const boton = document.createElement("button");
             boton.type = "button";
             boton.className = "agregar-carrito";
-            boton.textContent = "🛒 Agregar al carrito";
+            boton.textContent = producto.carrito ? "🛒 Agregar al carrito" : "Agregar a solicitud";
+            boton.setAttribute(
+                "aria-label",
+                producto.carrito ? `Agregar ${producto.nombre} al carrito` : `Agregar ${producto.nombre} a la solicitud de cotización`
+            );
             boton.addEventListener("click", function () {
                 agregarProductoAlCarrito(producto.id);
             });
@@ -82,7 +118,7 @@
             const consulta = document.createElement("button");
             consulta.type = "button";
             consulta.className = "comprar consulta-sucursal";
-            consulta.textContent = "Consultar por WhatsApp";
+            consulta.textContent = producto.soloCotizacion ? "Consultar modelo y precio" : "Consultar por WhatsApp";
             consulta.setAttribute("aria-label", `Elegir sucursal para consultar por ${producto.nombre}`);
             consulta.addEventListener("click", function () {
                 if (!window.Contactos) return;

@@ -15,13 +15,61 @@
     <meta name="twitter:title" content="Casa Agrícola y Forestal">
     <meta name="twitter:description" content="Maquinaria, herramientas y equipos para el campo, jardín y trabajo forestal.">
     <meta name="twitter:image" content="https://alanvil.github.io/casa-agricola-forestal/Logo.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://alanvil.github.io/casa-agricola-forestal/#organization",
+          "name": "Casa Agrícola y Forestal",
+          "url": "https://alanvil.github.io/casa-agricola-forestal/",
+          "logo": "https://alanvil.github.io/casa-agricola-forestal/Logo.png",
+          "sameAs": [
+            "https://www.facebook.com/casaagricolayforestal",
+            "https://www.instagram.com/casaagricolayforestal/"
+          ]
+        },
+        {
+          "@type": "Store",
+          "@id": "https://alanvil.github.io/casa-agricola-forestal/#ciudad-hidalgo",
+          "name": "Casa Agrícola y Forestal — Ciudad Hidalgo",
+          "parentOrganization": { "@id": "https://alanvil.github.io/casa-agricola-forestal/#organization" },
+          "telephone": "+52 786 125 6908",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Av. Morelos Oriente N342, Col. El Paraíso",
+            "postalCode": "61183",
+            "addressLocality": "Ciudad Hidalgo",
+            "addressRegion": "Michoacán",
+            "addressCountry": "MX"
+          }
+        },
+        {
+          "@type": "Store",
+          "@id": "https://alanvil.github.io/casa-agricola-forestal/#san-felipe",
+          "name": "Casa Agrícola y Forestal — San Felipe / Zitácuaro",
+          "parentOrganization": { "@id": "https://alanvil.github.io/casa-agricola-forestal/#organization" },
+          "telephone": "+52 715 134 8109",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Carretera Toluca–Morelia km 105 SN",
+            "postalCode": "61529",
+            "addressLocality": "Zitácuaro",
+            "addressRegion": "Michoacán",
+            "addressCountry": "MX"
+          }
+        }
+      ]
+    }
+    </script>
 
     <title>Casa Agrícola y Forestal</title>
 
     <link rel="stylesheet" href="assets/css/estilos.css">
 </head>
 
-<body>
+<body class="pagina-inicio">
 
 <header>
 
@@ -29,7 +77,12 @@
     <img src="Logo-transparente.png" alt="Casa Agrícola y Forestal">
 </div>
 
-    <div class="header-actions">
+    <button class="menu-movil-toggle" type="button" aria-expanded="false" aria-controls="menu-principal">
+        <span class="menu-movil-icono" aria-hidden="true"></span>
+        <span>Menú</span>
+    </button>
+
+    <div class="header-actions" id="menu-principal">
         <nav aria-label="Navegación principal">
             <a href="#inicio">Inicio</a>
             <a href="#productos">Productos</a>
@@ -61,15 +114,31 @@
             y el trabajo forestal.
         </p>
 
-        <a href="#productos" class="boton">
-            Ver productos
-        </a>
-<button class="boton whatsapp contacto-general" type="button">
-    WhatsApp por sucursal
-</button>
+        <div class="hero-acciones">
+            <a href="#productos" class="boton boton-principal">
+                Explorar catálogo
+            </a>
+            <button class="boton whatsapp contacto-general" type="button">
+                Cotizar por WhatsApp
+            </button>
+        </div>
+        <p class="hero-aclaracion">Disponibilidad y precio final sujetos a confirmación con la sucursal.</p>
 
     </div>
 
+</section>
+
+<section class="proceso-cotizacion" aria-labelledby="proceso-cotizacion-titulo">
+    <div class="proceso-cotizacion-encabezado">
+        <span>Compra asistida</span>
+        <h2 id="proceso-cotizacion-titulo">Cotiza con la sucursal que prefieras</h2>
+    </div>
+    <ol>
+        <li><strong>1</strong><span>Elige tu equipo</span></li>
+        <li><strong>2</strong><span>Selecciona sucursal</span></li>
+        <li><strong>3</strong><span>Solicita por WhatsApp</span></li>
+        <li><strong>4</strong><span>Recoge en tienda</span></li>
+    </ol>
 </section>
 
 <section id="promociones" class="promociones" aria-labelledby="promociones-titulo" hidden>
@@ -93,15 +162,6 @@
         <p>Consulta los productos participantes durante la vigencia de la campaña.</p>
         <div data-productos-buen-fin></div>
     </div>
-</section>
-
- <section class="catalogo">
-    <h2>Consulta nuestro catálogo</h2>
-    <p>Conoce nuestros equipos, herramientas, accesorios y refacciones.</p>
-
-    <a href="Catalogo.pdf" target="_blank" class="boton">
-        📖 Ver catálogo completo
-    </a>
 </section>
 
 <section id="productos" class="productos">
@@ -141,6 +201,17 @@
         <a href="categorias/desbrozadoras.html#asesor-categoria"><strong>Ayúdame a elegir una desbrozadora</strong><small>Desde jardín y bordes hasta maleza y terrenos extensos.</small></a>
     </div>
 </section>
+</section>
+
+<section class="catalogo catalogo-complementario">
+    <div>
+        <span>Recurso complementario</span>
+        <h2>Consulta nuestro catálogo en PDF</h2>
+        <p>Conoce nuestros equipos, herramientas, accesorios y refacciones en un solo documento.</p>
+    </div>
+    <a href="Catalogo.pdf" target="_blank" rel="noopener noreferrer" class="boton">
+        Ver catálogo completo
+    </a>
 </section>
 <section id="sucursales" class="sucursales">
 
@@ -372,7 +443,9 @@ function buscarProductos() {
     resultados.replaceChildren();
     resultados.hidden = true;
     sinResultados.style.display = "none";
-    zonaComparador.style.display = texto ? "none" : "";
+    if (zonaComparador) {
+        zonaComparador.style.display = texto ? "none" : "";
+    }
 
     if (!texto) return;
 
@@ -402,6 +475,33 @@ function buscarProductos() {
     });
     resultados.appendChild(fragmento);
     resultados.hidden = false;
+}
+
+const botonMenuMovil = document.querySelector(".menu-movil-toggle");
+const encabezadoInicio = document.querySelector("body.pagina-inicio > header");
+
+function cerrarMenuMovil() {
+    if (!botonMenuMovil || !encabezadoInicio) return;
+    encabezadoInicio.classList.remove("menu-abierto");
+    botonMenuMovil.setAttribute("aria-expanded", "false");
+}
+
+if (botonMenuMovil && encabezadoInicio) {
+    botonMenuMovil.addEventListener("click", function () {
+        const abierto = encabezadoInicio.classList.toggle("menu-abierto");
+        botonMenuMovil.setAttribute("aria-expanded", String(abierto));
+    });
+
+    encabezadoInicio.querySelectorAll("nav a").forEach(function (enlace) {
+        enlace.addEventListener("click", cerrarMenuMovil);
+    });
+
+    document.addEventListener("keydown", function (evento) {
+        if (evento.key === "Escape" && encabezadoInicio.classList.contains("menu-abierto")) {
+            cerrarMenuMovil();
+            botonMenuMovil.focus();
+        }
+    });
 }
 </script>
 
